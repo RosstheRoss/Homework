@@ -1,4 +1,4 @@
-#  Time to make a real Fizzbuzz
+#  Time to make a real FizzBuzz
 for N in range (0,101):
     S = ''
     if N % 3 == 0:
