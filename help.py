@@ -1,12 +1,12 @@
 #  Time to make a real Fizzbuzz
-for e in range (0,101):
-    string = ''
-    if e % 3 == 0:
-        string = string + "Fizz"
-    if e % 5 == 0:
-            string = string + "Buzz"
-    if e % 5 != 0 and e % 3 != 0:
-        print(e)
+for N in range (0,101):
+    S = ''
+    if N % 3 == 0:
+        S = S + "Fizz"
+    if N % 5 == 0:
+            S = S + "Buzz"
+    if N % 3 and N % 5:
+        print(N)
     else:
-        print(string)
+        print(S)
         
