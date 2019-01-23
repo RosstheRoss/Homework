@@ -1,4 +1,4 @@
-#  Time to make a real FizzBuzz
+#  Give job please
 for N in range (1,101):
     S = ''
     if N % 3 == 0:
