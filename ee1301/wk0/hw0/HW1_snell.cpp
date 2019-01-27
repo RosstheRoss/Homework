@@ -1,3 +1,9 @@
+// EE 1301 
+// HW 0
+// Matthew Strapp
+// strap012
+// 0.3490658503988659
+
 #include <iostream>
 #include <cmath>
 
