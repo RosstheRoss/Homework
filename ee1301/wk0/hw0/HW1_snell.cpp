@@ -6,16 +6,16 @@ using namespace std;
 int main()
 {
 	double inAngle, firstRI, secondRI;
-	cout << "Input incident angle: ";
+	cout << "Input incident angle in degrees: ";
 	cin >> inAngle;
-	cout << "Input index of refraction of first medium: ";
+	cout << "Input index of refraction of first medium in degrees: ";
 	cin >> firstRI;
-	cout << "Input index of refraction of second medium: ";
+	cout << "Input index of refraction of second medium in degrees: ";
 	cin >> secondRI;
 	
 	inAngle = inAngle *M_PI / 180.0; // convert to radians
 	double outAngle = 180/M_PI * asin(firstRI/secondRI * sin(inAngle)); //snell's law
-	cout << "Refracted angle: " << outAngle <<endl;
+	cout << "Refracted angle in degrees: " << outAngle <<endl;
 	
 	return 0;
 }
