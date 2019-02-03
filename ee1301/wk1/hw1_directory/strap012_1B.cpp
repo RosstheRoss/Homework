@@ -9,11 +9,17 @@ int main()
   cin >> option;
   
   if (option == "i") {
+    
     cout << "E";
+    
     }else{ if (option == "f") {
+      
       cout << "e";
+      
       }else{
-          cout << "nah.";
+        
+          cout << "Invalid option.";
       }
   }
+  cout << endl;
 }
