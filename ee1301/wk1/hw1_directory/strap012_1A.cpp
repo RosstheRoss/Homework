@@ -11,7 +11,7 @@ int main()
   cout << "Input the radius of the sphere: ";
    cin >> r;
   
-  cout << "Input the h of the fluid: ";
+  cout << "Input the height of the fluid: ";
    cin >> h;
   
   cout << fixed << setprecision(2) //Set rounding to 2 decimal places
