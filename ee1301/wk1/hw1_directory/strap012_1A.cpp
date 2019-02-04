@@ -10,7 +10,6 @@ int main()
   
   cout << "Input the radius of the sphere: ";
    cin >> r;
-  
   cout << "Input the height of the fluid: ";
    cin >> h;
   
