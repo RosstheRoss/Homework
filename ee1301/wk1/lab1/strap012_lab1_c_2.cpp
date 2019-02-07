@@ -4,17 +4,10 @@ using namespace std;
 
 int main()
 {
-    string first;
-    string middle;
-    string last = " ";
+    string first, last;
     cout << "What is your full name?" << endl;
-    cin >> first >> middle >> last;
-    if (last == " ")
-    {
-        cout << middle << ", " << first;
-    }
-    else
-    {
-        cout << last << ", " << first << " " << middle << endl;
+    getline
+    cin >> last;
+        cout << last << ", " << first <<
     }
 }
