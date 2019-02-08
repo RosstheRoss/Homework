@@ -10,7 +10,7 @@ int main () {
   cin >> x;
   unsigned long long i = (x-1);
   
-  for (i=x; i>1; --i/*--*/) {
+  for (i=x; i>1; --i) {
     if (x%i==0 && x!=i) {
       cout << "Not prime!" << endl;
       a=1700;
