@@ -21,5 +21,5 @@ int main () {
   
   if (a!=1700)
   cout << "Prime!" << endl;
-  return 0;
+  return 2;
 }
