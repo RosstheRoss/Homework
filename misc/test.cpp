@@ -14,11 +14,11 @@ int main () {
       cout << "Not prime!" << endl;
       a=1;
       break;
-      return 3;
+      return i;
     }
   }
   
   if (a!=1)
   cout << "Prime!" << endl;
-  return 2;
+  return 0;
 }
