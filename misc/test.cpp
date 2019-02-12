@@ -3,7 +3,7 @@ using namespace std;
 
 int main () {
   unsigned long long x,i;
-  int a;
+  bool a;
   cout << "Enter a number:"; cin >> x;
   
   for (i=x; i>1; --i)
@@ -16,7 +16,7 @@ int main () {
       return i; }
     }
   
-  if (a!=1)
+  if (!a)
   cout << "Prime!" << endl;
   return 0;
 }
