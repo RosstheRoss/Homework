@@ -1,3 +1,12 @@
+/*
+Date: 13 Feb 2019
+Name: Matthew Strapp
+Student ID number: 5449340
+Course number: EE1301
+Term: Spring 2019
+Lab/assignment number: Workout
+Short Program Description: Pay Stub Calculator
+*/
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -31,4 +40,3 @@ int main () {
 
   << "Your net (after witholdings) pay is $" << NetPay << "." << endl;
 }
-//cout << fixed << setprecision(2)
