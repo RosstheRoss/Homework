@@ -23,14 +23,14 @@ int main () {
   if (Hours > 40) { //Every hour over 40 constitutes as overtime
     OT=Hours-40;
   }
-  if (Dependents >= 3) { //More than 3 dependents carries a fee
+  if (Dependents >= 3) {  //More than 3 dependents carries a fee
     Health=35;
   }
   GrossPay = Hours * 16.78 + OT * 16.78 * 1.5;
   SocSec = GrossPay * 0.06;
   Fed = GrossPay * 0.14;
   State = GrossPay * .05;
-  NetPay = GrossPay-SocSec-Fed-State-Health-10;       //$10 union dues
+  NetPay = GrossPay-SocSec-Fed-State-Health-10; //$10 union dues are constant
 
   cout << fixed << setprecision(2) << "Your gross (before withholdings) pay is $" << GrossPay << "." << endl
   << "Social Security withholding: $" << SocSec << endl
