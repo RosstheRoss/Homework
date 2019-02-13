@@ -13,7 +13,7 @@ Short Program Description: Pay Stub Calculator
 using namespace std;
 
 int main () {
-  int Dependents, Hours;
+  int Dependents, Hours, Union;
   int OT = 0; int Health = 0;     //Set values to zero to prevent problems
   double SocSec, State, Fed, GrossPay, NetPay;
   cout << "How many hours did you work this week?: ";
@@ -30,8 +30,10 @@ int main () {
   SocSec = GrossPay * 0.06;
   Fed = GrossPay * 0.14;
   State = GrossPay * .05;
-  NetPay = GrossPay-SocSec-Fed-State-Health-10; //$10 union dues are constant
-
+  if (GrossPay>0){
+    Union=10;
+  }
+  NetPay = GrossPay-SocSec-Fed-State-Health-Union; //$10 union dues are constant
   cout << fixed << setprecision(2) << "Your gross (before withholdings) pay is $" << GrossPay << "." << endl
   << "Social Security withholding: $" << SocSec << endl
   << "Federal income tax withholding: $" << Fed << endl
