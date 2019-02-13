@@ -13,14 +13,14 @@ using namespace std;
 
 int main () {
   int dependents, Hours;
-  int OT = 0; int Health = 0; //Set values to zero to prevent massive discrepencies
+  int OT = 0; int Health = 0; //Set values to zero to prevent problems
   double SSI, MN, Fed, GrossPay, NetPay;
   cout << "How many hours did you work this week?: ";
   cin >> Hours;
   cout << "How many dependents do you have?: ";
   cin >> dependents;
   if (Hours > 40) {
-    OT=Hours-40;
+    OT=Hours-40; //Overtime pay is extra so it needs to be seperate
   }
   if (dependents >= 3) {
     Health=35;
