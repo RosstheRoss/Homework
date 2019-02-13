@@ -3,7 +3,7 @@ using namespace std;
 int main () {
   int income;
   int tax=0;
-  cout << "Εισάγετε το εισόδημά σας: ";
+  cout << "Enter your income: ";
   cin >> income;
   if (income>10000) {
     int k10=income-10000;
@@ -27,6 +27,6 @@ int main () {
     }
   }
 
-  cout << "Χρωστάς " << tax << " δραχμές." << endl;
+  cout << "You owe " << tax << " drachmas in tax." << endl;
 
 }
