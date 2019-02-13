@@ -3,10 +3,10 @@ using namespace std;
 int main () {
   int Income;
   int Tax=0;
-  cout << "Enter your Income: ";
+  cout << "Enter your income: ";
   cin >> Income;
   if (Income>10000) {
-    int k10=Income-10000; //Income under 10000 is not taxed
+    int k10=Income-30000; //Income under 10000 is not taxed
     if (k10<=0){
     Tax+=((Income-10000)*.1); //Income between 10000 and 30000 is taxed at 10%
   }
@@ -14,7 +14,7 @@ int main () {
       Tax+=2000;
     }
     if (Income>30000) {
-      int k30=Income-10000;
+      int k30=Income-70000;
       if (k30<=0){
       Tax+=((Income-30000)*.2); //Income between 30000 and 70000 is taxed at 20%
     }

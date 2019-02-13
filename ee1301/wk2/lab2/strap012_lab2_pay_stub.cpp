@@ -34,7 +34,7 @@ int main () {
     Union=10;
   }
   NetPay = GrossPay-SocSec-Fed-State-Health-Union; //$10 union dues are constant
-  cout << fixed << setprecision(2) << "Your gross (before withholdings) pay is $" << GrossPay << "." << endl
+  cout << fixed << setprecision(2) << endl << "Your gross (before withholdings) pay is $" << GrossPay << "." << endl
   << "Social Security withholding: $" << SocSec << endl
   << "Federal income tax withholding: $" << Fed << endl
   << "State income tax withholding: $" << State << endl
