@@ -7,22 +7,23 @@ Term: Spring 2019
 Lab/assignment number: Workout
 Short Program Description: Pay Stub Calculator
 */
+
 #include <iostream>
 #include <iomanip>
 using namespace std;
 
 int main () {
-  int dependents, Hours;
-  int OT = 0; int Health = 0; //Set values to zero to prevent problems
+  int Dependents, Hours;
+  int OT = 0; int Health = 0;     //Set values to zero to prevent problems
   double SocSec, State, Fed, GrossPay, NetPay;
   cout << "How many hours did you work this week?: ";
   cin >> Hours;
   cout << "How many dependents do you have?: ";
-  cin >> dependents;
+  cin >> Dependents;
   if (Hours > 40) {
-    OT=Hours-40; //Overtime pay is extra so it needs to be seperate
+    OT=Hours-40;                  //Overtime pay is time-and-a-half
   }
-  if (dependents >= 3) {
+  if (Dependents >= 3) {
     Health=35;
   }
   GrossPay = Hours * 16.78 + OT * 16.78 * 1.5;
