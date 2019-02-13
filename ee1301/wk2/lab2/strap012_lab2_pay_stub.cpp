@@ -14,7 +14,7 @@ using namespace std;
 int main () {
   int dependents, Hours;
   int OT = 0; int Health = 0; //Set values to zero to prevent problems
-  double SSI, MN, Fed, GrossPay, NetPay;
+  double SSI, State, Fed, GrossPay, NetPay;
   cout << "How many hours did you work this week?: ";
   cin >> Hours;
   cout << "How many dependents do you have?: ";
@@ -28,13 +28,13 @@ int main () {
   GrossPay = Hours * 16.78 + OT * 16.78 * 1.5;
   SSI = GrossPay * 0.06;
   Fed = GrossPay * 0.14;
-  MN = GrossPay * .05;
-  NetPay = GrossPay-SSI-Fed-MN-Health-10;       //$10 union dues
+  State = GrossPay * .05;
+  NetPay = GrossPay-SSI-Fed-State-Health-10;       //$10 union dues
 
   cout << fixed << setprecision(2) << "Your gross (before withholdings) pay is $" << GrossPay << "." << endl
   << "Social Security withholding: $" << SSI << endl
   << "Federal income tax withholding: $" << Fed << endl
-  << "State income tax withholding: $" << MN << endl
+  << "State income tax withholding: $" << State << endl
   << "Union Dues: $10" << endl
   << "Medical cost: $" << Health << endl
 
