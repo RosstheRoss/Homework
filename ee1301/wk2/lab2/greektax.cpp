@@ -5,8 +5,8 @@ int main () {
   int Tax=0;
   cout << "Enter your income: ";
   cin >> Income;
-  if (Income>10000) {
-    int k10=Income-30000; //Income under 10000 is not taxed
+  if (Income>10000) { //Income under 10000 is not taxed
+    int k10=Income-30000;
     if (k10<=0){
     Tax+=((Income-10000)*.1); //Income between 10000 and 30000 is taxed at 10%
   }
