@@ -38,7 +38,7 @@ int main () {
   << "Social Security withholding: $" << SocSec << endl
   << "Federal income tax withholding: $" << Fed << endl
   << "State income tax withholding: $" << State << endl
-  << "Union Dues: $10" << endl
+  << "Union Dues: $" << Union << endl
   << "Medical cost: $" << Health << endl
 
   << "Your net (after witholdings) pay is $" << NetPay << "." << endl;
