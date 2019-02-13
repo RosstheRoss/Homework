@@ -12,31 +12,31 @@ Short Program Description: Pay Stub Calculator
 using namespace std;
 
 int main () {
-  int dependents, hours;
-  int OT = 0; int Health = 0;
-  double SSI, MN, Fed, GroPay, NetPay;
+  int dependents, Hours;
+  int OT = 0; int Health = 0; //Set values to zero to prevent massive discrepencies
+  double SSI, MN, Fed, GrossPay, NetPay;
   cout << "How many hours did you work this week?: ";
-  cin >> hours;
+  cin >> Hours;
   cout << "How many dependents do you have?: ";
   cin >> dependents;
-  if (hours > 40) {
-    OT=hours-40;
+  if (Hours > 40) {
+    OT=Hours-40;
   }
   if (dependents >= 3) {
     Health=35;
   }
-  GroPay = hours * 16.78 + OT * 16.78 * 1.5;
-  SSI = GroPay * 0.06;
-  Fed = GroPay * 0.14;
-  MN = GroPay * .05;
-  NetPay = GroPay-SSI-Fed-MN-Health-10;       //$10 union dues
+  GrossPay = Hours * 16.78 + OT * 16.78 * 1.5;
+  SSI = GrossPay * 0.06;
+  Fed = GrossPay * 0.14;
+  MN = GrossPay * .05;
+  NetPay = GrossPay-SSI-Fed-MN-Health-10;       //$10 union dues
 
-  cout << fixed << setprecision(2) << "Your gross (before withholdings) pay is $" << GroPay << "." << endl
+  cout << fixed << setprecision(2) << "Your gross (before withholdings) pay is $" << GrossPay << "." << endl
   << "Social Security withholding: $" << SSI << endl
   << "Federal income tax withholding: $" << Fed << endl
   << "State income tax withholding: $" << MN << endl
   << "Union Dues: $10" << endl
-  << "Medical cost: $" << Health << endl //<< endl
+  << "Medical cost: $" << Health << endl
 
   << "Your net (after witholdings) pay is $" << NetPay << "." << endl;
 }
