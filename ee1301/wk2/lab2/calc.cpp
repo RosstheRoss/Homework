@@ -7,20 +7,20 @@ int main () {
   cout << "Enter an equation: ";
   cin >> a >> op >> b;
   cout << a << op << b << " = ";
-  
-   if (op=='+'){
+
+   if (op=='+'){ //Addition
      cout << a + b;
    }
 
-   if (op=='-'){
+   if (op=='-'){ //Subtraction
      cout << a - b;
    }
 
-   if (op=='*'){
+   if (op=='*'){ //Multiplication
      cout << a * b;
    }
 
-   if (op=='/'){
+   if (op=='/'){ //Division
      cout << a / b;
    }
 
