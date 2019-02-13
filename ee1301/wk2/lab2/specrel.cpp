@@ -13,9 +13,9 @@ Short Program Description: Special Relativity equation tool
 using namespace std;
 
 int main () {
-	
 	double L,v,c;
 	c=3e+10;
+
 	cout << "Enter L: "; cin >> L;
 	cout << "Enter V: "; cin >> v;
 	cout << "Relative Length = " <<
