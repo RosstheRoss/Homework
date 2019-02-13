@@ -22,7 +22,6 @@ int main () {
       cout << "Invalid option!" << endl;
       return 2;
     }
-    else{
   cout << "How many dependents do you have?: ";
   cin >> Dependents;
   if (Hours > 40) { //Every hour over 40 constitutes as overtime
@@ -47,5 +46,5 @@ int main () {
   << "Medical cost: $" << Health << endl
 
   << "Your net (after witholdings) pay is $" << NetPay << "." << endl;
-}
+
 }
