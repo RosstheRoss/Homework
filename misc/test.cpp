@@ -7,16 +7,17 @@ int main () {
   cout << "Enter a number:"; cin >> x;
   
   for (i=x; i>1; --i)
-    
     {
       if (x%i==0 && x!=i) {
-      cout << "Not prime!" << endl;
+      cout << x << " is not prime!" << endl;
+      cout << "Divisible by " << i << "." << endl << endl;
       a=1;
       break;
-      return i; }
+      }
     }
   
-  if (!a)
-  cout << "Prime!" << endl;
+  if (!a){
+  cout << x << " is a prime number!" << endl << endl;
   return 0;
+  }
 }

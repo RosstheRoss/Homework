@@ -14,7 +14,7 @@ using namespace std;
 
 int main () {
   int Dependents, Hours;
-  int OT = 0; int Health = 0; int Union =0;   //Set values to zero to prevent problems
+  int OT = 0, Health = 0, Union =0;   //Set values to zero to prevent problems
   double SocSec, State, Fed, GrossPay, NetPay;
   cout << "How many hours did you work this week?: ";
   cin >> Hours;
