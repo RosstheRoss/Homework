@@ -14,10 +14,12 @@ int main () {
   int countOG=0, i=0, j=0;
   
 do {
+  
   do {
-  cout << "Enter an integer from -50 to 50: ";
-  cin >> countOG;
+    cout << "Enter an integer from -50 to 50: ";
+    cin >> countOG;
   } while (countOG > 50 || countOG < -50);
+  
   int count=countOG; //Store original integer for comparison to break loop
   
   if (countOG < 0){
@@ -41,6 +43,7 @@ do {
       cout << endl;
     }
   }
+  
 } while (countOG != 0);
   cout << "Goodbye." << endl;
   return 0;
