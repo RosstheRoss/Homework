@@ -45,6 +45,7 @@ do {
   }
   
 } while (countOG != 0);
+
   cout << "Goodbye." << endl;
   return 0;
 }
