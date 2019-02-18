@@ -4,8 +4,8 @@ Name: Matthew Strapp
 Student ID number: 5449340
 Course number: EE1301
 Term: Spring 2019
-Lab/assignment number: Homework 2C
-Short Program Description: Pay Stub Calculator
+Lab/assignment number: Homework 2B
+Short Program Description: Time Calculator
 */
 
 #include <iostream>
