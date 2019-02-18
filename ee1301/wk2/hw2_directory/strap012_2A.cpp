@@ -11,7 +11,7 @@ Short Program Description: Useless Counter
 #include <iostream>
 using namespace std;
 int main () {
-  int countOG=0, i=0, j=0;
+  int countOG, i, j;
   
 do {
   
