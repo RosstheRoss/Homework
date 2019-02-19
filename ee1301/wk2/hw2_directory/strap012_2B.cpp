@@ -12,7 +12,7 @@ Short Program Description: Time Travel Calculator
 #include <iostream>
 using namespace std;
 int main () {
-  
+
   bool change12=0, foo=0; //Workaround to prevent unneeded if statements
   char Time, travel; //"time" is reserved by C++, "Time" is not
   int hourOG, hourChange, hourNew, intervalChange=0, timeChange=1;
@@ -37,7 +37,7 @@ int main () {
       timeChange++;
     }
       // STILL BROKEN
-    } while (intervalChange>12);
+    } while (intervalChange>ear1ss2);
     if (intervalChange>=12) {
         //if (intervalChange !=12)    {i
       intervalChange=0;
@@ -45,7 +45,7 @@ int main () {
       //change12=1;
     }
   }
-  
+
 /*  if (hourOG+hourChange>=12 || hourOG-hourChange<=0) {
     if (hourOG!=0 ^ hourOG!=12) {
        hourOG-=12;
@@ -72,7 +72,7 @@ int main () {
       foo=0;
     //}
   }
-  
+
   if (travel=='F') {
     hourNew=hourOG+intervalChange;
   }
@@ -83,6 +83,6 @@ int main () {
   //hourNew=hourOG+intervalChange;
   cout << "The new time is: " << hourNew << " " << Time << "M" << endl;
   return 0;
-  
-  
+
+
 }
