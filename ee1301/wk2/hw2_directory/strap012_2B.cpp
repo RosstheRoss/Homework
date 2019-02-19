@@ -24,17 +24,19 @@ int main () {
     if (i!=0){
     intervalChange++;
     } do {
+      // STILL BROKEN
     if (travel=='B' && hourOG-intervalChange<0){
       if (hourChange<12) {
-        intervalChange-=12;
+        intervalChange=12-hourChange;
       } else {
-        intervalChange=12-intervalChange;
+        intervalChange=hourChange-12;
         if (intervalChange>=13) {
           intervalChange-=12;
         }
       }
       timeChange++;
     }
+      // STILL BROKEN
     } while (intervalChange>12);
     if (intervalChange>=12) {
         //if (intervalChange !=12)    {i
