@@ -25,10 +25,15 @@ int main () {
     intervalChange++;
     } do {
     if (travel=='B' && hourOG-intervalChange<0){
-      if (hourChange<12)
-      intervalChange=12-hourChange;
-      else
-      intervalChange=hourChange-12;
+      if (hourChange<12) {
+        intervalChange-=12;
+      } else {
+        intervalChange=12-intervalChange;
+        if (intervalChange>=13) {
+          intervalChange-=12;
+        }
+      }
+      timeChange++;
     }
     } while (intervalChange>12);
     if (intervalChange>=12) {
