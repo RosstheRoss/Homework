@@ -3,15 +3,11 @@
 using namespace std;
 
 double gennewGuess(double n, double old_guess) {
-  bool WA=true;
   double real, old;
-  //if (WA) {
-    real=sqrt(n);
-    WA=false;
-  //}
+  real=sqrt(n);
   double new_guess = ( old_guess + n / old_guess ) / 2;
   old=new_guess;
-  if (((new_guess-real)/real)>0.01) {
+  if (((new_guess-real)/real)>0.01) { //This will be true if the difference between the real root and guess is more than 1%.
     cout << old << endl;
     return gennewGuess(n, old);
   } else {
@@ -25,7 +21,7 @@ int main () {
   cin >> temp;
   if (temp<=0) {
     cout << "Please enter a valid input(Positive Integer)." << endl;
-    return -1;
+    return sqrt(-1);
   }
   cout << "Guessing..." << endl;
   double real=sqrt(temp);
