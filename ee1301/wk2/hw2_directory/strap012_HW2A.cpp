@@ -1,11 +1,11 @@
 /*
-Date: 20 Feb 2019
-Name: Matthew Strapp
-Student ID number: 5449340
-Course number: EE1301
-Term: Spring 2019
-Lab/assignment number: Homework 2A
-Short Program Description: Useless Counter
+20 Feb 2019
+Matthew Strapp
+5449340
+EE1301
+Spring 2019
+Homework 2A
+Useless Counter
 */
 
 #include <iostream>

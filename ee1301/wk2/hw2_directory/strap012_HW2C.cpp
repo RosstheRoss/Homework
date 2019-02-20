@@ -1,11 +1,11 @@
 /*
-Date: 20 Feb 2019
-Name: Matthew Strapp
-Student ID number: 5449340
-Course number: EE1301
-Term: Spring 2019
-Lab/assignment number: Homework 2C
-Short Program Description: One-armed Bandit
+20 Feb 2019
+Matthew Strapp
+5449340
+EE1301
+Spring 2019
+Homework 2C
+One-armed Bandit
 */
 
 #include <iostream>
