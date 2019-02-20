@@ -7,7 +7,6 @@ Spring 2019
 Homework 2B
 Time Travel Calculator
 */
-//The backwards part stumps me.
 
 #include <iostream>
 using namespace std;
@@ -48,7 +47,7 @@ int main()
         }
         timeChange++;
       }
-      
+
     if (travel == 'B')
     {
       if (hourOG - hourChange <= 0)
