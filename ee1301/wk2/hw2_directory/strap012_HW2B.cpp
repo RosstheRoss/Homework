@@ -20,7 +20,7 @@ int main()
   cout << "Enter current time (A for AM, P for PM): ";
   cin >> hourOG >> Time;
   cout << "How many hours forward or backward do you want to move the clock (F for forwards, B for backward): ";
-  cin >> hourChange >> travel;
+  cin >> travel >> hourChange;
   for (int i = hourChange; i >= 0; i--)
   {
     if (i != 0)
@@ -51,6 +51,23 @@ int main()
       
     if (travel == 'B')
     {
+      if (hourOG - hourChange <= 0)
+      {
+          int temp = (hourOG - hourChange) + 12;
+          bar=true;
+          while (temp>12) {
+            temp-=12;
+            timeChange++;
+          }
+          if (hourChange<=24) {
+            hourNew=temp;
+          } else {
+            for (int k=(hourChange%24); k>0; k--) {
+              hourNew=temp+12;
+            }
+          }
+        }
+        timeChange++;
     }
     if (intervalChange >= 12)
     {
@@ -68,7 +85,7 @@ int main()
     {
       if (Time == 'P')
       {
-        Time -= 15; //See line 64
+        Time -= 15;
       }
     }
   }
@@ -76,7 +93,7 @@ int main()
   {
     hourNew = hourOG + intervalChange;
   }
-  if (travel == 'B')
+  if (travel == 'B' && !bar)
   {
     hourNew = hourOG - intervalChange;
   }
