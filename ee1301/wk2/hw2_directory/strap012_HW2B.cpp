@@ -35,7 +35,7 @@ int main()
         {
           timeChange++;
         }
-        else //This else statement is a complete hackjob.
+        else //This else statement is a complete hackjob. It works consistently though.
         {
           int temp = (hourOG + hourChange) - 12;
           bar=true;
@@ -77,7 +77,7 @@ int main()
   }
   if (travel == 'B')
   {
-    hourNew = hourOG + intervalChange;
+    hourNew = hourOG - intervalChange;
   }
   cout << "The new time is: " << hourNew << " " << Time << "M" << endl;
   return 0;
