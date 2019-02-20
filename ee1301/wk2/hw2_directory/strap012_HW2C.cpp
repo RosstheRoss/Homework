@@ -22,7 +22,8 @@ int main () {
         cout << "How many values do you want on each wheel? ";
         cin >> d;
       } while (d==0);   //Without this failsafe, the program does undefined things at d=0, usually crashing
-        spin1= rand () % d + 1;   //Spin is set to be a random number between 1 and d
+      
+        spin1= rand () % d + 1;
         spin2= rand () % d + 1;
         spin3= rand () % d + 1;
         spin4= rand () % d + 1;
@@ -39,6 +40,7 @@ int main () {
         }
         else {
             cout << "You lose.";
+            
         }
     cout << endl;
   } while (d!=-1);

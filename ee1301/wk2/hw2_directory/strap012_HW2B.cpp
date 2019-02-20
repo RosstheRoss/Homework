@@ -48,6 +48,7 @@ int main()
         }
         timeChange++;
       }
+      
     if (travel == 'B')
     {
     }
