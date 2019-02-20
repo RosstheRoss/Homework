@@ -14,7 +14,7 @@ using namespace std;
 int main()
 {
 
-  bool change12=0, foo=0, bar=true; //Workaround to prevent unneeded if statements
+  bool change12=0, foo=0, bar=false; //Workaround to prevent unneeded if statements
   char Time, travel;          //"time" is reserved by C++, "Time" is not
   int hourOG, hourChange, hourNew, intervalChange = 0, timeChange = 1;
   cout << "Enter current time (A for AM, P for PM): ";
@@ -27,13 +27,14 @@ int main()
       intervalChange++;
     }
     if (travel=='F') {
-      if (hourOG+hourChange>=12 && bar) {
+      if (hourOG+hourChange>=12) {
         if (hourOG+hourChange==12) {
           timeChange++;
         } else {
         hourNew=(hourOG+hourChange)-12;
-        bar=false;
+        bar=true;
         }
+        timeChange++;
       }
     }
     if (travel=='B') {
@@ -58,9 +59,9 @@ int main()
     //foo = false;
     }
   }
-  if (travel == 'F')
+  if (travel == 'F' && !bar)
   {
-    //hourNew = hourOG + intervalChange;
+    hourNew = hourOG + intervalChange;
   }
   if (travel == 'B')
   {
