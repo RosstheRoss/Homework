@@ -23,6 +23,9 @@ int main()
   cin >> hourChange >> travel;
   for (int i = hourChange; i >= 0; i--)
   {
+    if (i != 0) {
+      intervalChange++;
+    }
     if (travel=='F') {
       if (hourOG+hourChange>=12 && bar) {
         if (hourOG+hourChange==12) {
