@@ -21,4 +21,4 @@ int main()
   cin >> hourOG >> Time;
   cout << "How many hours forward or backward do you want to move the clock (F for forwards, B for backward): ";
   cin >> hourChange >> travel;
- 
+}
