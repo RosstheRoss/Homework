@@ -21,28 +21,25 @@ int main()
   cin >> hourOG >> Time;
   cout << "How many hours forward or backward do you want to move the clock (F for forwards, B for backward): ";
   cin >> hourChange >> travel;
+  if (hourOG+hourChange>12) {
+    
+  }
+
   for (int i = hourChange; i >= 0; i--)
   {
-    if (i != 0)
-    {
+    if (i != 0) {
       intervalChange++;
     }
-    do
-    {
-      if (travel == 'B' && hourOG - intervalChange < 0)
-      {
-        if (hourChange < 12)
-        {
+    do {
+      if (travel == 'B' && hourOG - intervalChange < 0){
+        if (hourChange < 12){
           intervalChange -= 12;
-        }
-        else
-        {
-          intervalChange = 12 - intervalChange;
-          if (intervalChange >= 13)
-          {
-            intervalChange -= 12;
+        } else {
+            intervalChange = 12 - intervalChange;
+            if (intervalChange >= 13){
+              intervalChange -= 12;
+            }
           }
-        }
         timeChange++;
       }
     } while (intervalChange > 12);
