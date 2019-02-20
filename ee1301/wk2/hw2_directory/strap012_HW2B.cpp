@@ -7,19 +7,16 @@ Term: Spring 2019
 Lab/assignment number: Homework 2B
 Short Program Description: Time Travel Calculator
 */
-
-//PROGRAMMER'S NOTE: This problem legitimately stumped me. I won't be suprised if this is where I lose most of my points for this assignment.
-//I've been trying this for more than six hours and it has still made no sense
-//Nested if and for statements are a nightmare
+//The backwards part stumps me.
 
 #include <iostream>
 using namespace std;
 int main()
 {
 
-  bool change12 = 0, foo = 0; //Workaround to prevent unneeded if statements
-  char Time, travel;          //"time" is reserved by C++, "Time" is not
-  int hourOG, hourChange, hourNew, intervalChange = 0, timeChange = 1;
+  bool change12 = 0, foo = 0, bar = false; //Workaround to prevent unneeded if statements
+  char Time, travel;                       //"time" is reserved by C++, "Time" is not
+  int hourOG, hourChange, hourNew, intervalChange = 0, timeChange = 0;
   cout << "Enter current time (A for AM, P for PM): ";
   cin >> hourOG >> Time;
   cout << "How many hours forward or backward do you want to move the clock (F for forwards, B for backward): ";
@@ -30,50 +27,51 @@ int main()
     {
       intervalChange++;
     }
-    /* do
+    if (travel == 'F')
     {
-      STILL BROKEN
-      if (travel == 'B' && hourOG - intervalChange < 0)
+      if (hourOG + hourChange >= 12)
       {
-        if (hourChange < 12)
+        if (hourOG + hourChange == 12)
         {
-          intervalChange = 12 - hourChange;
+          timeChange++;
         }
-        else
+        else //This else statement is a complete hackjob.
         {
-          intervalChange = hourChange - 12;
-          if (intervalChange >= 13)
-          {
-            intervalChange -= 12;
+          int temp = (hourOG + hourChange) - 12;
+          bar=true;
+          while (temp>12) {
+            temp-=12;
+            timeChange++;
           }
+          hourNew=temp;
+     }
         }
         timeChange++;
       }
-      STILL BROKEN 
-
-    } while (intervalChange > 12); */
+    if (travel == 'B')
+    {
+    }
     if (intervalChange >= 12)
     {
       intervalChange = 0;
       timeChange++;
     }
   }
-
   for (timeChange; timeChange > 1; timeChange--)
   {
     if (Time == 'A')
     {
       Time += 15;
-      foo = true;
     }
-    if (Time == 'P' && !foo)
+    else
     {
-      Time -= 15;
+      if (Time == 'P')
+      {
+        Time -= 15;
+      }
     }
-    foo = 0;
   }
-
-  if (travel == 'F')
+  if (travel == 'F' && !bar)
   {
     hourNew = hourOG + intervalChange;
   }
