@@ -13,7 +13,7 @@ Short Program Description: One-armed Bandit
 
 using namespace std;
 int main () {
-    srand (time(NULL));
+    srand (time(NULL)); //This seeds the randomness based on the current time
     bool win=false;
     int d=0, spin1, spin2, spin3, spin4;
   do {
@@ -21,14 +21,14 @@ int main () {
         win=false;      //Reset win from before, otherwise win will always be true after it is true once
         cout << "How many values do you want on each wheel? ";
         cin >> d;
-      } while (d==0);   //Without this failsafe, the program does undefined things at d=0
-        spin1= rand () % d + 1;
+      } while (d==0);   //Without this failsafe, the program does undefined things at d=0, usually crashing
+        spin1= rand () % d + 1;   //Spin is set to be a random number between 1 and d
         spin2= rand () % d + 1;
         spin3= rand () % d + 1;
         spin4= rand () % d + 1;
         cout << "The wheels spin to give:  " << spin1 << " " << spin2 << " " << spin3 << " " << spin4 << "  ";
         if (spin1==spin2) { // These nested statements only let the bool "win" be true if all of the spinners match
-            if (spin2==spin3) { 
+            if (spin2==spin3) {
                 if (spin3==spin4) {
                     win=true;
                 }

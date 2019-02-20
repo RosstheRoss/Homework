@@ -34,12 +34,10 @@ do {
   }
 
   if (countOG > 0) {
-    count=1;   //Sets initial printing of countOG to 1
-    for (i=1; i<=countOG; i++) {
-      for (j=0; j<count; j++) {
-        cout << i;
+    for (count=1; count<=countOG; count++) {
+      for (i=0; i<count; i++) {
+        cout << count;
       }
-      count++;
       cout << endl;
     }
   }

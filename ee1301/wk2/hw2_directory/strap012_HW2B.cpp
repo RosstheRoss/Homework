@@ -14,7 +14,7 @@ using namespace std;
 int main()
 {
 
-  bool change12 = 0, foo = 0, bar = false; //Workaround to prevent unneeded if statements
+  bool foo = 0, bar = false; //Workaround to prevent unneeded if statements
   char Time, travel;                       //"time" is reserved by C++, "Time" is not
   int hourOG, hourChange, hourNew, intervalChange = 0, timeChange = 0;
   cout << "Enter current time (A for AM, P for PM): ";
@@ -61,13 +61,13 @@ int main()
   {
     if (Time == 'A')
     {
-      Time += 15;
+      Time += 15; //15 is the difference in the ASCII table between 'A' and 'P'
     }
     else
     {
       if (Time == 'P')
       {
-        Time -= 15;
+        Time -= 15; //See line 64
       }
     }
   }
