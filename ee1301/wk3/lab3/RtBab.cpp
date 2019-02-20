@@ -2,22 +2,35 @@
 #include <cmath>
 using namespace std;
 
-double genNewGuess(double n, double oldGuess); {
-  New=(oldGuess+n/oldGuess)/2;
-  oldGuess=New;
-  return New;
+double gennewGuess(double n, double old_guess) {
+  bool WA=true;
+  double real, old;
+  //if (WA) {
+    real=sqrt(n);
+    WA=false;
+  //}
+  double new_guess = ( old_guess + n / old_guess ) / 2;
+  old=new_guess;
+  if (((new_guess-real)/real)>0.01) {
+    cout << old << endl;
+    return gennewGuess(n, old);
+  } else {
+    cout << old << endl;
+    return new_guess;
+  }
 }
 int main () {
-  double temp;
+  double temp, temp2;
   cout << "Enter the Number to find square root: ";
-  cin >> n;
-  if (n==0) {
-    cout << "Nah fam." << endl;
-    return -1
+  cin >> temp;
+  if (temp<=0) {
+    cout << "Please enter a valid input(Positive Integer)." << endl;
+    return -1;
   }
-  cout << "Guessing..."
-  double real=sqrt(n);
-  do {
-    
-  } (while abs(New-real)/real<0.1)
+  cout << "Guessing..." << endl;
+  double real=sqrt(temp);
+  temp2=temp;
+  temp = gennewGuess(temp, 1.0);
+  cout << "The Final Guess: " << temp << endl
+   << "Actual Value: " << real << endl;
 }

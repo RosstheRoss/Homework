@@ -1,17 +1,17 @@
 #include <iostream>
 using namespace std;
 int main() {
-  int row=1, column=1;
-  for (row; row<=10; row++) {
-    for (column=10; column>0; column--) {
-      int temp = row*column;
-      if (temp!=100) {
+  int r=1, c=1;
+  for (r; r<=10; r++) {
+    for (c=10; c>0; c--) {
+      int ans = r*c;
+      if (ans!=100) {
         cout << " ";
       }
-      if (temp<10) {
+      if (ans<10) {
         cout << " ";
       }
-      cout << temp;
+      cout << ans;
     }
   cout << endl;
   }
