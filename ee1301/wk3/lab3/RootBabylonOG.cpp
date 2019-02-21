@@ -16,7 +16,7 @@ double gennewGuess(double n, double old_guess) {
   }
 }
 int main () {
-  double temp, temp2;
+  double temp;
   cout << "Enter the Number to find square root: ";
   cin >> temp;
   if (temp<=0) {
@@ -25,7 +25,6 @@ int main () {
   }
   cout << "Guessing..." << endl;
   double real=sqrt(temp);
-  temp2=temp;
   temp = gennewGuess(temp, 1.0);
   cout << "The Final Guess: " << temp << endl
    << "Actual Value: " << real << endl;
