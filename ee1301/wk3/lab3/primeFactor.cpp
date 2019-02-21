@@ -1,21 +1,26 @@
 #include <iostream>
-#include <iomanip>
 #include <cmath>
 using namespace std;
-int primefinder (long long n) {
-  for (long long i=n; i>1; --i) {
 
-      if (n%i==0 && n!=i) {
-        primefinder(i);
-        cout << i << "*";
-      }
+void factorFinder (unsigned long long n) {
+  unsigned long long i=2;
+  while (pow(i,2)<=n) {
+    if (n%i==0) {
+      cout << i << "*";
+      n/=i;
+    } else {
+      i++;
     }
-    return composite;
+  }
+  if (n>1) {
+    cout << n << endl;
+  }
 }
+
 int main () {
-  long long n;
-  cout << "Input a positive integer:  ";
+  unsigned long long n;
+  cout << "Input a positive integer: ";
   cin >> n;
-  primefinder(n);
-  cout << endl;
+  cout << "Factors: ";
+  factorFinder(n);
 }
