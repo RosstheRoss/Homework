@@ -3,18 +3,20 @@
 using namespace std;
 
 double gennewGuess(double n, double old_guess) {
-  double real, old;
-  real=sqrt(n);
-  double new_guess = ( old_guess + n / old_guess ) / 2;
-  old=new_guess;
-  if (((new_guess-real)/real)>0.01) { //This will be true if the difference between the real root and guess is more than 1%.
-    cout << old << endl;
-    return gennewGuess(n, old);
-  } else {
-    cout << old << endl;
-    return new_guess;
+  double new_guess = (old_guess+n/old_guess)/2;
+  return new_guess;
   }
+  
+double BabylonRoot(double n) {
+  double real, guess=1; //Initial guess is set to 1
+  real=sqrt(n);
+  do {
+    guess = gennewGuess(n,guess);
+    cout << guess << endl;
+  } while ((guess-real)/real>0.01);
+  return guess;
 }
+
 int main () {
   double temp;
   cout << "Enter the Number to find square root: ";
@@ -25,7 +27,7 @@ int main () {
   }
   cout << "Guessing..." << endl;
   double real=sqrt(temp);
-  temp = gennewGuess(temp, 1.0);
+  temp = BabylonRoot(temp);
   cout << "The Final Guess: " << temp << endl
    << "Actual Value: " << real << endl;
 }
