@@ -3,7 +3,7 @@
 using namespace std;
 
 double gennewGuess(double n, double old_guess) {
-  double new_guess = (old_guess+n/old_guess)/2;
+  double new_guess = ((old_guess+n) / old_guess) / 2;
   return new_guess;
   }
   
@@ -13,21 +13,21 @@ double BabylonRoot(double n) {
   do {
     guess = gennewGuess(n,guess);
     cout << guess << endl;
-  } while ((guess-real)/real>0.01);
+  } while ((guess-real)/real>0.01); //Keep guessing unitl within 1% of the actual square root
   return guess;
 }
 
 int main () {
-  double temp;
+  double n, guess;
   cout << "Enter the Number to find square root: ";
-  cin >> temp;
-  if (temp<=0) {
+  cin >> n;
+  if (n<=0) {
     cout << "Please enter a valid input(Positive Integer)." << endl;
     return sqrt(-1);
   }
   cout << "Guessing..." << endl;
-  double real=sqrt(temp);
-  temp = BabylonRoot(temp);
-  cout << "The Final Guess: " << temp << endl
+  double real=sqrt(n);
+  guess = BabylonRoot(n);
+  cout << "The Final Guess: " << guess << endl
    << "Actual Value: " << real << endl;
 }
