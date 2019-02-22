@@ -13,7 +13,7 @@ double BabylonRoot(double n) {
   do {
     guess = gennewGuess(n,guess);
     cout << guess << endl;
-  } while (abs(guess-real)/real>0.05); //Keep guessing unitl within 5% of the actual square root
+  } while (abs(guess-real)/real>0.01); //Keep guessing unitl within 1% of the actual square root
   return guess;
 }
 
