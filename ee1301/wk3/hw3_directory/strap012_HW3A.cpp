@@ -15,7 +15,7 @@ One-armed Bandit Simulator
 using namespace std;
 int spin_the_wheel(int d, int w) {
   int spinOG, spinNew;
-  spinOG = rand() % d + 1
+  spinOG = rand() % d + 1;
   for (int i=w; i>0; i--) {
     spinNew = rand() % d + 1
     if (spinNew==spingOG) {
@@ -27,13 +27,13 @@ int spin_the_wheel(int d, int w) {
   return 1;
 }
 int main () {
-    int win;
+    int m;
     int d= 3;
     int w= 9;
     for (long n=1000000; n>0; n--) {
-      win = spin_the_wheel(d,w);
-      if (win==1) {
-        win++;
+      m = spin_the_wheel(d,w);
+      if (m==1) {
+        m++;
       }
     }
     cout << "w=" << w << ", d=" << d;
