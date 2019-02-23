@@ -27,10 +27,11 @@ int spin_the_wheel(int d, int w) {
   return 1;
 }
 int main () {
-    int m;
+    long n=1000000;
+    int m=0;
     int d= 3;
     int w= 9;
-    for (long n=1000000; n>0; n--) {
+    for (n; n>0; n--) {
       m = spin_the_wheel(d,w);
       if (m==1) {
         m++;
