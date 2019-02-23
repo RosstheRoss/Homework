@@ -17,7 +17,7 @@ int spin_the_wheel(int d, int w) {
   int spinOG, spinNew;
   spinOG = rand() % d + 1;
   for (int i=w; i>0; i--) {
-    spinNew = rand() % d + 1
+    spinNew = rand() % d + 1;
     if (spinNew==spingOG) {
       //Do nothing
     } else {
