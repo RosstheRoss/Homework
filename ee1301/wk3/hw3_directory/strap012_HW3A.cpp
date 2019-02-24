@@ -17,10 +17,11 @@ using namespace std;
 
 int spin_the_wheel(int d, int w) {
   int spinOG=0, spinNew=0, win=0;
-  for (int i=1; i<=w; i++) {
+  //spinOG = ( (rand() % d) + 1);
+  for (int i=0; i<w; i++) {
     spinOG = ( (rand() % d) + 1);
     spinNew = ( (rand() % d) + 1);
-    if (spinOG==spinNew) {
+    if (spinOG==spinNew) { 
       win++;
     }
   }
@@ -30,20 +31,24 @@ int spin_the_wheel(int d, int w) {
     return 0;
   }
 }
-int main () {
-  srand(time(NULL));
-  long n = 0;
-  int m = 0;
-  float test;
-  int w = 3;
-  int d = 9;
-  for (n; n <= 1000000; n++)
-  {
-    test = spin_the_wheel(d, w);
-    m+=test;
-  }
 
-  cout << "w=" << w << ", d=" << d;
-  cout << ": Simulated probability = m/n = " << (m/n)*100 << "%. ";
-  cout << "Theoretical probability = " << (d/(pow(d,w)))*100 << "%." << endl;
+int main () {
+  srand(10000); 
+  int w, d, m, test;
+  for (w=3; w<=6; w++) {
+    m=0;
+    for (d=9; d<=27; d++) {
+      m=0;
+      for (long n=1000000; n>0; n--) {
+        int test = spin_the_wheel(d, w);
+        m+=test;
+      }
+      double win=m;
+      cout << fixed << setprecision(5)
+           << "w=" << w << ", d=" << d
+           << ": Simulated probability = m/n = " << (win / 1000000.0) * 100.0 << "%. "
+           << "Theoretical probability = " << (d / (pow(d, w))) * 100 << "%." << endl;
+      d+=2;
+    }
+  }
 }
