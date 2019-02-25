@@ -4,8 +4,8 @@ Matthew Strapp
 5449340
 EE1301
 Spring 2019
-Homework 3A
-One-armed Bandit Simulator
+Homework 3B
+Character Detection
 */
 
 #include <iostream>

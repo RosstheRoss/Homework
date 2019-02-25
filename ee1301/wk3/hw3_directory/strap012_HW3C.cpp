@@ -1,3 +1,13 @@
+/*
+27 Feb 2019
+Matthew Strapp
+5449340
+EE1301
+Spring 2019
+Homework 3C
+Character Detection
+*/
+
 #include <iostream>
 #include <stdlib.h>
 #include <cmath>
@@ -29,7 +39,7 @@ char swapCase(char s) {
 int main()
 {
     char character;
-    do {
+    do { //This loops until '@' is entered
         cout << "Please enter a character that is an ASCII letter in the range [A-Za-z]: ";
         cin >> character;
         if (character!='@') {
