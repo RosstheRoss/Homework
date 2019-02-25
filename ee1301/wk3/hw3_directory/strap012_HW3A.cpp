@@ -12,7 +12,6 @@ One-armed Bandit Simulator
 #include <stdlib.h>
 #include <cmath>
 #include <iomanip>
-#include <time.h>
 using namespace std;
 
 int spin_the_wheel(int d, int w) {
@@ -21,7 +20,7 @@ int spin_the_wheel(int d, int w) {
   for (int i=0; i<w; i++) {
     spinOG = ( (rand() % d) + 1);
     spinNew = ( (rand() % d) + 1);
-    if (spinOG==spinNew) { 
+    if (spinOG==spinNew) {
       win++;
     }
   }
@@ -33,20 +32,19 @@ int spin_the_wheel(int d, int w) {
 }
 
 int main () {
-  srand(10000); 
+  srand(88888888); //See
   int w, d, m, test;
   for (w=3; w<=6; w++) {
     m=0;
     for (d=9; d<=27; d++) {
       m=0;
-      for (long n=1000000; n>0; n--) {
+      for (long long n=1000000; n>0; n--) {
         int test = spin_the_wheel(d, w);
         m+=test;
       }
       double win=m;
-      cout << fixed << setprecision(5)
-           << "w=" << w << ", d=" << d
-           << ": Simulated probability = m/n = " << (win / 1000000.0) * 100.0 << "%. "
+      cout << "w=" << w << ", d=" << d
+           << ": Simulated probability = m/n = " << (win / 100000.0) * 100.0 << "%. "
            << "Theoretical probability = " << (d / (pow(d, w))) * 100 << "%." << endl;
       d+=2;
     }
