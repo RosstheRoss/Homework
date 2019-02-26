@@ -40,14 +40,14 @@ int charTest (char character) {
 int main () {
     int test;
     char character;
-    bool isNotAlphaNumeric=false;
-    while (!isNotAlphaNumeric) {
+    bool isAlphaNumeric=true;
+    while (isAlphaNumeric) {
       cout << "Enter a single digit or an alphabetic character: ";
       cin >> character;
       cout << "You entered " << character << ", ";
       test = charTest(character);
       if (test==0) {
-        isNotAlphaNumeric=true;
+        isAlphaNumeric=false;
         cout << "which is not a letter or a number.";
       }
       if (test==1) {
