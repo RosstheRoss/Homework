@@ -24,6 +24,7 @@ using namespace std;
 int spin_the_wheel(int d, int w) {
   int spinOG=0, spinNew=0, win=0;
   spinOG = ( (rand() % d) + 1); //Original spin is always the same
+  w-=1;
   for (int i=0; i<w; i++) {
     spinNew = ( (rand() % d) + 1);
     if (spinOG==spinNew) {
@@ -39,19 +40,18 @@ int spin_the_wheel(int d, int w) {
 
 int main () {
   srand(88888888); //Seeds the RNG of the program to a constant of eight 8s
-  int w, d, m, winTest;
+  int w, d, winCount, winTest;
   for (w=3; w<=6; w++) {
-    m=0;
+    winCount=0;
     for (d=9; d<=27; d++) {
-      m=0;
+      winCount=0;
       for (long n=1000000; n>0; n--) {
         int winTest = spin_the_wheel(d, w);
-        m+=winTest;
+        winCount+=winTest;
       }
-      double win=m;
       cout << "w=" << w << ", d=" << d
-           << ": Simulated probability = m/n = " << (win / 100000.0) * 100.0 << "%. "   //Note that 100,000!=1,000,000
-           << "Theoretical probability = " << (d / (pow(d, w))) * 100 << "%." << endl;  //This is because otherwise the percentage was off by a factor of 10
+           << ": Simulated probability = m/n = " << (winCount / 1000000.0) * 100.0 << "%. "
+           << "Theoretical probability = " << (d / (pow(d, w))) * 100 << "%." << endl;
       d+=2;
     }
   }
