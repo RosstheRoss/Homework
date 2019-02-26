@@ -17,7 +17,7 @@ using namespace std;
 // Function: swapCase
 //  ---------------------------
 // Swaps the case of a latin ASCII character and prints an error if not one
-// s: the character
+// s: the character inputted
 
 void swapCase(char s) {
     char New;
