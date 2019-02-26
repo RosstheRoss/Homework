@@ -14,6 +14,25 @@ One-armed Bandit Simulator
 #include <iomanip>
 using namespace std;
 
+int main () {
+  srand(88888888); //Seeds the RNG of the program to a constant of eight 8s
+  int w, d, winCount, winTest;
+  for (w=3; w<=6; w++) {
+    winCount=0;
+    for (d=9; d<=27; d++) {
+      winCount=0;
+      for (long n=1000000; n>0; n--) {
+        int winTest = spin_the_wheels(d, w);
+        winCount+=winTest;
+      }
+      cout << "w=" << w << ", d=" << d
+           << ": Simulated probability = m/n = " << (winCount / 1000000.0) * 100.0 << "%. "
+           << "Theoretical probability = " << (d / (pow(d, w))) * 100 << "%." << endl;
+      d+=2;
+    }
+  }
+}
+
 // Function: spin_the_wheels
 //  ---------------------------
 // Simulates the one-armed bandit from the previous HW
@@ -35,24 +54,5 @@ int spin_the_wheels(int d, int w) {
     return 1;
   } else {
     return 0;
-  }
-}
-
-int main () {
-  srand(88888888); //Seeds the RNG of the program to a constant of eight 8s
-  int w, d, winCount, winTest;
-  for (w=3; w<=6; w++) {
-    winCount=0;
-    for (d=9; d<=27; d++) {
-      winCount=0;
-      for (long n=1000000; n>0; n--) {
-        int winTest = spin_the_wheels(d, w);
-        winCount+=winTest;
-      }
-      cout << "w=" << w << ", d=" << d
-           << ": Simulated probability = m/n = " << (winCount / 1000000.0) * 100.0 << "%. "
-           << "Theoretical probability = " << (d / (pow(d, w))) * 100 << "%." << endl;
-      d+=2;
-    }
   }
 }
