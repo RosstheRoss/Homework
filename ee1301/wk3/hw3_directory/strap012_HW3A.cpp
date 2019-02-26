@@ -16,9 +16,9 @@ using namespace std;
 
 int spin_the_wheel(int d, int w) {
   int spinOG=0, spinNew=0, win=0;
-  //spinOG = ( (rand() % d) + 1);
+  spinOG = ( (rand() % d) + 1);
   for (int i=0; i<w; i++) {
-    spinOG = ( (rand() % d) + 1);
+    //spinOG = ( (rand() % d) + 1);
     spinNew = ( (rand() % d) + 1);
     if (spinOG==spinNew) {
       win++;
