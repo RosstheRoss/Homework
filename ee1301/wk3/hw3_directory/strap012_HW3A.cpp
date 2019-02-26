@@ -39,7 +39,7 @@ int spin_the_wheels(int d, int w) {
 }
 
 int main () {
-  srand(88888888); //Seeds the RNG of the program to a constant of eight 8s
+  srand(time(NULL));
   int w, d, winCount, winTest;
   for (w=3; w<=6; w++) {
     winCount=0;
