@@ -1,7 +1,5 @@
-# Test
+# Test Repository
 
-## What a fun repository amitire
+## Also Homework
 
-This is a test repostiory that should have absolutely nothing of value in it.
-
-Nothing at all.
+This is my private repository, mainly for homework.
