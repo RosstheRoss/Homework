@@ -14,7 +14,12 @@ Character Detection
 #include <iomanip>
 using namespace std;
 
-char swapCase(char s) {
+// Function: swapCase
+//  ---------------------------
+// Swaps the case of a latin ASCII character and prints an error if not one
+// s: the character
+
+void swapCase(char s) {
     char New;
     cout << "You entered " << s;
     if (s >= 'a' && s <= 'z') {

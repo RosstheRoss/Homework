@@ -14,27 +14,51 @@ Character Detection
 #include <iomanip>
 using namespace std;
 
+// Function: charTest
+//  ---------------------------
+// Tests to see what kind of character was inputted
+// character: Self-explanatory
+// returns: 1 if number, 2 if lower case, 3 if upper case, 0 if not any of the previous
+
+int charTest (char character) {
+  if (character >= '0' && character <= '9')
+    {
+      return 1;
+    } else {
+        if (character>='a' && character<='z') {
+            return 2;
+        } else {
+            if (character>= 'A' && character<='Z') {
+                return 3;
+            } else {
+                return 0;
+            }
+        }
+    }
+}
+
 int main () {
+    int test;
     char character;
     bool isNotAlphaNumeric=false;
     while (!isNotAlphaNumeric) {
-    cout << "Enter a single digit or an alphabetic character: ";
-    cin >> character;
-    cout << "You entered " << character;
-    if (character >= '0' && character <= '9')
-    {
-        cout <<  ", which is a number." << endl;
-    } else {
-        if (character>='a' && character<='z') {
-            cout << ", which is a lower case letter." << endl;
-        } else {
-            if (character>= 'A' && character<='Z') {
-                cout << ", which is an upper case letter." << endl;
-            } else {
-                isNotAlphaNumeric=true;
-                cout << ", which is not a letter or a number." << endl;
-            }
-        }
-        }
+      cout << "Enter a single digit or an alphabetic character: ";
+      cin >> character;
+      cout << "You entered " << character << ", ";
+      test = charTest(character);
+      if (test==0) {
+        isNotAlphaNumeric=true;
+        cout << "which is not a letter or a number.";
+      }
+      if (test==1) {
+        cout << "which is a number.";
+      }
+      if (test==2) {
+        cout << "which is a lower case letter.";
+      }
+      if (test==3) {
+        cout << "which is an upper case letter.";
+      }
+      cout << endl;
     }
 }

@@ -14,6 +14,13 @@ One-armed Bandit Simulator
 #include <iomanip>
 using namespace std;
 
+// Function: spin_the_wheel
+//  ---------------------------
+// Simulates the one-armed bandit from the previous HW
+// d: the number of options on the spinner
+// w: the number of spinners
+// returns: Either 1 for win or 0 for loss
+
 int spin_the_wheel(int d, int w) {
   int spinOG=0, spinNew=0, win=0;
   spinOG = ( (rand() % d) + 1); //Original spin is always the same
@@ -24,15 +31,15 @@ int spin_the_wheel(int d, int w) {
     }
   }
   if (win==w) { //The only win condition is if every wheel matches
-    return 1; //"win"
+    return 1;
   } else {
-    return 0; //"loss"
+    return 0;
   }
 }
 
 int main () {
   srand(88888888); //Seeds the RNG of the program to a constant of eight 8s
-  int w, d, m, winTest; //'w' is for spinner count, 'd' is the number of options on the spinner
+  int w, d, m, winTest;
   for (w=3; w<=6; w++) {
     m=0;
     for (d=9; d<=27; d++) {
