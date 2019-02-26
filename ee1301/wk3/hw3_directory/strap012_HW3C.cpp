@@ -13,23 +13,18 @@ Character Detection
 #include <cmath>
 #include <iomanip>
 using namespace std;
+
 char swapCase(char s) {
     char New;
     cout << "You entered " << s;
-    if (s >= 'a' && s <= 'z')
-    {
+    if (s >= 'a' && s <= 'z') {
         New= s - 32;
         cout << ", I respond with " << New;
-    }
-    else
-    {
-        if (s >= 'A' && s <= 'Z')
-        {
+    } else {
+        if (s >= 'A' && s <= 'Z') {
             New = s + 32;
             cout << ", I respond with " << New;
-        }
-        else
-        {
+        } else {
             cout << ", which is not a valid character";
         }
     }
