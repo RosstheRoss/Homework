@@ -58,7 +58,7 @@ int charTest (char character) {
             if (character>= 'A' && character<='Z') {
                 return 3;
             } else {
-                return 0;
+                  return 0;
             }
         }
     }

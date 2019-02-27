@@ -16,8 +16,7 @@ using namespace std;
 
 void swapCase(char s);
 
-int main()
-{
+int main() {
     char character;
     do { //This loops until '@' is entered
         cout << "Please enter a character that is an ASCII letter in the range [A-Za-z]: ";
@@ -37,16 +36,16 @@ int main()
 void swapCase(char s) {
     char New;
     cout << "You entered " << s;
-    if (s >= 'a' && s <= 'z') {
-        New= s - 32;
-        cout << ", I respond with " << New;
-    } else {
+    if ( (s >= 'a' && s <= 'z') || (s >= 'A' && s <= 'Z') ) {
+        cout << ", I respond with ";
         if (s >= 'A' && s <= 'Z') {
-          New = s + 32;
-          cout << ", I respond with " << New;
+          New = s + 32; //32 is the difference between capital and lowercase ASCII characters
         } else {
+            New= s - 32;
+        }
+        cout << New;
+    } else {
             cout << ", which is not a valid character.";
         }
-    }
     cout << endl;
 }
