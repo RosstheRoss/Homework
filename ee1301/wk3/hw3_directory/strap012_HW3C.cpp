@@ -14,10 +14,25 @@ Character Detection
 #include <iomanip>
 using namespace std;
 
+void swapCase(char s);
+
+int main()
+{
+    char character;
+    do { //This loops until '@' is entered
+        cout << "Please enter a character that is an ASCII letter in the range [A-Za-z]: ";
+        cin >> character;
+        if (character!='@') {
+          swapCase(character);
+        }
+    } while (character!='@');
+}
+
 // Function: swapCase
 //  ---------------------------
 // Swaps the case of a latin ASCII character and prints an error if not one
 // s: the character inputted
+//Outputs: Nothing, the function just outputs the response
 
 void swapCase(char s) {
     char New;
@@ -27,23 +42,11 @@ void swapCase(char s) {
         cout << ", I respond with " << New;
     } else {
         if (s >= 'A' && s <= 'Z') {
-            New = s + 32;
-            cout << ", I respond with " << New;
+          New = s + 32;
+          cout << ", I respond with " << New;
         } else {
-            cout << ", which is not a valid character";
+            cout << ", which is not a valid character.";
         }
     }
-    cout << "." << endl;
-}
-
-int main()
-{
-    char character;
-    do { //This loops until '@' is entered
-        cout << "Please enter a character that is an ASCII letter in the range [A-Za-z]: ";
-        cin >> character;
-        if (character!='@') {
-            swapCase(character);
-        }
-    } while (character!='@');
+    cout << endl;
 }
