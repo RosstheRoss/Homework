@@ -24,7 +24,7 @@ int main () {
     for (d=9; d<=27; d++) {
       winCount=0;
       for (long n=1000000; n>0; n--) { //The simulation is always done 1,000,000 times
-        int winTest = spin_the_wheels(d, w);
+        winTest = spin_the_wheels(d, w);
         winCount+=winTest;
       }
       if (w==6) {
