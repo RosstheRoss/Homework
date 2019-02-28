@@ -31,7 +31,7 @@ int main() {
 //  ---------------------------
 // Swaps the case of a latin ASCII character and prints an error if not one
 // s: the character inputted
-//Outputs: Nothing, the function just outputs the response
+// Outputs: Nothing, the function just outputs the response
 
 void swapCase(char s) {
     char New;
