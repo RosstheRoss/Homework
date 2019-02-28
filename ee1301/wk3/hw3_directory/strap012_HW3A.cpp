@@ -27,11 +27,11 @@ int main () {
         winCount+=winTest;
       }
       if (w==6) {
-        std::cout << scientific;
+        std::cout << std::scientific;
       }
       std::cout << "w=" << w << ", d=" << d
            << ": Simulated probability = m/n = " << (winCount / 1000000.0) * 100.0 << "%. "
-           << "Theoretical probability = " << (d / (pow(d, w))) * 100 << "%." << endl;
+           << "Theoretical probability = " << (d / (pow(d, w))) * 100 << "%." << std::endl;
       d+=2;
     }
   }
