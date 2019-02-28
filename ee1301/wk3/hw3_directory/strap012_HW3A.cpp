@@ -12,7 +12,6 @@ One-armed Bandit Simulator
 #include <stdlib.h>
 #include <cmath>
 #include <iomanip>
-using namespace std;
 
 int spin_the_wheels(int d, int w);
 
@@ -28,9 +27,9 @@ int main () {
         winCount+=winTest;
       }
       if (w==6) {
-        cout << scientific;
+        std::cout << scientific;
       }
-      cout << "w=" << w << ", d=" << d
+      std::cout << "w=" << w << ", d=" << d
            << ": Simulated probability = m/n = " << (winCount / 1000000.0) * 100.0 << "%. "
            << "Theoretical probability = " << (d / (pow(d, w))) * 100 << "%." << endl;
       d+=2;

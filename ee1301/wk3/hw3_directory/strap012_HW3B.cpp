@@ -12,11 +12,11 @@ Character Detection
 #include <stdlib.h>
 #include <cmath>
 #include <iomanip>
-using namespace std;
 
 int charTest (char character);
 
 int main () {
+using namespace std;
     int test;
     char character;
     bool isAlphaNumeric=true;
