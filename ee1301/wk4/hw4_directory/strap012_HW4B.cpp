@@ -28,8 +28,8 @@ int main()
         std::cout << "File write failed!";
         return -2;
     }
-    fin >> Useless >> Useless;
-    while (fin >> letter >> garbage >> Count) {
+    fin >> Useless >> Useless;  //The first line in the file is useless
+    while (fin >> letter >> garbage >> Count) {     //The letter and the number of people in that grade is important, the comma is not
         fout << " " << letter;
         if (Count>hiCount) {
             hiCount=Count;
