@@ -22,6 +22,12 @@ int main()
         std::cout << "File read failed!\n";
         return -1;
     }
+    fout.open("output_files/election_results.txt");
+    if (!fout.is_open())
+    {
+        std::cout << "File write failed!\n";
+        return -2;
+    }
     while (fin >> Char) {
         if (Char=='A' || Char=='a') {
             A++;
@@ -56,12 +62,6 @@ int main()
               << "The winner is the letter \"" << winner
               << "\"!" << std::endl;
 
-
-    fout.open("output_files/election_results.txt");
-    if (!fout.is_open()) {
-        std::cout << "File write failed!\n";
-        return -2;
-    }
     fout << "A," << A << std::endl
          << "E," << E << std::endl
          << "I," << I << std::endl

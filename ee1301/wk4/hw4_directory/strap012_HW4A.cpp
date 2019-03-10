@@ -22,6 +22,13 @@ int main () {
         std::cout << "File read failed!\n";
         return -1;
     }
+    fout.open("output_files/statistics.csv");
+    if (!fout.is_open())
+    {
+        std::cout << "File write failed!\n";
+        return -2;
+    }
+
     while (fin >> garbage >> garbage >> score) {
         getline(fin, garbage);      //Any decimals are not needed and will be culled
         if (score>90) {
@@ -42,13 +49,6 @@ int main () {
               << D << " D" << std::endl
               << F << " F" << std::endl;
     fin.close();
-
-
-    fout.open("output_files/statistics.csv");
-    if (!fout.is_open()) {
-        std::cout << "File write failed!\n";
-        return -2;
-    }
     fout << "Grade, NumStudents" << std::endl
          << "A," << A << std::endl
          << "B," << B << std::endl
