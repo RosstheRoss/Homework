@@ -4,8 +4,8 @@ Matthew Strapp
 5449340
 EE1301
 Spring 2019
-Homework 4A
-Making the Grade
+Homework 4B
+Grade Distribution
 */
 
 #include <iostream>
