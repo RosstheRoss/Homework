@@ -25,7 +25,7 @@ int main()
     }
     fout.open("output_files/histogram.txt");
     if (!fout.is_open()) {
-        std::cout << "File write failed!";
+        std::cout << "File write failed!\n";
         return -2;
     }
     fin >> Useless >> Useless;  //The first line in the file is useless
