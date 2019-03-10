@@ -35,6 +35,7 @@ int main()
             U++;
         }
     } fin.close();
+    //This bit compares to see which vowel wins.
     if (A>E && A>I && A>O && A>U)
         winner = 'A';
     if (E > A && E > I && E > O && E > U)
@@ -46,14 +47,14 @@ int main()
     if (U > E && U > I && U > O && U > A)
         winner = 'U';
 
-    std::cout << "The results are in!\n"
-              << "A/a received " << A << " votes\n"
-              << "E/e received " << E << " votes\n"
-              << "I/i received " << I << " votes\n"
-              << "O/o received " << O << " votes\n"
-              << "U/u received " << U << " votes\n"
+    std::cout << "The results are in!" << std::endl
+              << "A/a received " << A << " votes" << std::endl
+              << "E/e received " << E << " votes" << std::endl
+              << "I/i received " << I << " votes" << std::endl
+              << "O/o received " << O << " votes" << std::endl
+              << "U/u received " << U << " votes" << std::endl
               << "The winner is the letter \"" << winner
-              << "\"!\n";
+              << "\"!" << std::endl;
 
 
     fout.open("output_files/election_results.txt");
@@ -61,10 +62,10 @@ int main()
         std::cout << "File write failed!\n";
         return -2;
     }
-    fout << "A," << A
-         << "\nE," << E
-         << "\nI," << I
-         << "\nO," << O
-         << "\nU," << U;
+    fout << "A," << A << std::endl
+         << "E," << std::endl
+         << "I," << std::endl
+         << "O," << std::endl
+         << "U," << U;
     fout.close();
 }

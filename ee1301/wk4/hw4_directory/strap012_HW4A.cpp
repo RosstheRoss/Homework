@@ -29,31 +29,31 @@ int main () {
         } else if (score>80) {
             B++;
         } else if (score>70) {
-            C++; //Nice.
+            C++;
         } else if (score>60) {
             D++; 
         } else {
             F++;
         }
     }
-    std::cout << A << " A\n"
-              << B << " B\n"
-              << C << " C\n"
-              << D << " D\n"
-              << F << " F\n";
+    std::cout << A << " A" << std::endl
+              << B << " B" << std::endl
+              << C << " C" << std::endl
+              << D << " D" << std::endl
+              << F << " F" << std::endl;
     fin.close();
 
 
     fout.open("output_files/statistics.csv");
     if (!fout.is_open()) {
-        std::cout << "File write failed!";
+        std::cout << "File write failed!\n";
         return -2;
     }
-    fout << "Grade, NumStudents"
-         << "\nA," << A
-         << "\nB," << B
-         << "\nC," << C
-         << "\nD," << D
-         << "\nF," << F;
+    fout << "Grade, NumStudents" << std::endl
+         << "A," << A << std::endl
+         << "B," << B << std::endl
+         << "C," << C << std::endl
+         << "D," << D << std::endl
+         << "F," << F;
     fout.close();
 }
