@@ -63,9 +63,9 @@ int main()
         return -2;
     }
     fout << "A," << A << std::endl
-         << "E," << std::endl
-         << "I," << std::endl
-         << "O," << std::endl
+         << "E," << E << std::endl
+         << "I," << I << std::endl
+         << "O," << O << std::endl
          << "U," << U;
     fout.close();
 }
