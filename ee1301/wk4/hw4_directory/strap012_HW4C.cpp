@@ -43,15 +43,15 @@ int main()
     } fin.close();
     //This bit compares to see which vowel wins.
     if (A>E && A>I && A>O && A>U)
-        winner = 'A';
+        { winner = 'A'; }
     if (E > A && E > I && E > O && E > U)
-        winner = 'E';
+        { winner = 'E'; }
     if (I > E && I > A && I > O && I > U)
-        winner = 'I';
+        { winner = 'I'; }
     if (O > E && O > I && O > A && O > U)
-        winner = 'O';
+        { winner = 'O'; }
     if (U > E && U > I && U > O && U > A)
-        winner = 'U';
+        { winner = 'U'; }
 
     std::cout << "The results are in!" << std::endl
               << "A/a received " << A << " votes" << std::endl
