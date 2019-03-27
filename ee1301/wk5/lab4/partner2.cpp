@@ -5,7 +5,7 @@ using namespace std;
 string requestName();
 double requestHeight(string fullName);
 int requestNumberOfPartners();
-
+void NotinMain(string array1[], const int length1, double array2[], const int length2);
 
 int main()
 {
@@ -16,11 +16,7 @@ int main()
 	height[0] = requestHeight(fullName[0]);
 	fullName[1] = requestName();
 	height[1] = requestHeight(fullName[1]);
-
-	cout << "If " << fullName[0] << " and " << fullName[1]
-	     << " form a human tower, their combined height will be "
-	     << (height[0] + height[1]) << endl;
-	
+	NotinMain(fullName, 2, height, 2);
 }
 
 string requestName()
@@ -50,3 +46,8 @@ int requestNumberOfPartners()
 	return numberOfPartners;
 }
 
+void NotinMain(string array1[], const int length1, double array2[], const int length2) {
+  	cout << "If " << array1[0] << " and " << array1[1]
+	     << " form a human tower, their combined height will be "
+	     << (array2[0] + array2[1]) << endl;
+  }
