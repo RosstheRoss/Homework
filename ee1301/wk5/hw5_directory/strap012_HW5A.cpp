@@ -1,5 +1,4 @@
 #include <iostream>
-#include <iomanip>
 #include <fstream>
 #include <string>
 using namespace std;
@@ -45,11 +44,12 @@ int main()
         char action;
         clearScreen();
         showGrid(board);
-        cout << "Where would you like to go? (l, r, u, d) " << endl;
+        cout << "Where would you like to go? (l, r, u, d) " << endl << "Wall Boolean " << hasChar(board, GOAL) << endl;
         cin >> action;
 
         updateGrid(board, xPos, yPos, action);
-    }
+    } 
+
 
     clearScreen();
     showGrid(board);
@@ -85,6 +85,10 @@ void initBoardCustom(char board[lengthX][lengthY], int &xPos, int &yPos)
         for (int curCol = 0; curCol < lengthX; curCol++)
         {
             fin >> board[curCol][curRow];
+            if (board[curCol][curRow] == 'X') {
+                xPos = curCol;
+                yPos = curRow;
+            }
         }
     }
 
