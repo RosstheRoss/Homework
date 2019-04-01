@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <string>
 using namespace std;
@@ -6,6 +7,7 @@ using namespace std;
 const char BLANK = '-';
 const char ROBOT = 'X';
 const char GOAL = 'O';
+const char WALL = 'W';
 const int screen_num_lines = 25;
 const int lengthX = 10;       // for now we only support square boards
 const int lengthY = 10;       // it "should" work with non-square, YMMV
@@ -25,6 +27,7 @@ void updateGrid(char board[lengthX][lengthY], int &xPos, int &yPos, char action)
 
 int main()
 {
+    srand(time(NULL));
     char board[lengthX][lengthY] = {0};
     int xPos = 0, yPos = 0;
 
@@ -51,9 +54,15 @@ int main()
 void initBoard(char board[lengthX][lengthY], int &xPos, int &yPos) {
         for(int curRow=0; curRow < lengthY; curRow++) {
             for(int curCol=0; curCol < lengthX; curCol++) {
-                board[curCol][curRow] = BLANK;
+                if ( (rand() % 5) + 1 == 4 || (rand() % 10) + 1 == 7) { 
+                    //Procedural generation is best for a game like this even if it makes the game impossible
+                    board[curCol][curRow] = WALL;
+                        } else {
+                        board[curCol][curRow] = BLANK;
+                        }
             }
         }
+        
 
         board[0][0] = GOAL;
         board[lengthX/2][lengthY/2] = ROBOT;
