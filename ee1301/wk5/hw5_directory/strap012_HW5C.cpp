@@ -22,13 +22,14 @@ int main() {
 
 void getInput(int input[SIZE][SIZE]) {
   string test;
+  //I would mainly like to thank some random person on StackOverflow for solving my problem
   while (getline(cin,test)) {
     istringstream ss(test);
-    string temp;
-    while(getline(ss,temp,' '))
+    string foo; //foo is only needed in this one scope and will not be named further.
+    while(getline(ss,foo,' '))
       maxRow=0;
       {
-        input[maxRow][maxColumn] = stoi(temp);
+        input[maxRow][maxColumn] = stoi(foo);
         maxRow++;
       }
     maxColumn++;
