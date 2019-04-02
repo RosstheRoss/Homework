@@ -60,7 +60,8 @@ int main()
     return 0;
 }
 
-//The default (no custom file) maze is procedurally generated
+//The default (no custom file) maze is procedurally generated, sometimes rendering levels impossible to solve.
+//This bug is not as important as finishing the monster that is 5C.
 void initBoardDefault(char board[lengthX][lengthY], int &xPos, int &yPos)
 {
     for (int curRow = 0; curRow < lengthY; curRow++)
@@ -78,11 +79,10 @@ void initBoardDefault(char board[lengthX][lengthY], int &xPos, int &yPos)
         }
     }
 
-    board[0][0] = GOAL;
-    board[lengthX / 2][lengthY / 2] = ROBOT;
-
-    xPos = lengthX / 2;
-    yPos = lengthY / 2;
+    board[rand() % lengthX][rand() % lengthY] = GOAL;
+    xPos = rand() % lengthX;
+    yPos = rand() % lengthY;
+    board[xPos][yPos] = ROBOT;
 }
 
 void initBoardCustom(char board[lengthX][lengthY], int &xPos, int &yPos)
