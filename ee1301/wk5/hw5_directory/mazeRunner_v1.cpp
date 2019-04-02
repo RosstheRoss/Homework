@@ -85,6 +85,11 @@ void initBoardCustom(char board[lengthX][lengthY], int &xPos, int &yPos)
         for (int curCol = 0; curCol < lengthX; curCol++)
         {
             fin >> board[curCol][curRow];
+            if (board[curCol][curRow] == 'X') {
+                board[curCol][curRow] = ROBOT;
+                xPos = curCol;
+                yPos = curRow;
+            }
         }
     }
 
@@ -118,7 +123,7 @@ void showGrid(char board[lengthX][lengthY]) {
 }
 
 void updateGrid(char board[lengthX][lengthY],int & xPos, int & yPos,char action) {
-    board[xPos][yPos] = BLANK;
+    int oldX = xPos; int oldY = yPos;
     if       (action == 'l' && xPos > 0) {
             xPos--;
     } else if(action == 'r' && xPos < lengthX - 1) {
@@ -127,6 +132,14 @@ void updateGrid(char board[lengthX][lengthY],int & xPos, int & yPos,char action)
             yPos--;
     } else if(action == 'd' && yPos < lengthY - 1) {
             yPos++;
+    }
+    //Hit detection
+    if (board[xPos][yPos] == WALL) {  
+        xPos = oldX;
+        yPos = oldY;
+        board[xPos][yPos] = WALL;
+    } else {
+        board[oldX][oldY] = BLANK;
     }
     board[xPos][yPos] = ROBOT;
 }
