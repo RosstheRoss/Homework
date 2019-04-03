@@ -1,4 +1,5 @@
 #include <iostream>
+#include <time.h>
 #include <cstdlib>
 using namespace std;
 
@@ -22,9 +23,9 @@ int main(int argc, char *argv[])
         for (int curCol = 0; curCol < n; curCol++)
         {
             if (rand() % 2 + 1 == 2) { //Decide the sign of the number
-                randArray[curRow][curCol] = -1 * (rand() % (max+1));
+                randArray[curCol][curRow] = -1 * (rand() % (max+1));
             } else {
-                randArray[curRow][curCol] = (rand() % (max+1));
+                randArray[curCol][curRow] = (rand() % (max+1));
             }
         }
     }
@@ -34,7 +35,7 @@ int main(int argc, char *argv[])
     {
         for (int curCol = 0; curCol < n; curCol++)
         {
-           cout << randArray[curRow][curCol] << " ";
+           cout << randArray[curCol][curRow] << " ";
         }
         cout << endl;
     }
