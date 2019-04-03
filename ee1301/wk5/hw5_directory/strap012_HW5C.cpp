@@ -1,9 +1,16 @@
+/*
+Date: April 4 2019
+Name: Matthew Strapp
+Student ID number: 5449340
+Course number: EE 1301
+Term: Spring 2019
+Lab/assignment number: HW 5C
+Short Program Description: Pixel Averaging
+*/
 #include <iostream>
 #include <string>
 #include <sstream>
-#include <fstream>
 using namespace std;
-ifstream fin;
 
 #define SIZE 100
 int maxRow = -1, maxColumn = 0;
@@ -13,7 +20,6 @@ void pixelAverage(int inArray[SIZE][SIZE], int outArray[SIZE][SIZE]);
 void printArray(int array[SIZE][SIZE]);
 
 int main() {
-  fin.open("testData.txt");
   int inputArray[SIZE][SIZE] = {0},
       outputArray[SIZE][SIZE] = {0};
   getInput(inputArray);
@@ -22,9 +28,13 @@ int main() {
   printArray(outputArray);
 }
 
+// Function: getInput
+//  ---------------------------
+// Takes the stream of stdin, puts that into a stringsream and puts that stringsteam into an integer array
+// input: an empty array of SIZE, as defined in line 15.
 void getInput(int input[SIZE][SIZE]) {
   string test, temp1; int temp2=0;
-  //I would mainly like to thank some random person on StackOverflow for solving my problem
+  //I would mainly like to thank whatever user on StackOverflow solved my problem
   while (getline(cin,test)) {
     temp2 = -2;
     istringstream ss(test);
@@ -40,77 +50,80 @@ void getInput(int input[SIZE][SIZE]) {
   maxRow++;
 }
 
+// Function: makeNewArray
+//  ---------------------------
+// Takes the array made in getInput and puts that same array into a new array to manipulate
+// oldArray: Array generated in getInput of SIZE
+// newArray: Array of same dimensions and data
 void makeNewArray(int oldArray[SIZE][SIZE], int newArray[SIZE][SIZE]) {
-  for (int i = 0; i < SIZE-1; i++) {
-    for (int j = 0; j < SIZE-1; j++) {
-      newArray[i][j] = oldArray[i-1][j-1];
+  for (int row = 0; row < SIZE-1; row++) {
+    for (int column = 0; column < SIZE-1; column++) {
+      newArray[row][column] = oldArray[row-1][column-1];
     }
   }
 }
 
+// Function: pixelAverage
+//  ---------------------------
+// The meat of the program, taking the surrounding values, adding them, and divides by the number of surrounding values
+// inArray: Generated in getInput
+// outArray: Generated in makeNewArray
 void pixelAverage(int inArray[SIZE][SIZE], int outArray[SIZE][SIZE]) {
-  int sum = 0, n = 0, average, timesRan=0; //n is the number of surrounding pixels
-  for (int i = -1; i < maxRow-1; i++) {
-    for (int j = -1; j < maxColumn-1; j++) {
-      sum=0; n=0;
-      if ( !((i-1)<1) ) {
-        cout << "LEFT)" << inArray[i-1][j] << " ";
-        sum += inArray[i-1][j];
+  int sum = 0, n = 0, average; //n is the number of surrounding pixels
+  for (int row = -1; row < maxRow-1; row++) {
+    for (int column = -1; column < maxColumn-1; column++) {
+      sum=0; n=0; //Sum and n are reset every loop
+      if ( !((row)<0) ) { //True when array is in lower bounds row-wise
+        sum += inArray[row-1][column];
         n++;
       }
-      if ( (i+1)<maxRow ) {
-        cout << "DOWN)" << inArray[i+1][j] << " ";
-        sum += inArray[i+1][j];
+      if ( (row+1)<maxRow-1 ) { //True when array is in upper bounds row-wise
+        sum += inArray[row+1][column];
         n++;
       }
-      if ( !((j-1)<1) ) {
-        cout << "UP)" << inArray[i][j-1] << " ";
-        sum += inArray[i][j-1];
+      if ( !((column)<0) ) { //True when array is in lower bounds column-wise
+        sum += inArray[row][column-1];
         n++;
       }
-      if ( (j+1)<maxColumn ) {
-        cout << "RIGHT)" << inArray[i][j+1] << " ";
-        sum += inArray[i][j+1];
+      if ( (column+1)<maxColumn-1 ) {//True when array is in upper bounds column-wise
+        sum += inArray[row][column+1];
         n++;
       }
-      if ( !((i-1)<0) && !((j-1)<0) ) {
-        cout << "UPLEFT)" << inArray[i-1][j-1] << " ";
-        sum += inArray[i-1][j-1];
+      //All of these if statements are combinations are previous statements for the diagonal aspects
+      if ( !((row)<0) && !((column)<0) ) {
+        sum += inArray[row-1][column-1];
         n++;
       }
-      if ( !((i-1)<0) && ( (j+1)<maxColumn ) ) {
-        cout << "DOWNLEFT)" << inArray[i-1][j+1] << " ";
-        sum += inArray[i-1][j+1];
+      if ( !((row)<0) && ( (column+1)<maxColumn-1 ) ) {
+        sum += inArray[row-1][column+1];
         n++;
       }
-      if ( (i+1)<maxRow && (j+1)<maxColumn ) {
-        cout << "DOWNRIGHT)" << inArray[i+1][j+1] << " ";
-        sum += inArray[i+1][j+1];
+      if ( (row+1)<maxRow-1 && (column+1)<maxColumn-1 ) {
+        sum += inArray[row+1][column+1];
         n++;
       }
-      if ( !((j-1)<0)  && (i+1)<maxRow) {
-        cout << "UPRIGHT)" << inArray[i+1][j-1] << " ";
-        sum+=inArray[i+1][j-1];
+      if ( (!((column)<0)  && (row+1)<maxRow-1) ) {
+        sum+=inArray[row+1][column-1];
         n++;
       }
-      cout << inArray[i][j] << " ";
-      sum+=inArray[i][j];
+      sum+=inArray[row][column];
       n++;
-      timesRan++;
       average = sum/n;
-      cout << endl << sum << " " << n << " " << average << endl;
-      outArray[i+1][j+1]=average;
+      outArray[row+1][column+1]=average;
     }
   }
-  cout << timesRan << endl;
 }
 
+// Function: printArray
+//  ---------------------------
+// Prints the new array after the pixel averaging
+// array: Array generated in pixelAverage
 void printArray (int array[SIZE][SIZE]) {
-    for (int i = 0; i < maxRow; i++)
+    for (int row = 0; row < maxRow; row++)
     {
-      for (int j = 0; j < maxColumn; j++)
+      for (int column = 0; column < maxColumn; column++)
       {
-        cout << array[i][j] << " ";
+        cout << array[row][column] << " ";
       }
       cout << endl;
     }

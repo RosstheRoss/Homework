@@ -1,5 +1,14 @@
+/*
+Date: April 4 2019
+Name: Matthew Strapp
+Student ID number: 5449340
+Course number: EE 1301
+Term: Spring 2019
+Lab/assignment number: HW 5B
+Short Program Description: Random Array
+*/
+
 #include <iostream>
-#include <time.h>
 #include <cstdlib>
 using namespace std;
 
