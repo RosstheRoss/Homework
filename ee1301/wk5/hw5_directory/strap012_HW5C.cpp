@@ -35,15 +35,15 @@ int main() {
 void getInput(int input[SIZE][SIZE]) {
   string test, temp1; int temp2=0;
   //I would mainly like to thank whatever user on StackOverflow solved my problem
-  while (getline(cin,test)) {
-    temp2 = -2;
+  while (getline(cin,test,'\n')) {
+    temp2 = -1;
     istringstream ss(test);
     while(getline(ss,temp1,' ')) {
       temp2++;
       input[maxRow][temp2] = stoi(temp1);
       }
       if (temp2>maxColumn) {
-          maxColumn = temp2+2; //2 is added to make the math work.
+          maxColumn = temp2+1; //1 is added to make the math work.
       }
     maxRow++;
   }
