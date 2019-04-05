@@ -16,7 +16,7 @@ using namespace std;
 int maxRow = -1, maxColumn = 0;
 void getInput(int input[SIZE][SIZE]);
 void makeNewArray(int oldArray[SIZE][SIZE], int newArray[SIZE][SIZE]);
-//void pixelAverage(int inArray[SIZE][SIZE], int outArray[SIZE][SIZE]);
+void pixelAverage(int inArray[SIZE][SIZE], int outArray[SIZE][SIZE]);
 void printArray(int array[SIZE][SIZE]);
 
 int main() {
@@ -24,7 +24,7 @@ int main() {
       outputArray[SIZE][SIZE] = {0};
   getInput(inputArray);
   makeNewArray(inputArray, outputArray);
-  pixelAverage(inputArray, outputArray);
+  //pixelAverage(inputArray, outputArray);
   printArray(outputArray);
 }
 
@@ -56,9 +56,9 @@ void getInput(int input[SIZE][SIZE]) {
 // oldArray: Array generated in getInput of SIZE
 // newArray: Array of same dimensions and data
 void makeNewArray(int oldArray[SIZE][SIZE], int newArray[SIZE][SIZE]) {
-  for (int row = 0; row < maxRow-1; row++) {
-    for (int column = 0; column < maxColumn-1; column++) {
-      newArray[row][column] = oldArray[row][column];
+  for (int row = -1; row < maxRow; row++) {
+    for (int column = -1; column < maxColumn; column++) {
+      newArray[row][column] = oldArray[row-1][column];
     }
   }
 }
