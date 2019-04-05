@@ -16,7 +16,7 @@ using namespace std;
 int maxRow = -1, maxColumn = 0;
 void getInput(int input[SIZE][SIZE]);
 void makeNewArray(int oldArray[SIZE][SIZE], int newArray[SIZE][SIZE]);
-void pixelAverage(int inArray[SIZE][SIZE], int outArray[SIZE][SIZE]);
+//void pixelAverage(int inArray[SIZE][SIZE], int outArray[SIZE][SIZE]);
 void printArray(int array[SIZE][SIZE]);
 
 int main() {
