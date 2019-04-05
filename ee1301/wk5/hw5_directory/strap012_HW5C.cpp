@@ -56,9 +56,9 @@ void getInput(int input[SIZE][SIZE]) {
 // oldArray: Array generated in getInput of SIZE
 // newArray: Array of same dimensions and data
 void makeNewArray(int oldArray[SIZE][SIZE], int newArray[SIZE][SIZE]) {
-  for (int row = 0; row < SIZE-1; row++) {
-    for (int column = 0; column < SIZE-1; column++) {
-      newArray[row+3][column] = oldArray[row][column];
+  for (int row = 0; row < maxRow-1; row++) {
+    for (int column = 0; column < maxColumn-1; column++) {
+      newArray[row][column] = oldArray[row][column];
     }
   }
 }
