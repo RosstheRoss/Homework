@@ -58,7 +58,7 @@ void getInput(int input[SIZE][SIZE]) {
 void makeNewArray(int oldArray[SIZE][SIZE], int newArray[SIZE][SIZE]) {
   for (int row = 0; row < SIZE-1; row++) {
     for (int column = 0; column < SIZE-1; column++) {
-      newArray[row][column] = oldArray[row-1][column-1];
+      newArray[row][column] = oldArray[row][column];
     }
   }
 }
