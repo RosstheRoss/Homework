@@ -24,7 +24,7 @@ int main() {
       outputArray[SIZE][SIZE] = {0};
   getInput(inputArray);
   makeNewArray(inputArray, outputArray);
-  //pixelAverage(inputArray, outputArray);
+  pixelAverage(inputArray, outputArray);
   printArray(outputArray);
 }
 
@@ -56,8 +56,8 @@ void getInput(int input[SIZE][SIZE]) {
 // oldArray: Array generated in getInput of SIZE
 // newArray: Array of same dimensions and data
 void makeNewArray(int oldArray[SIZE][SIZE], int newArray[SIZE][SIZE]) {
-  for (int row = -1; row < maxRow; row++) {
-    for (int column = -1; column < maxColumn; column++) {
+  for (int row = 0; row < maxRow; row++) {
+    for (int column = 0; column < maxColumn; column++) {
       newArray[row][column] = oldArray[row][column];
     }
   }
