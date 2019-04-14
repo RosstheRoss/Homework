@@ -3,7 +3,7 @@
 int ff(int x);
 
 int main() {
-  int value = -1;
+  int value = -1024;
   do {
   std::cout << "Please enter a value of x: ";
     std::cin >> value;
