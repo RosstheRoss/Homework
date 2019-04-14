@@ -23,7 +23,7 @@ int ff(int x) {
       return x*ff(x-2);
     }
   } else {
-    std::cout << "Returning from ff(" << x << ") = 1\n";
+    std::cout << "Returning from ff(1) = 1\n";
     return 1;
   }
 }
