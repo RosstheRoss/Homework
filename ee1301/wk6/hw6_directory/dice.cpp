@@ -1,3 +1,7 @@
+//Matthew Strapp
+//EE1301
+//17 April 2019
+//HW 6A: Dice Class
 #include <iostream>
 #include <cstdlib>
 using namespace std;
