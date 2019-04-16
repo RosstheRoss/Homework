@@ -14,19 +14,22 @@ class Dice {
 private:
   int min;
   int max;
-
 public:
-//  void roll();
+  int roll(int min, int max);
+  void setMin(); int getMin();
+  void setMax(); int getMax();
+  Dice();
+  Dice(int min, int max);
 };
 
-int main()
-{
-    srand(time(NULL)); // DO NOT WRITE THIS LINE AGAIN OR ANYWHERE ELSE
+int main() {
+    int rounds;
+    Dice die[50];
+    srand(time(0)); // DO NOT WRITE THIS LINE AGAIN OR ANYWHERE ELSE
     cout << "What do you want to roll?  ";
     string s;
     getline(cin, s);
-    cin.ignore();
-    cout << "How many rounds do you want to roll?";
+    cout << "How many rounds do you want to roll? ";
     cin >> rounds;
     int* pairs = userInputParser(s);
 
@@ -42,6 +45,8 @@ int main()
     for(int i=1; i < pairs[0]; i+=2)
     {
         cout << "["<<pairs[i]<<","<<pairs[i+1]<<"]" << endl;
+        die[i-1] = Dice(i,i+1);
+        cout << die.roll(pairs[i], pairs[i+1]);
     }
 }
 
@@ -179,4 +184,8 @@ int* userInputParser(string s) {
     }
 
     return dice;
+}
+
+int Dice::roll(int min, int max) {
+  return rand() % (max-min) + min;
 }
