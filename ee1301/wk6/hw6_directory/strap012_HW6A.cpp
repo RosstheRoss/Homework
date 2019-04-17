@@ -60,7 +60,7 @@ int main() {
         roll[i-1] = die[i-1].roll(pairs[i], pairs[i+1]);
         curRoll += roll[i-1];
       }
-      
+
       if (curRoll > max) {
         max = curRoll;
       }
@@ -68,6 +68,7 @@ int main() {
         min = curRoll;
       }
       sum+=curRoll;
+      sample=curRoll;
   }
   avg = sum / numRolls;
   cout << "Sample roll: " << sample << endl
