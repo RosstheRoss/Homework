@@ -4,6 +4,7 @@
 //HW 6A: Dice Class
 #include <iostream>
 #include <cstdlib>
+#include <time.h>
 using namespace std;
 
 const int maxNumDie=50;
@@ -16,15 +17,21 @@ private:
   int max;
 public:
   int roll(int min, int max);
-  void setMin(); int getMin();
-  void setMax(); int getMax();
-  Dice();
-  Dice(int min, int max);
+  Dice() { //Default constructor for debugging purposes
+      min=1;
+      max=1;
+  }
+  Dice(int gotMin, int gotMax){
+      min = gotMin;
+      max = gotMax;
+  };
 };
 
 int main() {
     int rounds;
     Dice die[50];
+    int roll[50];
+    int max=0, min=0;
     srand(time(0)); // DO NOT WRITE THIS LINE AGAIN OR ANYWHERE ELSE
     cout << "What do you want to roll?  ";
     string s;
@@ -45,9 +52,16 @@ int main() {
     for(int i=1; i < pairs[0]; i+=2)
     {
         cout << "["<<pairs[i]<<","<<pairs[i+1]<<"]" << endl;
-        die[i-1] = Dice(i,i+1);
-        cout << die.roll(pairs[i], pairs[i+1]);
+        die[i - 1] = Dice(pairs[i], pairs[i + 1]);
+        roll[i-1] = die[i-1].roll(pairs[i], pairs[i+1]);
+        if (roll[i-3] > roll[i-1]) {
+            min = roll[i-1];
+        }
+        if (roll[i-3] < roll[i-1]) {
+            max = roll[i-1];
+        }
     }
+    cout << max << " " << min;
 }
 
 
@@ -64,7 +78,7 @@ int* userInputParser(string s) {
 
     // count how many '+'s or 'd's there are...
     int parts = 0;
-    for(int i=0; i < s.length(); i++)
+    for(unsigned int i=0; i < s.length(); i++)
     {
         if(s[i] == 'd' || s[i] == '+')
         {
