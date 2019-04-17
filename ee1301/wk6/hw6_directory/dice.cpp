@@ -16,7 +16,9 @@ private:
   int min;
   int max;
 public:
-  int roll(int min, int max);
+  int roll(int min, int max) {
+    return rand() % (max-min+1) + min;
+  };
   Dice() { //Default constructor for debugging purposes
       min=1;
       max=1;
@@ -29,9 +31,10 @@ public:
 
 int main() {
     int rounds;
-    Dice die[50];
-    int roll[50];
-    int max=0, min=0;
+    Dice die[maxNumDie];
+    int roll[maxNumDie];
+    int max=0, min=999999, sum=0, sample=0;
+    double avg;
     srand(time(0)); // DO NOT WRITE THIS LINE AGAIN OR ANYWHERE ELSE
     cout << "What do you want to roll?  ";
     string s;
@@ -49,19 +52,31 @@ int main() {
     //  first_die_end,
     //  second_die_start,
     //  ... }
-    for(int i=1; i < pairs[0]; i+=2)
-    {
-        cout << "["<<pairs[i]<<","<<pairs[i+1]<<"]" << endl;
-        die[i - 1] = Dice(pairs[i], pairs[i + 1]);
+    double numRolls=0;
+    for (int j=0; j<rounds; j++) {
+      int curRoll=0;
+      numRolls+=1.0;
+      for(int i=1; i < pairs[0]; i+=2) {
+//        cout << "["<<pairs[i]<<","<<pairs[i+1] <<"]" << endl;
+        die[i-1] = Dice(pairs[i], pairs[i + 1]);
         roll[i-1] = die[i-1].roll(pairs[i], pairs[i+1]);
-        if (roll[i-3] > roll[i-1]) {
-            min = roll[i-1];
-        }
-        if (roll[i-3] < roll[i-1]) {
-            max = roll[i-1];
-        }
-    }
-    cout << max << " " << min;
+        curRoll += roll[i-1];
+      }
+      
+      if (curRoll > max) {
+        max = curRoll;
+      }
+      if (curRoll < min) {
+        min = curRoll;
+      }
+      sum+=curRoll;
+  }
+  avg = sum / numRolls;
+  cout << "Sample roll: " << sample << endl
+       << "Minimum roll: " << min << endl
+       << "Maximum roll: " << max << endl
+       << "Average roll: " << avg << endl;
+
 }
 
 
@@ -198,8 +213,4 @@ int* userInputParser(string s) {
     }
 
     return dice;
-}
-
-int Dice::roll(int min, int max) {
-  return rand() % (max-min) + min;
 }
