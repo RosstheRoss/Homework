@@ -4,7 +4,6 @@
 //HW 6A: Dice Class
 #include <iostream>
 #include <cstdlib>
-#include <time.h>
 using namespace std;
 
 const int maxNumDie=50;
@@ -35,7 +34,7 @@ int main() {
     int roll[maxNumDie];
     int max=0, min=999999, sum=0, sample=0;
     double avg;
-    srand(time(0)); // DO NOT WRITE THIS LINE AGAIN OR ANYWHERE ELSE
+    srand(time(NULL)); // DO NOT WRITE THIS LINE AGAIN OR ANYWHERE ELSE
     cout << "What do you want to roll?  ";
     string s;
     getline(cin, s);
@@ -57,7 +56,6 @@ int main() {
       int curRoll=0;
       numRolls+=1.0;
       for(int i=1; i < pairs[0]; i+=2) {
-//        cout << "["<<pairs[i]<<","<<pairs[i+1] <<"]" << endl;
         die[i-1] = Dice(pairs[i], pairs[i + 1]);
         roll[i-1] = die[i-1].roll(pairs[i], pairs[i+1]);
         curRoll += roll[i-1];

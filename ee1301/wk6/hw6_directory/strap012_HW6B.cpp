@@ -29,7 +29,6 @@ int ff(int x) {
     }
   } else {
     // x is 1
-    //std::cout << "Returning from ff(1) = 1\n";
     return 1;
   }
 }
