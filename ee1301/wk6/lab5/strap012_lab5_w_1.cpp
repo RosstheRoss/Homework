@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <time.h>
 
 class DeckOfCards {
 private:
@@ -10,7 +11,6 @@ public:
     for(int i=0; i<52; i++) {
       deck[i]=i+1;
     }
-    int index=0;
   }
   int dealCard() {
     index++;
@@ -51,7 +51,6 @@ int main() {
 void showHand(int hand[], const int size) {
 
   for (int i=0; i<size; i++) {
-    char newHand[size];
     switch(hand[i]%13) {
         case 0: std::cout << 'A';
         break;
