@@ -8,7 +8,7 @@ int ff(int x);
 int main() {
   int x;
   do {
-  std::cout << "Please enter a value of x: ";
+    std::cout << "Please enter a value of x: ";
     std::cin >> x;
   } while (x<0);
   std::cout << "Beginning calculation of ff(x)...\n";
