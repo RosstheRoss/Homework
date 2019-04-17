@@ -28,7 +28,7 @@ int ff(int x) {
       return x*ff(x-2);
     }
   } else {
-    // x is 1
+    // x is 1 (or 0)
     return 1;
   }
 }

@@ -15,7 +15,7 @@ private:
   int min;
   int max;
 public:
-  int roll(int min, int max) {
+  int roll() {
     return rand() % (max-min+1) + min;
   };
   Dice() { //Default constructor for debugging purposes
@@ -30,7 +30,7 @@ public:
 
 int main() {
     int rounds;
-    Dice die[maxNumDie];
+    Dice die;
     int roll[maxNumDie];
     int max=0, min=999999, sum=0, sample=0;
     double avg;
@@ -54,10 +54,10 @@ int main() {
     double numRolls=0;
     for (int j=0; j<rounds; j++) {
       int curRoll=0;
-      numRolls+=1.0;
+      numRolls+=1;
       for(int i=1; i < pairs[0]; i+=2) {
-        die[i-1] = Dice(pairs[i], pairs[i + 1]);
-        roll[i-1] = die[i-1].roll(pairs[i], pairs[i+1]);
+        die = Dice(pairs[i], pairs[i + 1]);
+        roll[i-1] = die.roll();
         curRoll += roll[i-1];
       }
 
@@ -90,7 +90,7 @@ int* userInputParser(string s) {
 
     string data[4*maxNumDie];  // Intermediate storage for parsing input string
 
-    // count how many '+'s or 'd's there are...
+    // count how many '+'s or 'd's the  roll[i-1] = die[i-1].roll();re are...
     int parts = 0;
     for(unsigned int i=0; i < s.length(); i++)
     {

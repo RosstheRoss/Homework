@@ -1,0 +1,15 @@
+1)
+  a. Line 5 constructs the class with no values.
+  b. It'll work, but it might not work well.
+  c. No.
+  d. Point(int newX, int newY);
+2)
+  a. This changes the value xlocation and ylocation in the Point class to 3 and 10 respectively.
+      This changes the default values.
+  b. The object p1 of the class Point is initialized with an xlocation of 3 and a ylocation of 6.
+  c. The declaration is incorrect.
+  d. Line 6 is a function of return type Point with no input.
+  e. Point p2;
+3)
+  a.
+  b.
