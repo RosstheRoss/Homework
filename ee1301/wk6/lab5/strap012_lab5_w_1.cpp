@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+//#include <time.h> //Needed if using MinGW
 
 class DeckOfCards {
 private:
@@ -64,6 +64,7 @@ void DeckOfCards::shuffle() {
 }
 
 //Function to deal the card when asked by grabbing from the deck and shuffling if such card does not exist.
+//Returns the card drawn from the deck
 int DeckOfCards::dealCard() {
   index++;
   if (index>=52) {
