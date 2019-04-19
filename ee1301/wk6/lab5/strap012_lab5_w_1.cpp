@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
-#include <time.h> //MinGW does not compile without this included when time is involved.
+#include <time.h> //MinGW refuses to compile without this included when time is involved.
 
 class DeckOfCards {
 private:
-  int index=0, deck[53];     //deck is size 53 as a hack designed to prevent segfaults.
+  int index=0, deck[52];
 public:
   DeckOfCards();
   void shuffle();
@@ -47,7 +47,7 @@ void showHand(int hand[], const int size) {
 
 //Deck initialized with 1-52 and shuffled
 DeckOfCards::DeckOfCards() {
-  for(int i=0; i<52; i++) {
+  for(int i=0; i<51; i++) {
     deck[i]=i+1;
   }
   shuffle();
