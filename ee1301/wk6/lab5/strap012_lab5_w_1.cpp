@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <time.h> //MinGW refuses to compile without this included when time is involved.
 
 class DeckOfCards {
 private:
@@ -30,16 +29,16 @@ void showHand(int hand[], const int size) {
   for (int i=0; i<size; i++) {
   //Switch case needed for showing face cards and aces
     switch(hand[i]%13) {
-        case 0: std::cout << 'A';
+      case 0: std::cout << 'A';
         break;
-        case 10: std::cout << 'J';
+      case 10: std::cout << 'J';
         break;
-        case 11: std::cout << 'Q';
+      case 11: std::cout << 'Q';
         break;
-        case 12: std::cout << 'K';
+      case 12: std::cout << 'K';
         break;
-        default: std::cout << hand[i]%13+1;
-      }
+      default: std::cout << hand[i]%13+1;
+    }
     std::cout << " ";
   }
   std::cout << std::endl;
