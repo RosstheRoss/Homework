@@ -1,5 +1,5 @@
 #include <iostream>
-//#include <time.h> //Needed if using MinGW
+//#include <time.h>     //Needed if using MinGW
 
 class DeckOfCards {
 private:
