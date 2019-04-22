@@ -16,7 +16,7 @@ int main() {
   const int size=4;   //Size can be changed for larger hands
   DeckOfCards deck;
   int hand[size];
-  for (int i=0; i<26; i++) {
+  for (int i=0; i<13; i++) {
     for (int j=0; j<size; j++) {
       hand[j]=deck.dealCard();
     }
