@@ -34,7 +34,7 @@ double randVec() {
 
 double momentum(double velocity) {
   double mass;
-  if (rand()%2+1==1) {
+  if (rand()%2+1==0) {
     mass=rand()%10+1;
   } else {
     mass=rand()%10*-1+1;
