@@ -9,6 +9,7 @@ int main() {
   std::cin >> velocity[0] >> velocity[1] >> velocity [2];
   std::cout << "Please enter mass [kg]: ";
   std::cin >> mass;
+  
   double* vector;
   vector = new double[3];
   std::cout << "Momentum: <";

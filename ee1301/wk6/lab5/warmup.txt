@@ -11,5 +11,5 @@
   d. Line 6 is a function of return type Point with no input.
   e. Point p2;
 3)
-  a.
-  b.
+  a. 10 2 2 2
+  b. The array is not deleted (memory leak)
