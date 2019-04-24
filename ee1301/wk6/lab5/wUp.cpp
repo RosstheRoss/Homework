@@ -11,7 +11,7 @@ Point(int newX, int newY) {
 	ylocation = newY;
 }
 int	xlocation;
-int   ylocation;
+int ylocation;
 } ;
 
 
