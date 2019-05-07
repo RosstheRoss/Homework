@@ -19,17 +19,17 @@ public:
 
     };
 
-void ProcHeader(ifstream &file); 
+void ProcHeader(ifstream &file);
 houseData* ReadRecord(ifstream &file);
 void DelRecord(houseData *record);
 
 void printAllHousesByZip(houseData* head);
 
 int main(int argc, char* argv[]) {
-    // This line must be removed in your final 
+    // This line must be removed in your final
     // program (see HINT 1).
     houseData* initHouseData[10];
-    
+
     ifstream fin;
     if(argc > 1) {
         fin.open(argv[1]);  // Small file to test with
@@ -62,14 +62,14 @@ int main(int argc, char* argv[]) {
 
         printAllHousesByZip(head);
 
-        //This loop will also have to change in your 
+        //This loop will also have to change in your
         // final program (see HINT 1).
-        for(int a = 0; a<numRec ; a++) {  
+        for(int a = 0; a<numRec ; a++) {
             DelRecord(initHouseData[a]);
         }
 
         fin.close();
-        
+
     } else {
         cout << "File missing!" << endl;
         return 1;
@@ -102,10 +102,10 @@ houseData* ReadRecord(ifstream &file) {
 
     while(!endOfHeader) {
         char curChar;
-        
+
         //Get the next character in file
         curChar = file.get();
-        
+
         //Check what the character is
         if (curChar == EOF) {
             return nullptr;
