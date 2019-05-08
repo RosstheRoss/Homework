@@ -21,21 +21,21 @@ public:
 
 void ProcHeader(ifstream &file);
 houseData* ReadRecord(ifstream &file);
+houseData* Scanlist(houseData* head, int Zipcode);
 void DelRecord(houseData *record);
 
 void printAllHousesByZip(houseData* head);
 
 int main(int argc, char* argv[]) {
-    // This line must be removed in your final
-    // program (see HINT 1).
-    houseData* initHouseData[10];
+    houseData* head = nullptr;
+    houseData* tail = nullptr;
 
     ifstream fin;
     if(argc > 1) {
         fin.open(argv[1]);  // Small file to test with
     } else {
-        fin.open("./house-info-v4-short.csv");  // Small file to test with
-        //fin.open("./house-info-v4.csv");  // Use this file for final
+        //fin.open("./house-info-v4-short.csv");  // Small file to test with
+        fin.open("./house-info-v4.csv");  // Use this file for final
     }
 
     if(fin.is_open()) {
@@ -45,28 +45,58 @@ int main(int argc, char* argv[]) {
         while(!fin.eof()) {
             houseData* tempHouse = ReadRecord(fin);
             if(tempHouse != nullptr) {
+                if (head == nullptr) { //Make head of list if one does not exist
+                  head=tempHouse;
+                  tail=tempHouse;
+                  tempHouse=nullptr;
+                } else {
+                  tail->nextZip=tempHouse;
+                  tail=tempHouse;
+                }
                 //tempHouse->printRecord();
-                tempHouse->printShort();
-                initHouseData[numRec] = tempHouse;  // DO NOT store data like this!
+                //tempHouse->printShort();
+                //initHouseData[numRec] = tempHouse;  // DO NOT store data like this!
                 numRec++;
+                if (numRec%1000==0 && numRec!=0) {
+                  cout << "Still working...num records processed: " << numRec << endl;
+                }
             }
         }
+        int zipSort[1000]; bool newZip=true; int currentUnique=0;
+        for (int i=0; i<999; i++) {zipSort[i]=0;}
+        houseData* currentZipFind = head;
+          while(currentZipFind!=nullptr) {
+          for (int i=0; i<999; i++) {
+            //Find a new zipcode to average
+            if (currentZipFind->zipcode==zipSort[i]) {
+              //Only find unique ZIPs
+              newZip=false;
+              break;
+            }
+            newZip=true;
+          }
+          if ( (newZip) ) {
+            zipSort[currentUnique]=currentZipFind->zipcode;
+            cout << zipSort[currentUnique] << endl;
+            currentUnique++;
+          }
+          currentZipFind = currentZipFind->nextZip;
+        }
+        houseData* currentAvgFind = head;
+          currentUnique=0; int totalCost=0, houseNumber=0;
+          while (currentAvgFind!=NULL) {
+            totalCost+=currentAvgFind->price;
+            houseNumber++;
+            currentAvgFind=Scanlist(currentAvgFind, currentAvgFind->zipcode);
+            cout << currentAvgFind;
+        }
 
-        // The following is just to show how printAllHousesByZip() works
-        // DO NOT use this method to organize your linked list!
-        houseData* head = initHouseData[2];
-        initHouseData[2]->nextZip = initHouseData[1];
-        initHouseData[1]->nextZip = initHouseData[3];
-        initHouseData[3]->nextZip = initHouseData[4];
-        initHouseData[4]->nextZip = initHouseData[0];
-
-        printAllHousesByZip(head);
+        //printAllHousesByZip(head);
 
         //This loop will also have to change in your
         // final program (see HINT 1).
-        for(int a = 0; a<numRec ; a++) {
-            DelRecord(initHouseData[a]);
-        }
+
+        DelRecord(head);
 
         fin.close();
 
@@ -77,7 +107,6 @@ int main(int argc, char* argv[]) {
 
     return 0;
 }
-
 void ProcHeader(ifstream &file) {
     int endOfHeader = 0;
     char curChar;
@@ -137,6 +166,17 @@ houseData* ReadRecord(ifstream &file) {
     return localHouseData;
 }
 
+houseData* Scanlist(houseData* head, int Zipcode) {
+  houseData* previous; houseData* current;
+  previous=head;
+  current=head->nextZip;
+  while ((current!=NULL) && !(current->zipcode >= Zipcode)) {
+    previous=current;
+    current=current->nextZip;
+  }
+  return previous;
+}
+
 void houseData::printRecord() {
     cout <<  "Printing House Record:" << endl;
     cout << "ID:" << id << endl;
@@ -149,7 +189,13 @@ void houseData::printRecord() {
 }
 
 void DelRecord(houseData *record) {
+  houseData* next;
+  while (record!=NULL) {
+    next=record->nextZip;
     delete record;
+    record = next;
+  }
+
 }
 
 void houseData::printShort() {
