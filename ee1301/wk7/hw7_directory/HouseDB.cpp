@@ -23,7 +23,8 @@ void ProcHeader(ifstream &file);
 houseData* ReadRecord(ifstream &file);
 houseData* Scanlist(houseData* head, int Zipcode);
 void DelRecord(houseData *record);
-
+void bsort(int list[], int length);
+void swap (int &a, int &b);
 void printAllHousesByZip(houseData* head);
 
 int main(int argc, char* argv[]) {
@@ -62,9 +63,11 @@ int main(int argc, char* argv[]) {
                 }
             }
         }
-        int zipSort[1000]; bool newZip=true; int currentUnique=0;
-        for (int i=0; i<999; i++) {zipSort[i]=0;}
+
+
         houseData* currentZipFind = head;
+          int zipSort[1000]; bool newZip=true; int currentUnique=0;
+          for (int i=0; i<999; i++) {zipSort[i]=0;}
           while(currentZipFind!=nullptr) {
           for (int i=0; i<999; i++) {
             //Find a new zipcode to average
@@ -77,19 +80,32 @@ int main(int argc, char* argv[]) {
           }
           if ( (newZip) ) {
             zipSort[currentUnique]=currentZipFind->zipcode;
-            cout << zipSort[currentUnique] << endl;
+            //cout << zipSort[currentUnique] << endl;
             currentUnique++;
           }
           currentZipFind = currentZipFind->nextZip;
         }
-        houseData* currentAvgFind = head;
-          currentUnique=0; int totalCost=0, houseNumber=0;
-          while (currentAvgFind!=NULL) {
-            totalCost+=currentAvgFind->price;
-            houseNumber++;
-            currentAvgFind=Scanlist(currentAvgFind, currentAvgFind->zipcode);
-            cout << currentAvgFind;
-        }
+        bsort(zipSort, 1000);
+
+        houseData* findAvg = head;
+          int costPerZip[1000]={0}, totalPerZip[1000]={0};
+          //Set all of the values to zero
+          for (int i=0; i<999; i++) {costPerZip[i]=0; totalPerZip[i]=0;}
+          while (findAvg!=NULL) {
+            for(int j=0; j<999; j++) {
+              if (zipSort[j]=findAvg->zipcode) {
+                costPerZip[j]+=findAvg->price;
+                totalPerZip[j]++;
+                break; //Break for loop
+              }
+            } //end for
+            findAvg=findAvg->nextZip;
+          } //end while
+          for (int k=0; k<999; k++) {
+            if (zipSort[k]!=0) {
+              cout << zipSort[k] << ":average price=" << totalPerZip[k] << endl;
+            }
+          }
 
         //printAllHousesByZip(head);
 
@@ -119,6 +135,24 @@ void ProcHeader(ifstream &file) {
             endOfHeader = 1;
         }
     }
+}
+
+//This function is the algorithm.
+void bsort(int list[], int length) {
+  for (int i=0; i<length; i++) {
+    for (int j=0; j<length-1; j++) {
+      if (list[j]>list[j+1]) {
+        //This is so the bubble can happen
+        swap(list[j], list[j+1]);
+      }
+    }
+  }
+}
+
+//This function simply swaps two values so the bubbling can commence
+void swap (int &a, int &b) {
+  int temp;
+  temp=a; a=b; b=temp;
 }
 
 houseData* ReadRecord(ifstream &file) {
