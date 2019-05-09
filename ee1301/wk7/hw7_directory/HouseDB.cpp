@@ -94,6 +94,8 @@ int main(int argc, char* argv[]) {
           while (findAvg!=NULL) {
             for(int j=0; j<999; j++) {
               if (zipSort[j]=findAvg->zipcode) {
+                cout << zipSort[j] << " " << findAvg->zipcode << endl;
+                cout << j << endl;
                 costPerZip[j]+=findAvg->price;
                 totalPerZip[j]++;
                 break; //Break for loop
