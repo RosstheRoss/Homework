@@ -1,3 +1,9 @@
+//Matthew Strapp
+//EE1301
+//HW7A: The house database
+//8 May 2019
+
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -66,8 +72,8 @@ int main(int argc, char* argv[]) {
 
 
         houseData* currentZipFind = head;
-          int zipSort[1000]; bool newZip=true; int currentUnique=0;
-          for (int i=0; i<999; i++) {zipSort[i]=0;}
+          int zipSort[10000]; bool newZip=true; int currentUnique=0;
+          for (int i=0; i<9999; i++) {zipSort[i]=0;}
           while(currentZipFind!=nullptr) {
           for (int i=0; i<999; i++) {
             //Find a new zipcode to average
@@ -85,15 +91,15 @@ int main(int argc, char* argv[]) {
           }
           currentZipFind = currentZipFind->nextZip;
         }
-        bsort(zipSort, 1000);  //Sort array of zipcodes by bubblesort.
+        bsort(zipSort, 10000);  //Sort array of zipcodes by bubblesort.
 
         houseData* findAvg = head;
-          int costPerZip[1000]={0}, totalPerZip[1000]={0};
+          int costPerZip[10000]={0}, totalPerZip[10000]={0};
           //Set all of the values to zero
-          for (int i=0; i<999; i++) {costPerZip[i]=0; totalPerZip[i]=0;}
+          for (int i=0; i<9999; i++) {costPerZip[i]=0; totalPerZip[i]=0;}
           
           while (findAvg!=nullptr) {
-            for(int j=0; j<999; j++) {
+            for(int j=0; j<9999; j++) {
               if (zipSort[j]==findAvg->zipcode) {
                 costPerZip[j]+=findAvg->price;
                 totalPerZip[j]++;
@@ -102,7 +108,7 @@ int main(int argc, char* argv[]) {
             } //end for
             findAvg=findAvg->nextZip;
           } //end while
-          for (int k=0; k<999; k++) {
+          for (int k=0; k<9999; k++) {
             if (zipSort[k]!=0) {
               cout << zipSort[k] << ":average price=" << costPerZip[k]/totalPerZip[k] << endl;
             }
@@ -138,7 +144,7 @@ void ProcHeader(ifstream &file) {
     }
 }
 
-//This function is the algorithm.
+//Bubble sort the zipcode algorithm
 void bsort(int list[], int length) {
   for (int i=0; i<length; i++) {
     for (int j=0; j<length-1; j++) {
