@@ -85,17 +85,16 @@ int main(int argc, char* argv[]) {
           }
           currentZipFind = currentZipFind->nextZip;
         }
-        bsort(zipSort, 1000);
+        bsort(zipSort, 1000);  //Sort array of zipcodes by bubblesort.
 
         houseData* findAvg = head;
           int costPerZip[1000]={0}, totalPerZip[1000]={0};
           //Set all of the values to zero
           for (int i=0; i<999; i++) {costPerZip[i]=0; totalPerZip[i]=0;}
-          while (findAvg!=NULL) {
+          
+          while (findAvg!=nullptr) {
             for(int j=0; j<999; j++) {
-              if (zipSort[j]=findAvg->zipcode) {
-                cout << zipSort[j] << " " << findAvg->zipcode << endl;
-                cout << j << endl;
+              if (zipSort[j]==findAvg->zipcode) {
                 costPerZip[j]+=findAvg->price;
                 totalPerZip[j]++;
                 break; //Break for loop
@@ -105,7 +104,7 @@ int main(int argc, char* argv[]) {
           } //end while
           for (int k=0; k<999; k++) {
             if (zipSort[k]!=0) {
-              cout << zipSort[k] << ":average price=" << totalPerZip[k] << endl;
+              cout << zipSort[k] << ":average price=" << costPerZip[k]/totalPerZip[k] << endl;
             }
           }
 
