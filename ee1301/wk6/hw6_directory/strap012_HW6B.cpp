@@ -6,13 +6,14 @@
 
 int ff(int x);
 int main() {
-  int x;
+  int x, y;
   do {
     std::cout << "Please enter a value of x: ";
     std::cin >> x;
   } while (x<0);
   std::cout << "Beginning calculation of ff(x)...\n";
-  std::cout << "Calcuation complete, ff(x) = " << ff(x) << std::endl;
+  y = ff(x);
+  std::cout << "Calcuation complete, ff(x) = " << y << std::endl;
 }
 
 // This function either returns 1 when x is one of two recrusive conditions depending on if x is even or odd.
