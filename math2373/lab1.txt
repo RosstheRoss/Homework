@@ -1,0 +1,535 @@
+27+48
+
+ans =
+
+    75
+
+27-48
+
+ans =
+
+   -21
+
+27*48
+
+ans =
+
+        1296
+
+sqrt(16)
+
+ans =
+
+     4
+
+27/48
+
+ans =
+
+    0.5625
+
+16.5*(38.5+71/40)
+
+ans =
+
+  664.5375
+
+2^5
+
+ans =
+
+    32
+
+5*3^2
+
+ans =
+
+    45
+
+(5*3)^2
+
+ans =
+
+   225
+
+5*(3^2)
+
+ans =
+
+    45
+
+x=7
+
+x =
+
+     7
+
+y=9
+
+y =
+
+     9
+
+x+y
+
+ans =
+
+    16
+
+xy
+{Undefined function or variable 'xy'.
+} 
+x*y
+
+ans =
+
+    63
+
+x/y
+
+ans =
+
+    0.7778
+
+x^2
+
+ans =
+
+    49
+
+x=25
+
+x =
+
+    25
+
+y=40
+
+y =
+
+    40
+
+x+y
+
+ans =
+
+    65
+
+x*y
+
+ans =
+
+        1000
+
+x/y
+
+ans =
+
+    0.6250
+
+(8*x)/5
+
+ans =
+
+    40
+
+6*x+9*y
+
+ans =
+
+   510
+
+4+5
+
+ans =
+
+     9
+
+ans+10
+
+ans =
+
+    19
+
+ans+100
+
+ans =
+
+   119
+
+x=1, y=3, 3*x+7*y, 9*y, (5*y)/(2*x+y)
+x =
+
+     1
+
+
+y =
+
+     3
+
+
+ans =
+
+    24
+
+
+ans =
+
+    27
+
+
+ans =
+
+     3
+
+who
+
+Your variables are:
+
+ans  x    y    
+
+dog=3
+
+dog =
+
+     3
+
+DOG=7
+
+DOG =
+
+     7
+
+who
+
+Your variables are:
+
+DOG  ans  dog  x    y    
+
+clear dog
+who
+
+Your variables are:
+
+DOG  ans  x    y    
+
+clear
+who
+pi
+
+ans =
+
+    3.1416
+
+5+pi
+
+ans =
+
+    8.1416
+
+5*pi
+
+ans =
+
+   15.7080
+
+sqrt(25)
+
+ans =
+
+     5
+
+sqrt(24)
+
+ans =
+
+    4.8990
+
+sqrt(-9)
+
+ans =
+
+   0.0000 + 3.0000i
+
+exp(1)
+
+ans =
+
+    2.7183
+
+exp(5)
+
+ans =
+
+  148.4132
+
+sinh(3)
+
+ans =
+
+   10.0179
+
+cosh(5)
+
+ans =
+
+   74.2099
+
+sinh(sqrt(5))
+
+ans =
+
+    4.6248
+
+tan(sqrt(5))
+
+ans =
+
+   -1.2746
+
+cos(pi)
+
+ans =
+
+    -1
+
+sin(pi/3)
+
+ans =
+
+    0.8660
+
+x=sin(1), y=cos(2)
+
+x =
+
+    0.8415
+
+
+y =
+
+   -0.4161
+
+x+y, x*y
+
+ans =
+
+    0.4253
+
+
+ans =
+
+   -0.3502
+
+log(8),log(100(,asin(.5)+log(5)
+ log(8),log(100(,asin(.5)+log(5)
+               ↑
+{Error: Invalid expression. When calling a
+function or indexing a variable, use parentheses.
+Otherwise, check for mismatched delimiters.
+} 
+log(8),log(100),asin(.5)+log(5)
+
+ans =
+
+    2.0794
+
+
+ans =
+
+    4.6052
+
+
+ans =
+
+    2.1330
+
+w=5-8i, z=3+4i
+
+w =
+
+   5.0000 - 8.0000i
+
+
+z =
+
+   3.0000 + 4.0000i
+
+4z+w,z/w
+ 4z+w,z/w
+  ↑
+{Error: Invalid expression. Check for missing
+multiplication operator, missing or unbalanced
+delimiters, or other syntax error. To construct
+matrices, use brackets instead of parentheses.
+} 
+4*z+w,z/w
+
+ans =
+
+  17.0000 + 8.0000i
+
+
+ans =
+
+  -0.1910 + 0.4944i
+
+pi
+
+ans =
+
+    3.1416
+
+format long
+pi
+
+ans =
+
+   3.141592653589793
+
+format short
+pi
+
+ans =
+
+    3.1416
+
+6/14
+
+ans =
+
+    0.4286
+
+format rational
+6/14
+
+ans =
+
+       3/7     
+
+format short
+2^20
+
+ans =
+
+     1048576
+
+2^20;
+[4 3 7 8 10 13]
+
+ans =
+
+     4     3     7     8    10    13
+
+[4; 3; 7; 8; 10; 13]
+
+ans =
+
+     4
+     3
+     7
+     8
+    10
+    13
+
+[4 3 7; 8 10 13]
+
+ans =
+
+     4     3     7
+     8    10    13
+
+[4 3; 7 8; 10 13]
+
+ans =
+
+     4     3
+     7     8
+    10    13
+
+x=[3 12 7], y=[-2 4 9]
+
+x =
+
+     3    12     7
+
+
+y =
+
+    -2     4     9
+
+x+y,3*x
+
+ans =
+
+     1    16    16
+
+
+ans =
+
+     9    36    21
+
+clear
+a=(3,5,7,9)
+ a=(3,5,7,9)
+     ↑
+{Error: Invalid expression. When calling a
+function or indexing a variable, use parentheses.
+Otherwise, check for mismatched delimiters.
+} 
+a=(3 5 7 9)
+ a=(3 5 7 9)
+      ↑
+{Error: Invalid expression. Check for missing
+multiplication operator, missing or unbalanced
+delimiters, or other syntax error. To construct
+matrices, use brackets instead of parentheses.
+} 
+a=[3 5 7 9]
+
+a =
+
+     3     5     7     9
+
+b=[8,-2,4,11]
+
+b =
+
+     8    -2     4    11
+
+a-5*b
+
+ans =
+
+   -37    15   -13   -46
+
+dot(a,b)
+
+ans =
+
+   141
+
+x=[4 3 2 9], y=[7 5 11 6]
+
+x =
+
+     4     3     2     9
+
+
+y =
+
+     7     5    11     6
+
+x.*y
+
+ans =
+
+    28    15    22    54
+
+x.^2
+
+ans =
+
+    16     9     4    81
+
+diary off
