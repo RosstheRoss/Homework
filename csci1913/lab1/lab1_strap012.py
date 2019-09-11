@@ -25,7 +25,7 @@ def solve(v, e):
 def solving(v,q):
 	if left(q)==v:
 		return q
-	elif type(left(q)):
+	elif type(left(left(q))) is not tuple:
 		if op(left(q))=='+':
 			return solvingAdd(v, q)
 		elif op(left(q))=='-':
@@ -34,30 +34,33 @@ def solving(v,q):
 			return solvingMultiply(v, q)
 		elif op(left(q))=='/':
 			return solvingDivide(v, q)
+	else:
+		solving(v,left(q))
 
 def solvingAdd(v,q):
 	if isInside(v, left(left(q))):
-		return (left(left(q)), '=', (right(q), '-', right(left(q))))
+		return left(left(q)), '=', (right(q), '-', right(left(q)))
 	else:
-		return (right(left(q)), '=', (right(q), '-', left(right(q))))
+		return right(left(q)), '=', (right(q), '-', left(left(q)))
 
 def solvingSubtract(v,q):
 	if isInside(v, left(left(q))):
-		return left(left(q))
+		return left(left(q)), '=', (right(q), '+', right(left(q)))
 	else:
-		return right(left(q))
+		return right(left(q)), '=', (left(left(q)), '-', right(q))
 
 def solvingMultiply(v,q):
 	if isInside(v, left(left(q))):
-		return left(left(q))
+		return left(left(q)), '=', (right(q), '/', right(left(q)))
 	else:
-		return right(left(q))
+		return right(left(q)), '=', (right(q), '/', left(left(q)))
 
 def solvingDivide(v,q):
 	if isInside(v, left(left(q))):
-		return left(left(q))
+		return left(left(q)), '=', (right(q), '*', right(left(q)))
 	else:
-		return right(left(q))
+		return right(left(q)), '=', (left(left(q)), '/', right(q))
+
 
 #
 #  TESTS. Test the equation solver for CSci 1913 Lab 1.
