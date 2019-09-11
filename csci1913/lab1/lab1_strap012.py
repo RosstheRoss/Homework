@@ -6,26 +6,28 @@ def right(exp):
 	return exp[2]
 
 
+
 def isInside(var, e):
 	if type(e) is tuple:
 		return isInside(var, left(e)) or isInside(var, right(e))
 	elif type(e) is str:
 		return var==e
 
-def solve(v, eqn):
-	if isInside(v, left(eqn)):
-		return solving(v, eqn)
-	elif isInside(v,right(eqn)):
-		#AHHHH
-		return 6
+def solve(v, e):
+	if isInside(v, left(e)):
+		return solving(v, e)
+	elif isInside(v,right(e)):
+		newE=(right(e),exp(e),left(e))
+		return solving(v,newE)
 	else:
 		return None
 def solving(v,q):
-	if v==q:
-		return q
+	if type(q) is tuple:
+
+
 
 def solvingAdd(v,q):
-	print("Y")
+	
 
 #
 #  TESTS. Test the equation solver for CSci 1913 Lab 1.
