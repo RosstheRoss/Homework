@@ -17,17 +17,47 @@ def solve(v, e):
 	if isInside(v, left(e)):
 		return solving(v, e)
 	elif isInside(v,right(e)):
-		newE=(right(e),exp(e),left(e))
+		newE=(right(e),op(e),left(e))
 		return solving(v,newE)
 	else:
 		return None
+
 def solving(v,q):
-	if type(q) is tuple:
-
-
+	if left(q)==v:
+		return q
+	elif type(left(q)):
+		if op(left(q))=='+':
+			return solvingAdd(v, q)
+		elif op(left(q))=='-':
+			return solvingSubtract(v, q)
+		elif op(left(q))=='*':
+			return solvingMultiply(v, q)
+		elif op(left(q))=='/':
+			return solvingDivide(v, q)
 
 def solvingAdd(v,q):
-	
+	if isInside(v, left(left(q))):
+		return (left(left(q)), '=', (right(q), '-', right(left(q))))
+	else:
+		return (right(left(q)), '=', (right(q), '-', left(right(q))))
+
+def solvingSubtract(v,q):
+	if isInside(v, left(left(q))):
+		return left(left(q))
+	else:
+		return right(left(q))
+
+def solvingMultiply(v,q):
+	if isInside(v, left(left(q))):
+		return left(left(q))
+	else:
+		return right(left(q))
+
+def solvingDivide(v,q):
+	if isInside(v, left(left(q))):
+		return left(left(q))
+	else:
+		return right(left(q))
 
 #
 #  TESTS. Test the equation solver for CSci 1913 Lab 1.
