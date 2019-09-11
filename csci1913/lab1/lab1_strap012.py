@@ -4,15 +4,28 @@ def op(exp):
 	return exp[1]
 def right(exp):
 	return exp[2]
+
+
 def isInside(var, e):
-	if left(e)==var or right(e)==var:
-		return True
+	if type(e) is tuple:
+		return isInside(var, left(e)) or isInside(var, right(e))
+	elif type(e) is str:
+		return var==e
+
+def solve(v, eqn):
+	if isInside(v, left(eqn)):
+		return solving(v, eqn)
+	elif isInside(v,right(eqn)):
+		#AHHHH
+		return 6
 	else:
-		return False
+		return None
+def solving(v,q):
+	if v==q:
+		return q
 
-
-
-
+def solvingAdd(v,q):
+	print("Y")
 
 #
 #  TESTS. Test the equation solver for CSci 1913 Lab 1.
