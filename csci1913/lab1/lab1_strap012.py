@@ -36,7 +36,6 @@ def solving(v,q):
 			newQ = solvingDivide(v, q)
 		else:
 		    return 6
-			
 		return solving(v,newQ)
 
 def solvingAdd(v,q):
