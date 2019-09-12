@@ -25,17 +25,16 @@ def solve(v, e):
 def solving(v,q):
 	if left(q)==v:
 		return q
-	elif type(left(left(q))) is not tuple:
-		if op(left(q))=='+':
-			return solvingAdd(v, q)
-		elif op(left(q))=='-':
-			return solvingSubtract(v, q)
-		elif op(left(q))=='*':
-			return solvingMultiply(v, q)
-		elif op(left(q))=='/':
-			return solvingDivide(v, q)
 	else:
-		solving(v,left(q))
+		if op(left(q))=='+':
+			newQ = solvingAdd(v, q)
+		elif op(left(q))=='-':
+			newQ = solvingSubtract(v, q)
+		elif op(left(q))=='*':
+			newQ = solvingMultiply(v, q)
+		elif op(left(q))=='/':
+			newQ = solvingDivide(v, q)
+		return solving(v,newQ)
 
 def solvingAdd(v,q):
 	if isInside(v, left(left(q))):
