@@ -34,6 +34,8 @@ def solving(v,q):
 			newQ = solvingMultiply(v, q)
 		elif op(left(q))=='/':
 			newQ = solvingDivide(v, q)
+		else:
+		    return 6
 			
 		return solving(v,newQ)
 
