@@ -6,12 +6,13 @@ def right(exp):
 	return exp[2]
 
 
-
 def isInside(var, e):
 	if type(e) is tuple:
 		return isInside(var, left(e)) or isInside(var, right(e))
 	elif type(e) is str:
 		return var==e
+	else:
+	    return -1
 
 def solve(v, e):
 	if isInside(v, left(e)):
@@ -19,49 +20,44 @@ def solve(v, e):
 	elif isInside(v,right(e)):
 		newE=(right(e),op(e),left(e))
 		return solving(v,newE)
+	    #Solving defined on line 53
 	else:
 		return None
 
-def solving(v,q):
-	if left(q)==v:
-		return q
-	else:
-		if op(left(q))=='+':
-			newQ = solvingAdd(v, q)
-		elif op(left(q))=='-':
-			newQ = solvingSubtract(v, q)
-		elif op(left(q))=='*':
-			newQ = solvingMultiply(v, q)
-		elif op(left(q))=='/':
-			newQ = solvingDivide(v, q)
-		else:
-		    return 6
-		return solving(v,newQ)
-
+#Four major solving means
 def solvingAdd(v,q):
 	if isInside(v, left(left(q))):
 		return left(left(q)), '=', (right(q), '-', right(left(q)))
 	else:
 		return right(left(q)), '=', (right(q), '-', left(left(q)))
-
 def solvingSubtract(v,q):
 	if isInside(v, left(left(q))):
 		return left(left(q)), '=', (right(q), '+', right(left(q)))
 	else:
 		return right(left(q)), '=', (left(left(q)), '-', right(q))
-
 def solvingMultiply(v,q):
 	if isInside(v, left(left(q))):
 		return left(left(q)), '=', (right(q), '/', right(left(q)))
 	else:
 		return right(left(q)), '=', (right(q), '/', left(left(q)))
-
 def solvingDivide(v,q):
 	if isInside(v, left(left(q))):
 		return left(left(q)), '=', (right(q), '*', right(left(q)))
 	else:
 		return right(left(q)), '=', (left(left(q)), '/', right(q))
 
+#Dict based off of lecture 13th Sept. 2019
+dispatcher={'+':solvingAdd,'-':solvingSubtract,'*':solvingMultiply,'/':solvingDivide}
+
+def solving(v,q):
+	if left(q) is v:
+		return q
+	else:
+		if op(left(q)) in dispatcher:
+		    newQ= dispatcher[op(left(q))](v,q)
+		else:
+		    return -2
+		return solving(v,newQ)
 
 #
 #  TESTS. Test the equation solver for CSci 1913 Lab 1.
