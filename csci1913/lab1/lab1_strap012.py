@@ -20,7 +20,7 @@ def solve(v, e):
 	elif isInside(v,right(e)):
 		newE=(right(e),op(e),left(e))
 		return solving(v,newE)
-	    #Solving defined on line 53
+	    #Solving defined on line 52
 	else:
 		return None
 
@@ -56,7 +56,7 @@ def solving(v,q):
 		if op(left(q)) in dispatcher:
 		    newQ= dispatcher[op(left(q))](v,q)
 		else:
-		    return -2
+		    raise ValueError
 		return solving(v,newQ)
 
 #
