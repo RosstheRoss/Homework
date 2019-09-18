@@ -1,21 +1,20 @@
 class Zillion:
   def __init__(self,digits):
     self.digits = digits
-    try:
-      int(digits)
-    except ValueError:
-      raise RuntimeError
-    for n in range (0,len(str(digits))):
-      test[n]=str(digits)[n]
+    if (1==1):
+      try:
+        int(digits)
+      except ValueError:
+        raise RuntimeError
   def increment(self):
-    return 1
+    return int(self.digits)+1
   def isZero(self):
-    for n in range (0,(len(str(self))-42)):
+    for n in range (0,len(self.digits)):
       if str(self.digits)[n] is not '0':
         return False
     return True
   def toString(self):
-    return str(self)
+    return str(self.digits)
 
 
 
