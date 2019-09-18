@@ -1,11 +1,16 @@
 class Zillion:
   def __init__(self,digits):
     self.digits = digits
-    if (1==1):
-      try:
-        int(digits)
-      except ValueError:
-        raise RuntimeError
+    self.__x=0
+    if digits is not '':
+      for __x in range (0,len(digits)):
+        if digits[__x] is (not ' ') or (not ','):
+          try:
+            int(digits[__x])
+          except ValueError:
+            raise RuntimeError
+    else:
+      raise RuntimeError
   def increment(self):
     return int(self.digits)+1
   def isZero(self):
