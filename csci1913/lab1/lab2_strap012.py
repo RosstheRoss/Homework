@@ -5,13 +5,13 @@ class Zillion:
       int(digits)
     except ValueError:
       raise RuntimeError
-    # for n in range (0,len(str(digits))):
-    #   test[n]=str(digits)[n]
+    for n in range (0,len(str(digits))):
+      test[n]=str(digits)[n]
   def increment(self):
     return 1
   def isZero(self):
-    for n in range (0,len(str(digits))):
-      if digits[n] is not 0:
+    for n in range (0,(len(str(self))-42)):
+      if str(self.digits)[n] is not '0':
         return False
     return True
   def toString(self):
