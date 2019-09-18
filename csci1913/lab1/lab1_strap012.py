@@ -50,7 +50,7 @@ def solvingDivide(v,q):
 dispatcher={'+':solvingAdd,'-':solvingSubtract,'*':solvingMultiply,'/':solvingDivide}
 
 def solving(v,q):
-	if left(q) is v:
+if left(q) is v:
 		return q
 	else:
 		if op(left(q)) in dispatcher:
