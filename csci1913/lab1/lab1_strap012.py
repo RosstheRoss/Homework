@@ -1,3 +1,7 @@
+#Matthew Strapp
+#5449340
+#Lab 1
+
 def left(exp):
 	return exp[0]
 def op(exp):
