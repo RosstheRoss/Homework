@@ -50,14 +50,14 @@ def solvingDivide(v,q):
 dispatcher={'+':solvingAdd,'-':solvingSubtract,'*':solvingMultiply,'/':solvingDivide}
 
 def solving(v,q):
-if left(q) is v:
-		return q
-	else:
-		if op(left(q)) in dispatcher:
+    if left(q) is v:
+        return q
+    else:
+        if op(left(q)) in dispatcher:
 		    newQ=dispatcher[op(left(q))](v,q)
-		else:
-		    raise ValueError
-		return solving(v,newQ)
+        else:
+            raise ValueError
+    return solving(v,newQ)
 
 #
 #  TESTS. Test the equation solver for CSci 1913 Lab 1.
