@@ -4,11 +4,10 @@ class Zillion:
     self.__x=0
     if digits is not '':
       for __x in range (0,len(digits)):
-        if digits[__x] is (not ' ') or (not ','):
-          try:
-            int(digits[__x])
-          except ValueError:
-            raise RuntimeError
+       try:
+         int(digits[__x])
+       except ValueError:
+         raise RuntimeError
     else:
       raise RuntimeError
   def increment(self):
