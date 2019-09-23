@@ -1,25 +1,27 @@
 class Zillion:
   def __init__(self,digits):
     self.digits = digits
-    self.__x=0
     self.List = []
     self.toList()
+
   def toList(self):
     badBoolean=False
-    if len(self.digits) == 0:
-      raise RuntimeError      #Cannot make a list of nothing
+    if len(self.digits) == 0 :
+      raise RuntimeError       #Cannot make a list of nothing
     for n in range (0,len(self.digits)):
       if self.digits[n] is not ',':
         if self.digits[n] is not ' ':
           try:
             self.List+=[int(self.digits[n])]
             badBoolean=True
-          except ValueError:
+          except ValueError:   #Non-comma character in string
             raise RuntimeError
-    if badBoolean is False:
+    if badBoolean is False:    #No numbers in string
       raise RuntimeError
     else:
       return self.List
+
+
   def increment(self):
     length = len(self.List) - 1
     newList = self.List
@@ -28,11 +30,13 @@ class Zillion:
       for n in range (0,length):
         newList[length-n]=0
         newList[length-n-1]+=1
+
   def isZero(self):
     for p in range (0,len(self.List)-1):
       if self.List[p] is not 0 or not '0':
         return False
     return True
+    
   def toString(self):
     string=''
     for q in range (0,len(self.List)):
