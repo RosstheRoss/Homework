@@ -21,10 +21,13 @@ class Zillion:
     else:
       return self.List
   def increment(self):
-    newList=self.List
+    length = len(self.List) - 1
+    newList = self.List
     newList[len(self.List)-1] += 1
-    if newList[len(self.List)-1]>=10:
-      return None
+    if newList[length]>=10:
+      for n in range (0,length):
+        newList[length-n]=0
+        newList[length-n-1]+=1
   def isZero(self):
     for p in range (0,len(self.List)-1):
       if self.List[p] is not 0 or not '0':
