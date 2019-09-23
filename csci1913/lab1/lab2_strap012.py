@@ -2,23 +2,37 @@ class Zillion:
   def __init__(self,digits):
     self.digits = digits
     self.__x=0
-    if digits is not '':
-      for __x in range (0,len(digits)):
-       try:
-         int(digits[__x])
-       except ValueError:
-         raise RuntimeError
-    else:
-      raise RuntimeError
-  def increment(self):
-    return int(self.digits)+1
-  def isZero(self):
+    self.List = []
+    self.toList()
+  def toList(self):
+    badBoolean=False
+    if len(self.digits) == 0:
+      raise RuntimeError      #Cannot make a list of nothing
     for n in range (0,len(self.digits)):
-      if str(self.digits)[n] is not '0':
+      if self.digits[n] is not ',':
+        if self.digits[n] is not ' ':
+          try:
+            self.List+=[int(self.digits[n])]
+            badBoolean=True
+          except ValueError:
+            raise RuntimeError
+    if badBoolean is False:
+      raise RuntimeError
+    else:
+      return self.List
+  def increment(self):
+    return None
+  def isZero(self):
+    for p in range (0,len(self.List)-1):
+      if self.List[p] is not 0 or not '0':
         return False
     return True
   def toString(self):
-    return str(self.digits)
+    string=''
+    for q in range (0,len(self.List)):
+      string+=str(self.List[q])
+    return string
+
 
 
 
