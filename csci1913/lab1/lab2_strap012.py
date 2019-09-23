@@ -24,7 +24,7 @@ class Zillion:
     newList=self.List
     newList[len(self.List)-1] += 1
     if newList[len(self.List)-1]>=10:
-      
+      return None
   def isZero(self):
     for p in range (0,len(self.List)-1):
       if self.List[p] is not 0 or not '0':
