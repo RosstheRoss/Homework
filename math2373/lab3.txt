@@ -1,0 +1,12 @@
+ezplot(y=t^3-9*t, [-4,4,-30,30])
+ ezplot(y=t^3-9*t, [-4,4,-30,30])
+         ↑
+{Error: Incorrect use of '=' operator. To assign a value to a variable,
+use '='. To compare values for equality, use '=='.
+} 
+ezplot('y=t^3-9*t', [-4,4,-30,30])
+hold on
+ezplot('y=t^3-(49/4)*t', [-4,4,-30,30])
+ezplot('y=t^3-16*t', [-4,4,-30,30])
+hold off
+ezplot('y=1+cos(t)', [0,10,-2,4])
