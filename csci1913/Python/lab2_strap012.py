@@ -1,20 +1,47 @@
 class Zillion:
   def __init__(self,digits):
     self.digits = digits
-    if (1==1):
-      try:
-        int(digits)
-      except ValueError:
-        raise RuntimeError
-  def increment(self):
-    return int(self.digits)+1
-  def isZero(self):
+    self.List = []
+    self.toList()
+
+  def toList(self):
+    badBoolean=False           #Kludge
+    if len(self.digits) == 0 :
+      raise RuntimeError       #Cannot make a list of nothing
     for n in range (0,len(self.digits)):
-      if str(self.digits)[n] is not '0':
+      if self.digits[n] is not ',':
+        if self.digits[n] is not ' ':
+          try:
+            self.List+=[int(self.digits[n])]
+            badBoolean=True
+          except ValueError:   #Non-comma character in string
+            raise RuntimeError
+    if badBoolean is False:    #No numbers in string
+      raise RuntimeError
+    else:
+      return self.List
+
+
+  def increment(self):
+    length = len(self.List) - 1
+    newList = self.List
+    newList[len(self.List)-1] += 1
+    if newList[length]>=10:     #Loop to increment all 10s to 0s with carry
+      for n in range (0,length):
+        newList[length-n]=0
+        newList[length-n-1]+=1
+
+  def isZero(self):
+    for p in range (0,len(self.List)-1):
+      if self.List[p] is not 0:
         return False
     return True
+
   def toString(self):
-    return str(self.digits)
+    string=''
+    for q in range (0,len(self.List)):
+      string+=str(self.List[q])    #Make string by concatenation
+    return string
 
 
 
