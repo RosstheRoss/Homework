@@ -11,7 +11,6 @@ def filter(P,S):
         return (S[0]) + filter(P,S[1:])
     else:
         return filter(P,S[1:])
-
 def returnGreater(a,b):
     if a > b:
         return a
