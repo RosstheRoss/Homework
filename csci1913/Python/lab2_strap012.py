@@ -25,7 +25,7 @@ class Zillion:
   def increment(self):
     length = len(self.List) - 1
     newList = self.List
-    newList[len(self.List)-1] += 1
+    newList[length] += 1
     if newList[length]>=10:     #Loop to increment all 10s to 0s with carry
       for n in range (0,length):
         newList[length-n]=0
