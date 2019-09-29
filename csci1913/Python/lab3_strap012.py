@@ -1,16 +1,9 @@
 #"New" functions
 def Reduce(F,S):
     if len(S)==0:
-        return -999
+        return -255
     else:
-        return F(S[0],Reduce(F,S[1:]))
-def filter(P,S):
-    if len(S)==0:
-        return ()
-    elif P(S[0]):
-        return (S[0]) + filter(P,S[1:])
-    else:
-        return filter(P,S[1:])
+        return F(Reduce(F,S[:-1]),S[-1])
 def returnGreater(a,b):
     if a > b:
         return a
@@ -18,12 +11,19 @@ def returnGreater(a,b):
 
 #Implementation from Lab
 def Sort(T):
-    return None
+    if len(T)==0:
+        return ()
+    else:
+        return (Sort(Remove(T,Maximum(T))))+(Maximum(T),)
 def Maximum(T):
     return Reduce(returnGreater,T)
 def Remove(T,E):
-    return None
-
+    if len(T)==0:
+        return ()
+    elif T[0] is E:
+        return T[1:]
+    else:
+        return (T[0],)+Remove(T[1:],E)
 
 
 #
