@@ -7,7 +7,8 @@ def Reduce(F,S):
 def returnGreater(a,b):
     if a > b:
         return a
-    return b
+    else:
+        return b
 
 #Implementation from Lab
 def Sort(T):
