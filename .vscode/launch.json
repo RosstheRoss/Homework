@@ -15,7 +15,7 @@
             "type": "java",
             "name": "Java",
             "request": "launch",
-            "mainClass": ""
+            "mainClass": "Driver"
         },   
         {
             "name": "(gdb) Launch",
