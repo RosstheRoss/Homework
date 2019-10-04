@@ -4,7 +4,39 @@
 //  These tests are worth a total of 25 points.
 
 class Zillion {
-  
+  private int s;
+  private int[] number;
+  public Zillion(int size) {
+    number = new int[size];
+    s = size;
+  }
+  public void increment(){
+    int n = 0;
+    boolean isCorrect = false;
+    while (isCorrect==false) {
+      number[n]+=1;
+      if (number[n] >= 10) {
+        number[n]=0;
+        if (n<(s-1)) {
+          n+=1;
+        }
+        else {
+          isCorrect = true;
+        }
+      }
+      else {
+        isCorrect=true;
+      }
+    }
+
+  }
+  public String toString(){
+    String test = "";
+    for (int n=(s-1); n>=0; n-=1) {
+      test+=number[n];
+    }
+    return test;
+  }
 }
 
 class Driver
