@@ -3,6 +3,10 @@
 //  also has the number of points you will receive if the test is successful.
 //  These tests are worth a total of 25 points.
 
+class Zillion {
+  
+}
+
 class Driver
 {
   public static void main(String[] args)
