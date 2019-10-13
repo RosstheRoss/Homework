@@ -10,7 +10,12 @@
 //
 //  Put your code for the class SIEVE here!!!
 //
-
+class sieve {
+  
+  public sieve(){
+    for 
+  }
+}
 //  TOSS THE KNEES. Run SIEVE on some examples.
 
 class TossTheKnees
