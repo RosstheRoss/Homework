@@ -2,6 +2,7 @@
 // to decimal
 #include <stdio.h>
 #include <string.h>
+#include <iostream>
 
 // To return value of a char. For example, 2 is
 // returned for '2'. 10 is returned for 'A', 11
@@ -47,7 +48,9 @@ int main()
 {
     char str[] = "11A";
     int base = 16;
-    printf("Decimal equivalent of %s in base %d is "
+    printf("Please enter number followed by base: ");
+    std::cin >> str >> base;
+    printf("Decimal equivalent of %s in base %d is"
            " %d\n",
            str, base, toDeci(str, base));
     return 0;
