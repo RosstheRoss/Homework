@@ -1,5 +1,5 @@
 def collatzCount(number):
-    for n in range (1,number):
+    for n in range (1,number+1):
         collatzConjecture(n)
         print("\n")
 
@@ -8,7 +8,7 @@ def collatzConjecture(n):
     if n is 1:
         return 1
     else:
-        if (n%2):
+        if n%2:
             return collatzConjecture(int((n*3)+1))
         else:
             return collatzConjecture(int(n/2))
