@@ -4,6 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": "Python",
             "type": "python",
@@ -11,14 +12,14 @@
             "program": "${file}",
             "console": "integratedTerminal"
         },
+        // {
+            // "type": "java",
+            // "name": "Java",
+            // "request": "launch",
+            // "mainClass": "Driver"
+        // },   
         {
-            "type": "java",
-            "name": "Java",
-            "request": "launch",
-            "mainClass": "Driver"
-        },   
-        {
-            "name": "(gdb) Launch",
+            "name": "C++ (make sure to build default)",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/debug",

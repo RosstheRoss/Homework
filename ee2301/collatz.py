@@ -15,8 +15,8 @@ def collatzConjecture(n):
         raise AssertionError
 
 #main
-for i in range (1,3):
+for i in range (1,2):
     print("")
 
-collatzCount(10000)
+collatzCount(100)
 
