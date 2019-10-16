@@ -1,4 +1,5 @@
-package lab6;
+//package lab6;
+//Above package used for debugging
 
 class Rectangle extends Polygon {
     public Rectangle(int l, int w) {
