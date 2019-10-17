@@ -5,6 +5,7 @@
     "version": "0.2.0",
     "configurations": [
 
+
         {
             "name": "Python",
             "type": "python",
@@ -19,9 +20,10 @@
             // "mainClass": "Driver"
         // },   
         {
-            "name": "C++ (make sure to build default)",
+            "name": "C++",
             "type": "cppdbg",
             "request": "launch",
+            "preLaunchTask": "Build c++",
             "program": "${workspaceFolder}/debug",
             "args": [],
             "stopAtEntry": false,
@@ -29,6 +31,7 @@
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
+            //"miDebuggerPath": "/usr/bin/gdb",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
