@@ -50,12 +50,17 @@ class Grammar:
 
     def select(self, left):
         rules=self.dictionary[left]
-        total=len(rules)
-        index=self.r.choose(total)
-        chosen=rules[0] #Debug Kludge
+        total=0
+        chosenOne=0
+        for m in range (0, len(rules)):
+            total+=rules[m].count
+        index = self.r.choose(total)
+        chosen=rules[0]
         while index > 0:
-            chosen=rules[index]
-            index-=rules[index].count
+            index-=rules[chosenOne].count
+            chosenOne+=1
+        else:
+            chosen=rules[chosenOne]
         for n in range (0, len(rules)):
             if rules[n] is not chosen:
                 rules[n].count+=1
