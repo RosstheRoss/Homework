@@ -9,7 +9,7 @@ class Random:
         return self.newNum
 
     def choose(self, limit):
-        return next()%limit
+        return self.next()%limit
 
 
 
@@ -37,32 +37,40 @@ class Grammar:
         self.dictionary = {}
 
     def rule(self, left, right):
-        if left in self.dictionary:
-            self.dictionary[left]+=(Rule(left,right),)
+        if left not in self.dictionary:
+            self.dictionary[left]=(Rule(left,right),)
         else:
-            self.dictionary[left]=(Rule(left, right),)
+            self.dictionary[left]+=(Rule(left, right),)
 
     def generate(self):
         if 'Start' in self.dictionary:
-            self.generating(self.dictionary['Start'])
+           return self.generating(('Start',))
         else:
             raise RuntimeError
+
+    def select(self, left):
+        rules=self.dictionary[left]
+        total=len(rules)
+        index=self.r.choose(total)
+        chosen=rules[0] #Debug Kludge
+        while index > 0:
+            chosen=rules[index]
+            index-=rules[index].count
+        for n in range (0, len(rules)):
+            if rules[n] is not chosen:
+                rules[n].count+=1
+        return chosen.right
 
     def generating(self,strings):
         result=''
         for n in range (0, len(strings)):
-            if strings[n] in self.dictionary:
-                newStr = select(strings[n])
-                generating(newStr)
-            else:
-                result += str(strings[n])
+            if strings[n] not in self.dictionary:
+                result += strings[n]
                 result += " "
+            else:
+                result += self.generating(self.select(strings[n]))
         return result
 
-    def select(self, left):
-        rules=self.dictionary[left]
-        index=self.r.choose(len(rules))
-        
 
 
 
@@ -79,8 +87,5 @@ G.rule('Story',  ('Phrase',))  # 09
 G.rule('Story',  ('Phrase', 'and', 'Story'))  # 10
 G.rule('Story',  ('Phrase', 'but', 'Story'))  # 11
 G.rule('Start',  ('Story', '.'))  # 12
-G.generate()
-G.generate()
-G.generate()
-G.generate()
-G.generate()
+for n in range (0,5):
+    print(G.generate())
