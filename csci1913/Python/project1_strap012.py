@@ -51,16 +51,16 @@ class Grammar:
     def select(self, left):
         rules=self.dictionary[left]
         total=0
-        chosenOne=0
+        c=0
+        #Some of the loops are probably not needed
         for m in range (0, len(rules)):
             total+=rules[m].count
         index = self.r.choose(total)
-        chosen=rules[0]
-        while index > 0:
-            index-=rules[chosenOne].count
-            chosenOne+=1
-        else:
-            chosen=rules[chosenOne]
+        for c in range (0, len(rules)):
+            index -= rules[c].count
+            if index<=0:
+                break
+        chosen = rules[c]
         for n in range (0, len(rules)):
             if rules[n] is not chosen:
                 rules[n].count+=1
