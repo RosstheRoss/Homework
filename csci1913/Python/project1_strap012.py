@@ -38,9 +38,9 @@ class Grammar:
 
     def rule(self, left, right):
         if left not in self.dictionary:
-            self.dictionary[left]=(Rule(left,right),)
+            self.dictionary[left] = (Rule(left,right),)
         else:
-            self.dictionary[left]+=(Rule(left, right),)
+            self.dictionary[left] += (Rule(left, right),)
 
     def generate(self):
         if 'Start' in self.dictionary:
@@ -49,21 +49,21 @@ class Grammar:
             raise RuntimeError
 
     def select(self, left):
-        rules=self.dictionary[left]
-        total=0
-        c=0
+        rules = self.dictionary[left]
+        total = 0
+        c = 0
         #Some of the loops are probably not needed
         for m in range (0, len(rules)):
-            total+=rules[m].count
+            total += rules[m].count
         index = self.r.choose(total)
         for c in range (0, len(rules)):
             index -= rules[c].count
-            if index<=0:
+            if index <= 0:
                 break
         chosen = rules[c]
         for n in range (0, len(rules)):
             if rules[n] is not chosen:
-                rules[n].count+=1
+                rules[n].count += 1
         return chosen.right
 
     def generating(self,strings):
