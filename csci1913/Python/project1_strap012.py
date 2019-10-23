@@ -92,5 +92,43 @@ G.rule('Story',  ('Phrase',))  # 09
 G.rule('Story',  ('Phrase', 'and', 'Story'))  # 10
 G.rule('Story',  ('Phrase', 'but', 'Story'))  # 11
 G.rule('Start',  ('Story', '.'))  # 12
-for n in range (0,5):
+for n in range (0, 5):
     print(G.generate())
+
+# the cat bit the boy .
+# the cat kissed the dog and the boy chased the boy .
+# the cat chased the dog and the girl bit the boy but the girl chased the cat .
+# the girl chased the dog .
+# the boy kissed the girl and the cat kissed the girl .
+
+print()
+print()
+
+# 
+# 
+
+J = Grammar(1453)
+J.rule('Noun',   ('sentence',))
+J.rule('Noun',   ('walrus',))
+J.rule('Noun',   ('sky',))
+J.rule('Noun',   ('diamond',))
+J.rule('Noun',   ('Ottoman Empire',))
+J.rule('Verb',   ('is',))
+J.rule('Verb',   ('fanned',))
+J.rule('Verb',   ('generated',))
+J.rule('Verb',   ('hit',))
+J.rule('Phrase', ('the', 'Noun', 'Verb', 'the', 'Noun'))  # 08
+J.rule('Phrase', ('Noun', 'Verb', 'the', 'Noun'))
+J.rule('Story',  ('Phrase',))  # 09
+J.rule('Story',  ('Phrase', 'and', 'Story'))  # 10
+J.rule('Story',  ('Phrase', 'but', 'Story'))  # 11
+J.rule('Start',  ('Story', '.'))  # 12
+
+for f in range(0, 5):
+    print(J.generate())
+
+# the walrus is the sentence and the diamond generated the walrus .
+# the walrus generated the walrus and the walrus generated the sentence but diamond hit the sentence .
+# sentence fanned the Ottoman Empire .
+# the sky hit the diamond and sky is the sentence but the sky fanned the diamond .
+# the walrus generated the diamond and the diamond generated the Ottoman Empire but the sky generated the sentence .
