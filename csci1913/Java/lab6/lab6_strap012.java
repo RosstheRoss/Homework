@@ -1,3 +1,5 @@
+package lab6;
+
 class Rectangle extends Polygon {
     public Rectangle(int l, int w) {
         super(4, l, w, l, w);

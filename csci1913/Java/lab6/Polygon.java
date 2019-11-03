@@ -1,4 +1,4 @@
-
+package lab6;
 
 class Polygon 
 { 

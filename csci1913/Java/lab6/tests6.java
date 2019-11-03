@@ -1,3 +1,5 @@
+package lab6;
+
 //  SHAPES. Public tests for the classes RECTANGLE and SQUARE. Comments show
 //  what each test must print, and how many points it is worth.
 
