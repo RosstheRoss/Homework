@@ -21,8 +21,7 @@ class RunnyStack<Base> {
         if (b1 == null || b2 == null) {
             return b1 == b2;
         } else {
-            boolean foo = b1.base.equals(b2);
-            return foo;
+            return b1.base.equals(b2);
         }
     }
     public boolean isEmpty() {
