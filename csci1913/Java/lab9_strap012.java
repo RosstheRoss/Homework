@@ -70,7 +70,7 @@ class ArrayQueue<Base> {
                 where = (where + 1) % bases.length;
                 return temp;
             } else {
-                throw new IllegalStateException("Queues at its end.");
+                throw new IllegalStateException("Queue is at its end.");
             }
         }
         public void remove() {
