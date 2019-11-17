@@ -1,0 +1,323 @@
+t=[0:2:100]
+
+t =
+
+  Columns 1 through 11
+
+     0     2     4     6     8    10    12    14    16    18    20
+
+  Columns 12 through 22
+
+    22    24    26    28    30    32    34    36    38    40    42
+
+  Columns 23 through 33
+
+    44    46    48    50    52    54    56    58    60    62    64
+
+  Columns 34 through 44
+
+    66    68    70    72    74    76    78    80    82    84    86
+
+  Columns 45 through 51
+
+    88    90    92    94    96    98   100
+
+clear
+t=[0:2:100];
+x=10+exp(-0.2618*t)
+
+x =
+
+  Columns 1 through 6
+
+   11.0000   10.5924   10.3509   10.2079   10.1231   10.0729
+
+  Columns 7 through 12
+
+   10.0432   10.0256   10.0152   10.0090   10.0053   10.0032
+
+  Columns 13 through 18
+
+   10.0019   10.0011   10.0007   10.0004   10.0002   10.0001
+
+  Columns 19 through 24
+
+   10.0001   10.0000   10.0000   10.0000   10.0000   10.0000
+
+  Columns 25 through 30
+
+   10.0000   10.0000   10.0000   10.0000   10.0000   10.0000
+
+  Columns 31 through 36
+
+   10.0000   10.0000   10.0000   10.0000   10.0000   10.0000
+
+  Columns 37 through 42
+
+   10.0000   10.0000   10.0000   10.0000   10.0000   10.0000
+
+  Columns 43 through 48
+
+   10.0000   10.0000   10.0000   10.0000   10.0000   10.0000
+
+  Columns 49 through 51
+
+   10.0000   10.0000   10.0000
+
+clear
+t=[0:2:100];
+x=10+exp(-0.2618*t);
+Q=[-14.4721 10 -5.5279; 8.9443 -10 -8.9443; -5.5279 10 -14.4721];
+x=10+Q*exp(-0.2618*t);
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('mtimes')" style="font-weight:bold"> * </a>
+Incorrect dimensions for matrix multiplication. Check that the
+number of columns in the first matrix matches the number of rows in
+the second matrix. To perform elementwise multiplication, use '.*'.
+} 
+x=10+Q.*exp(-0.2618*t);
+{Matrix dimensions must agree.
+} 
+x=10+Q[1:].*exp(-0.2618*t);
+ x=10+Q[1:].*exp(-0.2618*t);
+       ↑
+{Error: Invalid expression. When calling a function or indexing a
+variable, use parentheses. Otherwise, check for mismatched
+delimiters.
+} 
+x=10+Q[:1].*exp(-0.2618*t);
+ x=10+Q[:1].*exp(-0.2618*t);
+       ↑
+{Error: Invalid expression. When calling a function or indexing a
+variable, use parentheses. Otherwise, check for mismatched
+delimiters.
+} 
+x=10+Q.*exp(-0.2618*t);
+{Matrix dimensions must agree.
+} 
+x=10+Q(:,1).*exp(-0.2618*t);
+plot(t,x)
+x=10+Q(1,:).*exp(-0.2618*t);
+{Matrix dimensions must agree.
+} 
+x=10+Q(:,1).*exp(-0.2618*t);
+plot(t,x)
+clear x
+x=10+Q(:,1).*exp(-0.2618*t);
+clear x
+Q(:,1)
+
+ans =
+
+  -14.4721
+    8.9443
+   -5.5279
+
+x=10+Q(:,1)*exp(-0.2618*t);
+x=10+Q(1,:)*exp(-0.2618*t);
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('mtimes')" style="font-weight:bold"> * </a>
+Incorrect dimensions for matrix multiplication. Check that the
+number of columns in the first matrix matches the number of rows
+in the second matrix. To perform elementwise multiplication, use
+'.*'.
+} 
+x=10+Q(:,1)*exp(-0.2618*t);
+plot(t,x)
+x=10+Q(1)*exp(-0.2618*t);
+Q(1)
+
+ans =
+
+  -14.4721
+
+x=10+Q(1)*exp(-0.2618*t)+Q(2)*exp(-0.2618*t)+Q(3)*exp(-0.2618*t);
+plot(t,x)
+F=-.2618; x=10+Q(1)*exp(F*t)+Q(2)*exp(F*t)+Q(3)*exp(F*t);
+plot(t,x);
+hold on;
+F=-.2618, y=3; y=10+Q(y+1)*exp(F*t)+Q(y+2)*exp(F*t)+Q(y+3)*exp(F*t);
+
+F =
+
+   -0.2618
+
+F=-.2618; y=3; y=10+Q(y+1)*exp(F*t)+Q(y+2)*exp(F*t)+Q(y+3)*exp(F*t);
+plot(t,y)
+F=-0.2; y=3; y=10+Q(y+1)*exp(F*t)+Q(y+2)*exp(F*t)+Q(y+3)*exp(F*t);
+plot(t,y)
+hold off
+plot(t,x)
+Q(4)
+
+ans =
+
+    10
+
+Q(3
+ Q(3
+    ↑
+{Error: Invalid expression. When calling a function or indexing a
+variable, use parentheses. Otherwise, check for mismatched
+delimiters.
+} 
+Q(3)
+
+ans =
+
+   -5.5279
+
+Q(0)
+{Array indices must be positive integers or logical values.
+} 
+Q(4)
+
+ans =
+
+    10
+
+Q(5)
+
+ans =
+
+   -10
+
+Q(6)
+
+ans =
+
+    10
+
+Q(7)
+
+ans =
+
+   -5.5279
+
+Q(8)
+
+ans =
+
+   -8.9443
+
+Q(9)
+
+ans =
+
+  -14.4721
+
+Q(10)
+{Index exceeds array bounds.
+} 
+Q(5)
+
+ans =
+
+   -10
+
+Q(6)
+
+ans =
+
+    10
+
+F=-0.2; y=3; y=10+Q(y,1)*exp(F*t)+Q(y,2)*exp(F*t)+Q(y,3)*exp(F*t);
+F=-0.2; y=0; x=10+Q(y,1)*exp(F*t)+Q(y,2)*exp(F*t)+Q(y,3)*exp(F*t);
+{Index in position 1 is invalid. Array indices must be positive
+integers or logical values.
+} 
+F=-0.2; y=1; x=10+Q(y,1)*exp(F*t)+Q(y,2)*exp(F*t)+Q(y,3)*exp(F*t);
+F=-0.2618; y=1; x=10+Q(y,1)*exp(F*t)+Q(y,2)*exp(F*t)+Q(y,3)*exp(F*t);
+plot(t,x)
+hold on;
+F=-0.2; y=2; x=10+Q(y,1)*exp(F*t)+Q(y,2)*exp(F*t)+Q(y,3)*exp(F*t);
+plot(t,y)
+F=-0.2618; y=1; x=10+Q(y,1)*exp(F*t)+Q(y,2)*exp(F*t)+Q(y,3)*exp(F*t);
+F=-0.2; y=2; y=10+Q(y,1)*exp(F*t)+Q(y,2)*exp(F*t)+Q(y,3)*exp(F*t);
+plot(t,y)
+clear plot
+F=-0.2618; y=1; x=10+Q(y,1)*exp(F*t)+Q(y,2)*exp(F*t)+Q(y,3)*exp(F*t);
+F=-0.2618; z=2; y=10+Q(z,1)*exp(F*t)+Q(z,2)*exp(F*t)+Q(z,3)*exp(F*t);
+F=-0.2; z=2; y=10+Q(z,1)*exp(F*t)+Q(z,2)*exp(F*t)+Q(z,3)*exp(F*t);
+plot(t,y)
+plot(t,x)
+hold onl
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('hold', '/soft/MATLAB/R2018a/toolbox/matlab/graphics/hold.m', 83)" style="font-weight:bold">hold</a> (<a href="matlab: opentoline('/soft/MATLAB/R2018a/toolbox/matlab/graphics/hold.m',83,0)">line 83</a>)
+Unknown command option.
+} 
+hold on
+plot(t,y)
+F=-0.2; z=2; y=10+Q(z,1)*exp(F*t)+Q(z,2)*exp(F*t)+Q(z,3)*exp(F*t);
+Q(2,1)
+
+ans =
+
+    8.9443
+
+F=-0.2; z=2; y=10+Q(z,1)*exp(F*t)+Q(z,2)*exp(F*t)+Q(z,3)*exp(F*t);
+F=-0.2; a=2; z=10+Q(a,1)*exp(F*t)+Q(a,2)*exp(F*t)+Q(a,3)*exp(F*t);
+F=-0.0382; a=3; z=10+Q(a,1)*exp(F*t)+Q(a,2)*exp(F*t)+Q(a,3)*exp(F*t);
+plot (t,z)
+clear plot;
+plot (t,x)
+plot (t,z)
+plot (t,x)
+hold on
+plot (t,z)
+F=-0.2; z=2; y=10+Q(z,1)*exp(F*t)+Q(z,2)*exp(F*t)+Q(z,3)*exp(F*t);
+plot(t,y)
+plot(t,x); plot(t,y) plot(t,z)
+ plot(t,x); plot(t,y) plot(t,z)
+                      ↑
+{Error: Invalid expression. Check for missing multiplication
+operator, missing or unbalanced delimiters, or other syntax
+error. To construct matrices, use brackets instead of
+parentheses.
+} 
+plot(t,x); plot(t,y); plot(t,z)
+clear plot
+plot(t,x); hold on; plot(t,y); plot(t,z)
+plot(t,x); plot(t,y); plot(t,z)
+hold on
+plot(t,x); plot(t,y); plot(t,z)
+F=-0.2; z=2; y=10+Q(z,1)*exp(F*t)+Q(z,2)*exp(F*t)+Q(z,3)*exp(F*t);
+plot(t,x); plot(t,y); plot(t,z)
+F=-0.0382; a=3; z=10+Q(a,1)*exp(F*t)+Q(a,2)*exp(F*t)+Q(a,3)*exp(F*t);
+plot(t,x); plot(t,y); plot(t,z)
+hold on;
+plot(t,x); plot(t,y); plot(t,z)
+F=-0.0382; z=10+Q(a,1)*exp(-.2618*t)+Q(a,2)*exp(-.2*t)+Q(a,3)*exp(-.0382*t);
+a=1; z=10+Q(a,1)*exp(-.2618*t)+Q(a,2)*exp(-.2*t)+Q(a,3)*exp(-.0382*t);
+a=1; x=10+Q(a,1)*exp(-.2618*t)+Q(a,2)*exp(-.2*t)+Q(a,3)*exp(-.0382*t);
+a=2; y=10+Q(a,1)*exp(-.2618*t)+Q(a,2)*exp(-.2*t)+Q(a,3)*exp(-.0382*t);
+a=3; z=10+Q(a,1)*exp(-.2618*t)+Q(a,2)*exp(-.2*t)+Q(a,3)*exp(-.0382*t);
+hold on;
+plot(t,x); plot(t,y); plot(t,z)
+plot(t,x,'b:s'); plot(t,y,'r:p'); plot(t,z,'g,t')
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('plot')" style="font-weight:bold">plot</a>
+Error in color/linetype argument.
+} 
+plot(t,x,'b:s'); plot(t,y,'r:p'); plot(t,z,'g,o')
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('plot')" style="font-weight:bold">plot</a>
+Error in color/linetype argument.
+} 
+plot(t,x,'b:s'); plot(t,y,'r:p'); plot(t,z,'-o')
+t.label("time")
+{Dot indexing is not supported for variables of this type.
+} 
+t.label('time')
+{Dot indexing is not supported for variables of this type.
+} 
+x.label('time')
+{Dot indexing is not supported for variables of this type.
+} 
+xlabel('time')
+xlabel('Time')
+ylabel('Amount of salt')
+xlabel('Time (seconds)')
+xlabel('Time (min)')
+plot(t,x,'b:s'); plot(t,y,'r:p'); plot(t,z,'-o')
+xlabel('Time (min)')
+ylabel('Amount of salt')
+hold on;
+plot(t,x,'b:s'); plot(t,y,'r:p'); plot(t,z,'-o')
+xlabel('Time (min)')
+ylabel('Amount of salt')
