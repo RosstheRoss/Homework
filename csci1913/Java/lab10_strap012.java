@@ -7,30 +7,69 @@ class AssociationList<Key, Value> {
             key=k; value=v; next=n;
         }
     }
+    private Node head;
     public AssociationList() {
-        Node head = new Node("HEAD", "HEAD", null);
+        head = new Node(null, null, null);
     }
     public void delete(Key key) {
+        Node left = head;
+        Node right = head.next;
+        while (right!=null) {
+            if (isEqual(right.key, key)) {
+                left.next=right.next;
+                break;
+            } else {
+                left=right; right=right.next;
+            }
+        }
 
     }
     public Value get(Key key) {
-
+        Node where=head.next;
+        while (where!=null) {
+            if (isEqual(where.key,key)) {
+                return where.value;
+            } else {
+                where=where.next;
+            }
+        } //No matching key found
+        throw new IllegalArgumentException();
     }
     private boolean isEqual(Key leftKey, Key rightKey) {
         if (leftKey == null || rightKey == null) {
             return leftKey == rightKey;
         } else {
-            return leftkey.equals(rightKey);
+            return leftKey.equals(rightKey);
         }
     }
     public boolean isIn(Key key) {
-
+        Node where = head.next;
+        while (where != null) {
+            if (isEqual(where.key, key)) {
+                return true;
+            } else {
+                where = where.next;
+            }
+        } // No matching key found
+        return false;
     }
     public void put(Key key, Value value) {
-        
+        Node where=head.next;
+        boolean found=false;
+        while (where!=null){
+            if(isEqual(key, where.key)) {
+                where.value=value;
+                found=true;
+                break;
+            } else {
+                where=where.next;
+            }
+        } //End of while
+        if (!found) {
+            Node temp=head.next;
+            head.next= new Node(key, value, temp);
+        }
     }
-
-    
 }
 
 //
