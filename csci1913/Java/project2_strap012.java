@@ -78,7 +78,19 @@ class Sort {
         }
         left = sortNodes(left);
         right = sortNodes(right);
+        //Combining phase
+        while (left != null && right != null) {
+            if (left.number > right.number) {
+                
+            } else {
 
+            }
+        }
+        if (left == null) {
+            sorted.next=right;
+        } else {
+            sorted.next=left;
+        }
         return sorted;
     }
 
