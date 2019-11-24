@@ -54,69 +54,33 @@ class Sort {
     // NUMBER slots, without making new NODEs.
 
     private static Node sortNodes(Node unsorted) {
-        Node left=null, right=null, sorted=null;
-        boolean firstSort=true;
+        Node left = null, right = null, sorted = null;
         if (unsorted==null || unsorted.next==null) {
         //unsorted list is either empty or of length 1
             return unsorted;
         } else {
-        //--HALVING PHASE--
-            int oddeven = 0;
-            boolean firstNodeR = true, firstNodeL = true;
-            while (unsorted!=null) {
-                
-                if (oddeven%2==0) {
-                    if (firstNodeL) {
-                        left=unsorted;
-                        firstNodeL=false;
+        //Halving phase
+            int step = 1;
+            while (unsorted != null) {
+                // Node tL = left, tR = right;
+                if (step % 2 == 0) {    //Odd case
+                    if (right == null) {
+                        right = unsorted;
                     } else {
-                        unsorted=left.next;
+                        right.next=unsorted;
                     }
-                } else {
-                    if (firstNodeR) {
-                        right=unsorted;
-                        firstNodeR=false;
+                } else {                //Even case
+                    if (right == null) {
+                        left = unsorted;
                     } else {
-                        unsorted = right.next;
+                        left.next=unsorted;
                     }
                 }
-                oddeven++;
-                unsorted=unsorted.next;
+                unsorted = unsorted.next;
+                step++;
             }
         }
-        //--SORTING PHASE--
-        sortNodes(left); sortNodes(right);
-        //--COMBINING PHASE
-        while (left != null || right != null) {
-            if (left.number>right.number) {
-                if(firstSort) {
-                    sorted = left;
-                    firstSort = false;
-                } else {
-                    sorted.next = left;
-                }
-                left = left.next;
-            } else {
-                if (firstSort) {
-                    sorted = right;
-                    firstSort = false;
-                } else {
-                    sorted.next = right;
-                }
-                right = right.next;  
-            }
-        }
-        if (left==null) {
-            while (right!=null) {
-                sorted.next=right;
-                right=right.next;
-            }
-        } else if (right==null) {
-            while (left!=null) {
-                sorted.next=left;
-                left=left.next;
-            }
-        }
+
         return sorted;
     }
 
