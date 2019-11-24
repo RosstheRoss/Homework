@@ -62,22 +62,21 @@ class Sort {
         //Halving phase
             int step = 1;
             while (unsorted != null) {
-                // Node tL = left, tR = right;
                 if (step % 2 == 0) {    //Odd case
                     if (right == null) {
                         right = unsorted;
                     } else {
-                        right.next=unsorted;
+
                     }
                 } else {                //Even case
-                    if (right == null) {
+                    if (left == null) {
                         left = unsorted;
                     } else {
-                        left.next=unsorted;
+
                     }
                 }
-                unsorted = unsorted.next;
                 step++;
+                unsorted = unsorted.next; 
             }
         }
 
