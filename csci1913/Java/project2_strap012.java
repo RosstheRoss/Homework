@@ -54,29 +54,31 @@ class Sort {
     // NUMBER slots, without making new NODEs.
 
     private static Node sortNodes(Node unsorted) {
+        Node left = null, right = null, sorted = null;
         if (unsorted==null || unsorted.next==null) {
         //unsorted is either empty or of length 1
             return unsorted;
         } //Halving phase
-        Node left = null, right = null, sorted = null;
-        int step = 1;
-        while (unsorted != null) {
-            if (step % 2 == 0) {    //Odd case
-                if (right == null) {
+        else {
+            int step = 1;
+            while (unsorted != null) {
+                Node next = unsorted.next;
+                if (step % 2 == 0) {    //Even case
+                    //Pops out first value and puts into Right
+                    unsorted.next = right;
                     right = unsorted;
-                } else {
-                    right.next = unsorted;
+                } else {                //Odd case
+                    // Pops out first value and puts into Left
+                    unsorted.next = left;
+                    left = unsorted; 
                 }
-            } else {                //Even case
-                if (left == null) {
-                    left = unsorted;
-                } else {
-                    left.next = unsorted;
-                }
+                step++;
+                unsorted = next;
             }
-            step++;
-            unsorted = unsorted.next; 
         }
+        left = sortNodes(left);
+        right = sortNodes(right);
+
         return sorted;
     }
 
