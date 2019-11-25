@@ -83,30 +83,28 @@ class Sort {
         Node end = null;
         if (left.number < right.number) {
             Node temp = left.next;
-            sorted=left;
-            end = left;
+            sorted = left; end = left;
             left.next = null;
             left = temp;
             end.next = null;
-        } else if (right.number > left.number) {
+        } else {
             Node temp = right.next;
-            end = right;
-            sorted = right;
-            right.next  =null;
+            end = right; sorted = right;
+            right.next  = null;
             right = temp;
             end.next = null;
         }
         while (left != null && right != null) {
-            if (left.number > right.number) {
-                right.next = end;
-                Node temp = right.next;
-                right.next = null;
-                end = temp;
-            } else {
-                left.next = end;
+            if (left.number < right.number) {
                 Node temp = left.next;
-                left.next = null;
-                end = temp;
+                end = left;
+                right = temp;
+                end.next = null;
+            } else { 
+                Node temp = right.next;
+                end = right;
+                right = temp;
+                end.next = null; 
             }
         }
         if (left == null) {
