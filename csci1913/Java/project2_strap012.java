@@ -76,6 +76,7 @@ class Sort {
                 unsorted = next;
             }
         }
+        //Sorting (recursive) Phase
         left = sortNodes(left);
         right = sortNodes(right);
         //Combining phase
@@ -108,11 +109,11 @@ class Sort {
                 end = temp;
             }
         }
-        // if (left == null) {
-        //     sorted.next=right;
-        // } else {
-        //     sorted.next=left;
-        // }
+        if (left == null) {
+            end.next=right;
+        } else {
+            end.next=left;
+        }
         return sorted;
     }
 
