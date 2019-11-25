@@ -79,18 +79,40 @@ class Sort {
         left = sortNodes(left);
         right = sortNodes(right);
         //Combining phase
+        Node end = null;
+        if (left.number < right.number) {
+            Node temp = left.next;
+            sorted=left;
+            end = left;
+            left.next = null;
+            left = temp;
+            end.next = null;
+        } else if (right.number > left.number) {
+            Node temp = right.next;
+            end = right;
+            sorted = right;
+            right.next  =null;
+            right = temp;
+            end.next = null;
+        }
         while (left != null && right != null) {
             if (left.number > right.number) {
-                
+                right.next = end;
+                Node temp = right.next;
+                right.next = null;
+                end = temp;
             } else {
-
+                left.next = end;
+                Node temp = left.next;
+                left.next = null;
+                end = temp;
             }
         }
-        if (left == null) {
-            sorted.next=right;
-        } else {
-            sorted.next=left;
-        }
+        // if (left == null) {
+        //     sorted.next=right;
+        // } else {
+        //     sorted.next=left;
+        // }
         return sorted;
     }
 
