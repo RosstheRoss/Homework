@@ -109,7 +109,7 @@ class Sort {
         }
         if (left == null) {
             end.next=right;
-        } else {
+        } else if (right == null) {
             end.next=left;
         }
         return sorted;
