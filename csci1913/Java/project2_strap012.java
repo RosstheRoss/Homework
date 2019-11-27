@@ -54,11 +54,12 @@ class Sort {
     // NUMBER slots, without making new NODEs.
 
     private static Node sortNodes(Node unsorted) {
-        Node left = null, right = null, sorted = null;
+        Node left = null, right = null;
         if (unsorted==null || unsorted.next==null) {
         //unsorted is either empty or of length 1
             return unsorted;
-        } //Halving phase
+        } 
+        //Halving phase
         else {
             int step = 1;
             while (unsorted != null) {
@@ -79,34 +80,40 @@ class Sort {
         //Sorting (recursive) Phase
         left = sortNodes(left);
         right = sortNodes(right);
-        //Combining phase
-        Node end = null;
+
+        //Combining phase, variables needed for Q funs
+        Node end = null, temp = null, sorted = null;
+        //Special Initial Case
         if (left.number < right.number) {
-            Node temp = left.next;
-            sorted = left; end = left;
-            left.next = null;
+            sorted = left; 
+            end = left;
+            temp = left.next;
             left = temp;
             end.next = null;
         } else {
-            Node temp = right.next;
-            end = right; sorted = right;
-            right.next  = null;
+            temp = right.next;
+            sorted = right;
+            end = right;
             right = temp;
             end.next = null;
         }
+        //Loop for rearranging pointers. Easily the hardest part of the assignment
         while (left != null && right != null) {
             if (left.number < right.number) {
-                Node temp = left.next;
+                end.next = left;
                 end = left;
-                right = temp;
+                temp = left.next;
                 end.next = null;
-            } else { 
-                Node temp = right.next;
+                left = temp;
+            } else { //Right is smaller or equal, put it at the end.
+                end.next = right;
                 end = right;
+                temp = right.next;
+                end.next = null;
                 right = temp;
-                end.next = null; 
             }
-        }
+        } 
+
         if (left == null) {
             end.next=right;
         } else if (right == null) {
@@ -131,5 +138,11 @@ class Sort {
 
         writeNodes(sortNodes(makeNodes(3, 1, 4, 5, 9, 2, 6, 8, 7)));
         // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+        writeNodes(sortNodes(makeNodes(5,5,5,1,2,3,6,90,12,1,14)));
+        // [1, 1, 2, 3, 5, 5, 5, 6, 12, 14, 90]
+
+        writeNodes(sortNodes(makeNodes(1, 100, 6, 100, 1, 15, 10000, 12, 2, 0, -15)));
+        // [-15, 0, 1, 1, 2, 6, 12, 15, 100, 100, 10000]
     }
 }

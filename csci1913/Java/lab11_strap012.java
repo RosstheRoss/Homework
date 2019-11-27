@@ -4,7 +4,7 @@ class Deque<Base> {
         private Base object;
         private Node left;
         private Node right;
-        private Node(Base o,Node l,Node r) {
+        private Node(Base o, Node l, Node r) {
             object = o;
             left = l; right = r;
         }
@@ -13,20 +13,40 @@ class Deque<Base> {
         head = new Node(null, null, null);
         head.left=head; head.right=head;
     }
-    public void enqueueFront(Base object) {
-        
-    }
     public void enqueueRear(Base object) {
-        
+            Node tempL = head;
+            Node newNode = new Node(object, tempL.left, tempL);
+            tempL.left.right = newNode;
+            tempL.left = newNode;
     }
-    public Base dequeueFront() {
-
+    public void enqueueFront(Base object) {
+            Node tempR = head;
+            Node newNode = new Node(object, tempR, tempR.right);
+            tempR.right.left = newNode;
+            tempR.right = newNode;
     }
     public Base dequeueRear() {
-
+        if (isEmpty()) {
+            throw new IllegalStateException();
+        } else {
+            Node temp = head.left;
+            temp.left.right = head;
+            head.left = temp.left;
+            return temp.object;
+        }
+    }
+    public Base dequeueFront() {
+        if (isEmpty()) {
+            throw new IllegalStateException();
+        } else {
+            Node temp = head.right;
+            temp.right.left = head;
+            head.right = temp.right;
+            return temp.object;
+        }
     }
     public Boolean isEmpty() {
-        return head.right==null && head.left==null;
+        return head.right==head && head.left==head;
     }
 }
 
@@ -74,8 +94,8 @@ class ObservationDeque{
         deque.enqueueFront("B");
         deque.enqueueFront("C"); 
 
-        System.out.println(deque.dequeueFront()); // C 2
-        points. System.out.println(deque.dequeueFront()); // B 2 points.
+        System.out.println(deque.dequeueFront()); // C 2 points.
+        System.out.println(deque.dequeueFront()); // B 2 points.
         System.out.println(deque.dequeueFront()); // A 2 points.
 
         System.out.println(deque.isEmpty()); // true 2 points.
