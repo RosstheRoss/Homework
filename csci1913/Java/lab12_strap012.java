@@ -47,11 +47,9 @@ class PriorityQueue<Base> {
             if (bottom.rank <= rank) {
                 bottom = bottom.left;
                 LR = false;
-                //LR = true;
             } else {
                 bottom = bottom.right;
                 LR = true;
-                //LR = false;
             }
         }
         if (LR) {
