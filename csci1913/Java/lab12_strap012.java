@@ -1,7 +1,7 @@
 class PriorityQueue<Base> { 
     private class Node { 
         private Base object; 
-        private int  rank; 
+        private int rank; 
         private Node left; 
         private Node right; 
         private Node(Base object, int rank) { 
@@ -19,13 +19,17 @@ class PriorityQueue<Base> {
         return root.right==root.left;
     }
     public Base dequeue() {
-        if (isEmpty()) {
+        if (isEmpty())
             throw new IllegalStateException();
-        } else {
-            Node Test = root.right;
-            
-            return Test.object;
+        Node top = root;
+        Node bottom = root.right; //First node is always to the right of the root.
+        while (bottom.right != null) { //Find lowest rank
+            top = bottom;
+            bottom = bottom.right;
         }
+        
+        return bottom.object;
+    
     }
     // Unlike the BST’s discussed in the lectures, the nodes in 
     // each left subtree have ranks less than or equal to the 
@@ -33,10 +37,27 @@ class PriorityQueue<Base> {
     // ranks greater than the rank at the root.
     // This allows two or more nodes to have the same rank.
     public void enqueue(Base object, int rank) {
-        if (rank < 0) {
+        if (rank < 0)
             throw new IllegalArgumentException();
+        boolean LR = true;
+        Node top = root;
+        Node bottom = root.right;
+        while (bottom != null) {
+            top = bottom;
+            if (bottom.rank <= rank) {
+                bottom = bottom.left;
+                LR = false;
+                //LR = true;
+            } else {
+                bottom = bottom.right;
+                LR = true;
+                //LR = false;
+            }
+        }
+        if (LR) {
+            top.right = new Node(object, rank);
         } else {
-            
+            top.left = new Node(object, rank);
         }
     }
  
