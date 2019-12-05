@@ -14,7 +14,7 @@ class PriorityQueue<Base> {
     private Node root;  //  Root node of the BST.
     public PriorityQueue() {
         root = new Node(null, -1);
-      } //root is the One God
+      } //root is the King of Kings
     public boolean isEmpty() {
         return root.right==root.left;
     }
@@ -22,13 +22,13 @@ class PriorityQueue<Base> {
         if (isEmpty()) {
             throw new IllegalStateException();
         } else {
-            Node Test = root;
-
+            Node Test = root.right;
+            
             return Test.object;
         }
     }
     // Unlike the BST’s discussed in the lectures, the nodes in 
-    //each left subtree have ranks less than or equal to the 
+    // each left subtree have ranks less than or equal to the 
     // rank at the root. The nodes in each right subtree have 
     // ranks greater than the rank at the root.
     // This allows two or more nodes to have the same rank.
