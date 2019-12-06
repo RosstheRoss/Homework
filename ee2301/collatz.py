@@ -17,6 +17,7 @@ def collatzConjecture(n):
 #main
 for i in range (1,2):
     print("")
-
-collatzCount(100)
-
+try:
+    collatzCount(100)
+except AssertionError:
+    print("The Collatz Conjecture is false!")
