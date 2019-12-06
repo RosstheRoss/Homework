@@ -17,7 +17,7 @@ class PriorityQueue<Base> {
         root = new Node(null, -1);  // root is the lone King of Kings
       }
     public boolean isEmpty() {
-        return root.right==root.left;
+        return root.right == root.left;
     }
 
     public Base dequeue() {
@@ -52,11 +52,10 @@ class PriorityQueue<Base> {
                 lessOrEqual = false;
             }
         }
-        if (lessOrEqual) {
+        if (lessOrEqual)
             top.left = new Node(object, rank);
-        } else {
+        else 
             top.right = new Node(object, rank);
-        }
     }
 }
 //  SNOBBERY. How the aristocracy behaves in a queue. 20 points.
