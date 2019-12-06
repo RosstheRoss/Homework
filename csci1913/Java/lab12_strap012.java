@@ -22,14 +22,14 @@ class PriorityQueue<Base> {
         if (isEmpty())
             throw new IllegalStateException();
         Node top = root;
-        Node bottom = root.right; //First node is always to the right of the root.
-        while (bottom.right != null) { //Find lowest rank
+        Node bottom = root.right;
+        while (bottom.right != null) {
             top = bottom;
             bottom = bottom.right;
         }
-        
+        top.right = bottom.right;
+        top.left = bottom.left;
         return bottom.object;
-    
     }
     // Unlike the BST’s discussed in the lectures, the nodes in 
     // each left subtree have ranks less than or equal to the 
