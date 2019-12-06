@@ -11,54 +11,53 @@ class PriorityQueue<Base> {
             right = null; 
         } 
     }
-    private Node root;  //  Root node of the BST.
+    private Node root;              // Root node of the BST.
+
     public PriorityQueue() {
-        root = new Node(null, -1);
-      } //root is the King of Kings
+        root = new Node(null, -1);  // root is the lone King of Kings
+      }
     public boolean isEmpty() {
         return root.right==root.left;
     }
+
     public Base dequeue() {
         if (isEmpty())
             throw new IllegalStateException();
         Node top = root;
         Node bottom = root.right;
-        while (bottom.right != null) {
+        while (bottom.left != null) {
             top = bottom;
-            bottom = bottom.right;
+            bottom = bottom.left;
         }
-        top.right = bottom.right;
-        top.left = bottom.left;
+        if (top.object == null)     // Special case for top being the head node
+            top.right = bottom.right;    
+        else
+            top.left = bottom.right;
         return bottom.object;
     }
-    // Unlike the BST’s discussed in the lectures, the nodes in 
-    // each left subtree have ranks less than or equal to the 
-    // rank at the root. The nodes in each right subtree have 
-    // ranks greater than the rank at the root.
-    // This allows two or more nodes to have the same rank.
+
     public void enqueue(Base object, int rank) {
-        if (rank < 0)
+        if (rank < 0)               // No extra negative ranks allowed
             throw new IllegalArgumentException();
-        boolean LR = true;
+        boolean lessOrEqual = false;
         Node top = root;
         Node bottom = root.right;
         while (bottom != null) {
             top = bottom;
-            if (bottom.rank <= rank) {
+            if (rank <= bottom.rank) {
                 bottom = bottom.left;
-                LR = false;
+                lessOrEqual = true;
             } else {
                 bottom = bottom.right;
-                LR = true;
+                lessOrEqual = false;
             }
         }
-        if (LR) {
-            top.right = new Node(object, rank);
-        } else {
+        if (lessOrEqual) {
             top.left = new Node(object, rank);
+        } else {
+            top.right = new Node(object, rank);
         }
     }
- 
 }
 //  SNOBBERY. How the aristocracy behaves in a queue. 20 points.
 
