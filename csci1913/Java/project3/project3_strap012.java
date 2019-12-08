@@ -6,7 +6,7 @@ class AnagramTree {
         private WordNode words;
         private TreeNode left, right;
         private TreeNode(String word, byte[] summary) {
-            words = new WordNode(word);
+            words = new WordNode(word, null);
             this.summary = summary;
             left = null; right = null;
         }
@@ -15,55 +15,70 @@ class AnagramTree {
     private class WordNode {
         private String word;
         private WordNode next;
-        private WordNode(String word) {
+        private WordNode(String word, WordNode next) {
             this.word = word;
-            next = null;
+            this.next = next;
         }
     }
 
     public AnagramTree() {
-        head = new TreeNode("e", stringToSummary("e"));
+        head = new TreeNode(null, null);
     }
 
     public void add (String word) {
         byte [] newSumm = new byte [26];
         newSumm = stringToSummary(word);
-        TreeNode top = head, bottomR = head.right, bottomL = head.left;
-        // boolean goLeft = false;
-        try { while (true) {
-            int comp = compareSummaries(top.summary, newSumm);
-            if (comp < 0) {        // left is less than right, go left
-                top = bottomL;
-                // goLeft = true;
-                bottomL = bottomL.left;
-            } else if (comp > 0) { // right is less, go right
-                top = bottomR;
-                // goLeft = false;
-                bottomR = bottomR.right;
+        TreeNode top = head, bottom = top.right;
+        boolean goLeft = false, addWord = false;
+        try { while (bottom != null) {
+            int comp = compareSummaries(bottom.summary, newSumm);
+            if (comp > 0) {        // left is less than right, go left
+                top = bottom;
+                goLeft = true;
+                bottom = bottom.left;
+            } else if (comp < 0) { // right is less, go right
+                top = bottom;
+                goLeft = false;
+                bottom = bottom.right;
             } else {
-                top.words.next = new WordNode(word);
+                bottom.words = new WordNode(word, bottom.words);
+                addWord = true;
+                break;
             }
-        }} catch (NullPointerException ignore) {
-            top = new TreeNode(word, newSumm);    
         }
-    } 
+        if (addWord) {} // Do nothing
+            else {
+                if (goLeft)
+                    top.left = new TreeNode(word, newSumm);
+                else
+                    top.right = new TreeNode(word, newSumm);
+            }
+        } catch (NullPointerException ignore)  {
+            System.out.println("A");
+        }
+        } 
 
     public void anagrams() {
-        findAnagrams(head.left);
-        findAnagrams(head.right);       //e should be lower than other words as it is e
+        System.out.println(findAnagrams(head.right));       //e should be lower than other words as it is e
     }
 
-    private void findAnagrams(TreeNode subtree) {
-        try { while (true) {
-            findAnagrams(subtree.right);
-            findAnagrams(subtree.left);
-            
-        } } catch (NullPointerException ignore) { /* Do nothing */}
-    }
-
-    public String toString() {
+    private String findAnagrams(TreeNode subtree) {
         StringBuilder builder = new StringBuilder();
-
+        try {
+            if (subtree.words.next != null) {
+                while (subtree.words != null) {
+                    builder.append(subtree.words.word);
+                    builder.append(" ");
+                    subtree.words = subtree.words.next;
+                }
+            }
+            if (subtree != null) {
+                findAnagrams(subtree.right);
+                findAnagrams(subtree.left);
+            }
+        } catch (NullPointerException ignore) {
+            //Do nothing
+        }
         return builder.toString();
     }
     
@@ -92,5 +107,6 @@ class Anagrammer {
         while (words.hasNext()) {
             anagrams.add(words.next());
         }
+        anagrams.anagrams();
     }
 }
