@@ -64,7 +64,7 @@ class AnagramTree {
     } 
 
     public void anagrams() {
-        findAnagrams(head.right);       //e should be lower than other words as it is e
+        findAnagrams(head.right);
     }
 
     private void findAnagrams(TreeNode subtree) {
