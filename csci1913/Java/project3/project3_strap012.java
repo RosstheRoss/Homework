@@ -33,11 +33,11 @@ class AnagramTree {
         boolean goLeft = false, addWord = false;
         while (bottom != null) {
             int comp = compareSummaries(bottom.summary, newSumm);
-            if (comp > 0) {        // left is less than right, go left
+            if (comp > 0) {        // left is greater than right, go left
                 top = bottom;
                 goLeft = true;
                 bottom = bottom.left;
-            } else if (comp < 0) { // right is less, go right
+            } else if (comp < 0) { // right is greater, go right
                 top = bottom;
                 goLeft = false;
                 bottom = bottom.right;
@@ -45,6 +45,7 @@ class AnagramTree {
                 WordNode badNode = bottom.words;
                 boolean wordExists = false;
                 while (badNode != null) {
+                //Traverse word list to find already added entries
                     if (badNode.word.equals(word)) 
                         wordExists = true;
                     badNode = badNode.next; 
@@ -55,7 +56,7 @@ class AnagramTree {
                 break;
             }
         }   
-        if (!addWord) {     //Word was not added, keep going
+        if (!addWord) {     //Word was not added (or already exists), keep going
             if (goLeft)
                 top.left = new TreeNode(word, newSumm);
             else
@@ -98,6 +99,7 @@ class AnagramTree {
                 return left[i] - right[i];
             }
         }
+        //Summaries are identical
         return 0;
     }
 
