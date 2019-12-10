@@ -84,9 +84,9 @@ class AnagramTree {
             }
         } catch (NullPointerException ignore) {
             /*
-            This exception exists as a kludge for any time
-            subtree is null. The program does bad things (crash)
-            if this is not present.
+             This exception exists as a kludge for any time
+             subtree is null. The program does bad things
+             if this is not present.
             */
         }
     }

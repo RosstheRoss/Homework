@@ -16,7 +16,7 @@ class Test
  
   private static int hash(String name) 
   { 
-    return (name.charAt(0) + name.charAt(name.length()-1)) * name.length() % 997;
+    return (name.charAt(0) + name.charAt(name.length()-1)) * name.length() % 1023;
   } 
  
   public static void main(String [] args) 
