@@ -1,3 +1,4 @@
+//package used to bundle with Words class
 package project3;
 class AnagramTree {
     private TreeNode head;
@@ -30,7 +31,7 @@ class AnagramTree {
         newSumm = stringToSummary(word);
         TreeNode top = head, bottom = top.right;
         boolean goLeft = false, addWord = false;
-        try { while (bottom != null) {
+        while (bottom != null) {
             int comp = compareSummaries(bottom.summary, newSumm);
             if (comp > 0) {        // left is less than right, go left
                 top = bottom;
@@ -53,17 +54,13 @@ class AnagramTree {
                 addWord = true;
                 break;
             }
-        }
-        if (addWord) {} // Do nothing
-            else {
-                if (goLeft)
-                    top.left = new TreeNode(word, newSumm);
-                else
-                    top.right = new TreeNode(word, newSumm);
+        }   
+        if (!addWord) {     //Word was not added, keep going
+            if (goLeft)
+                top.left = new TreeNode(word, newSumm);
+            else
+                top.right = new TreeNode(word, newSumm);
             }
-        } catch (NullPointerException ignore)  {
-            System.out.println("A");
-        }
         } 
 
     public void anagrams() {
@@ -85,7 +82,11 @@ class AnagramTree {
                 findAnagrams(subtree.left);
             }
         } catch (NullPointerException ignore) {
-            //Do nothing
+            /*
+            This exception exists as a kludge for any time
+            subtree is null. The program does bad things (crash)
+            if this is not present.
+            */
         }
         
         
@@ -117,6 +118,7 @@ class Anagrammer {
             anagrams.add(words.next());
         }
         anagrams.anagrams();
+        //Print extra line for neatness
         System.out.println();
     }
 }
