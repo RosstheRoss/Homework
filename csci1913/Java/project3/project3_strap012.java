@@ -56,7 +56,7 @@ class AnagramTree {
                 break;
             }
         }   
-        if (!addWord) {     //Word was not added (or already exists), keep going
+        if (!addWord) {     //Word was not added, add it
             if (goLeft)
                 top.left = new TreeNode(word, newSumm);
             else
