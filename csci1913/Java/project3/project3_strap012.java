@@ -79,8 +79,8 @@ class AnagramTree {
                 }
             }
             if (subtree != null) {
-                findAnagrams(subtree.right);
                 findAnagrams(subtree.left);
+                findAnagrams(subtree.right);
             }
         } catch (NullPointerException ignore) {
             /*
