@@ -41,7 +41,15 @@ class AnagramTree {
                 goLeft = false;
                 bottom = bottom.right;
             } else {
-                bottom.words = new WordNode(word, bottom.words);
+                WordNode badNode = bottom.words;
+                boolean wordExists = false;
+                while (badNode != null) {
+                    if (badNode.word.equals(word)) 
+                        wordExists = true;
+                    badNode = badNode.next; 
+                }
+                if (!wordExists)
+                    bottom.words = new WordNode(word, bottom.words);
                 addWord = true;
                 break;
             }
@@ -59,16 +67,16 @@ class AnagramTree {
         } 
 
     public void anagrams() {
-        System.out.println(findAnagrams(head.right));       //e should be lower than other words as it is e
+        findAnagrams(head.right);       //e should be lower than other words as it is e
     }
 
-    private String findAnagrams(TreeNode subtree) {
-        StringBuilder builder = new StringBuilder();
+    private void findAnagrams(TreeNode subtree) {
         try {
             if (subtree.words.next != null) {
+                System.out.println();
                 while (subtree.words != null) {
-                    builder.append(subtree.words.word);
-                    builder.append(" ");
+                    System.out.print(subtree.words.word);
+                    System.out.print(" ");
                     subtree.words = subtree.words.next;
                 }
             }
@@ -79,7 +87,8 @@ class AnagramTree {
         } catch (NullPointerException ignore) {
             //Do nothing
         }
-        return builder.toString();
+        
+        
     }
     
     private int compareSummaries(byte[] left, byte[] right) {
