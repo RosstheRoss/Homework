@@ -60,8 +60,8 @@ class AnagramTree {
                 top.left = new TreeNode(word, newSumm);
             else
                 top.right = new TreeNode(word, newSumm);
-            }
-        } 
+        }
+    } 
 
     public void anagrams() {
         findAnagrams(head.right);       //e should be lower than other words as it is e
