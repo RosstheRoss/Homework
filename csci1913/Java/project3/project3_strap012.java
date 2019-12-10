@@ -92,7 +92,7 @@ class AnagramTree {
     }
     
     private int compareSummaries(byte[] left, byte[] right) {
-        for (int i = 0; i < 26; i++) {
+        for (int i = 0; i <= 25; i++) {
             if (left[i] != right[i]) {
                 return left[i] - right[i];
             }
