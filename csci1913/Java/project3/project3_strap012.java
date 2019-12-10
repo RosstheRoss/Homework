@@ -89,8 +89,6 @@ class AnagramTree {
             if this is not present.
             */
         }
-        
-        
     }
     
     private int compareSummaries(byte[] left, byte[] right) {
@@ -99,7 +97,7 @@ class AnagramTree {
                 return left[i] - right[i];
             }
         }
-        //Summaries are identical
+        //Summaries are identical here
         return 0;
     }
 
