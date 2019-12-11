@@ -46,8 +46,10 @@ class AnagramTree {
                 boolean wordExists = false;
                 while (badNode != null) {
                 //Traverse word list to find already added entries
-                    if (badNode.word.equals(word)) 
+                    if (badNode.word.equals(word)) {
                         wordExists = true;
+                        break;
+                    }    
                     badNode = badNode.next; 
                 }
                 if (!wordExists)
