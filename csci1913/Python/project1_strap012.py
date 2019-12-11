@@ -92,7 +92,7 @@ G.rule('Story',  ('Phrase',))  # 09
 G.rule('Story',  ('Phrase', 'and', 'Story'))  # 10
 G.rule('Story',  ('Phrase', 'but', 'Story'))  # 11
 G.rule('Start',  ('Story', '.'))  # 12
-for n in range (0, 5):
+for _ in range (0, 5):
     print(G.generate())
 
 # the cat bit the boy .
@@ -124,7 +124,7 @@ J.rule('Story',  ('Phrase', 'and', 'Story'))  # 10
 J.rule('Story',  ('Phrase', 'but', 'Story'))  # 11
 J.rule('Start',  ('Story', '.'))  # 12
 
-for f in range(0, 5):
+for _ in range(0, 5):
     print(J.generate())
 
 # the walrus is the sentence and the diamond generated the walrus .
