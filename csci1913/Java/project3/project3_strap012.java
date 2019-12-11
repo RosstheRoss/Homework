@@ -69,7 +69,7 @@ class AnagramTree {
     }
 
     private void findAnagrams(TreeNode subtree) {
-        try {
+        if (subtree != null) {
             if (subtree.words.next != null) {
                 System.out.println();
                 while (subtree.words != null) {
@@ -78,16 +78,8 @@ class AnagramTree {
                     subtree.words = subtree.words.next;
                 }
             }
-            if (subtree != null) {
-                findAnagrams(subtree.left);
-                findAnagrams(subtree.right);
-            }
-        } catch (NullPointerException ignore) {
-            /*
-             This exception exists as a kludge for any time
-             subtree is null. The program does bad things
-             if this is not present.
-            */
+            findAnagrams(subtree.left);
+            findAnagrams(subtree.right);
         }
     }
     
