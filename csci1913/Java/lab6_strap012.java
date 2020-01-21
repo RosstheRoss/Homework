@@ -34,7 +34,7 @@ class Rectangle extends Polygon {
 
 class Square extends Rectangle {
     public Square(int l) {
-        super( l, l);
+        super(l, l);
     }
     // public int area() {
     //     return this.side(0)*this.side(1);
