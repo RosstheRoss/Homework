@@ -24,7 +24,7 @@
             "type": "cppdbg",
             "request": "launch",
             "preLaunchTask": "Build c++",
-            "program": "${workspaceFolder}/debug",
+            "program": "${workspaceFolder}/DEBUG_C",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

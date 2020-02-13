@@ -13,7 +13,7 @@
                 "-Wextra",
                 "${file}",
                 "-o",
-                "debug"
+                "DEBUG_C"
             ],
             "group": {
                 "kind": "build",
