@@ -10,6 +10,7 @@
             "args": [
                 "-g",
                 "-Wall",
+                "-Wextra",
                 "${file}",
                 "-o",
                 "debug"

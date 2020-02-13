@@ -4,6 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "type": "java",
             "name": "Debug (Launch) with Arguments Prompt",
@@ -19,7 +20,7 @@
             "console": "integratedTerminal"
         },
         {
-            "name": "C++",
+            "name": "C/C++",
             "type": "cppdbg",
             "request": "launch",
             "preLaunchTask": "Build c++",
