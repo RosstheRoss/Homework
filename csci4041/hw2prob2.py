@@ -14,3 +14,5 @@ def make_sets(n, k):
     making_sets(n, k, 1, set())
 
 make_sets(4,3)
+print()
+make_sets(6,1)
