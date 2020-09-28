@@ -1,10 +1,7 @@
 /*
 CSci 4061 - Recitation 2 - 21st Sept 2020
-Full Name : x500
-Full Name : x500
-Full Name : x500
-Full Name : x500
-Matthew Strapp : strap012
+Breakout 1
+An iditoic loner's lone attempt
 */
 
 #include <stdio.h>
@@ -35,7 +32,9 @@ int main(int argc, char **argv) {
 		}
 	}
 	// parent waits for all child processes to terminate
-	wait(NULL);
+	for (int i=0; i<n; i++) {
+		wait(NULL);
+	}
 	// parent create child process
 	//		call execv on 'ptime' executable // hint: similar to 'echo' usage in slide
 	pid = fork();
