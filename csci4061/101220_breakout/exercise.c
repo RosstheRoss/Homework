@@ -9,9 +9,10 @@
 #include <string.h>
 
 int numOfEntries(char* path) {
-    /*
-        Count the number of entries in path
-    */
+    int entries = 0;
+    while (readdir(path) != NULL) {
+        entries++;
+    } return entries;
 }
 
 int main(int argc, char** argv){
@@ -27,7 +28,20 @@ int main(int argc, char** argv){
         return -1;
     }
     struct dirent* entry;
-    
+    DIR* current = dir;
+
+while ((entry = readdir(dir)) != NULL) {
+        if (entry->d_type == "DT_DIR"){
+            printf("Directory: %s\n", entry->d_name);
+            printf("    Entries: %d\n", numOfEntries(entry));
+        } else if (entry->d_type == "DT_REG") {
+            printf("Regular File: %s\n", entry->d_name);
+            printf("    Owner: %d\n");
+            printf("    Size: %f\n");
+        } else {
+            printf("%s\n", entry -> d_name);
+        }
+    }   
     /*
         Iterate through the elements in argv[1]
         Refer the ls example in slides if you have any doubts

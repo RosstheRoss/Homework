@@ -6,7 +6,7 @@
         {
             "label": "Build c++",
             "type": "shell",
-            "command": "g++",
+            "command": "gcc",
             "args": [
                 "-g",
                 "-Wall",
