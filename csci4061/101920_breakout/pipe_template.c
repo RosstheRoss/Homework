@@ -20,7 +20,6 @@
 
 int main(void) {
   // Open pipe
-  // TODO
   int ends[2];
   pipe(ends);
 
@@ -38,13 +37,10 @@ int main(void) {
     printf("Parent Sending: %s\n", string_to_send);
 
     // Parent doesn't need read file descriptor
-    // TODO
     close(ends[0]);
     // Write the string to the pipe
-    // TODO
     write(ends[1], string_to_send, bytes_to_send_recv);
     // Done writing
-    // TODO
     close(ends[1]);
     // Wait for child to terminate
     wait(NULL);
@@ -55,13 +51,10 @@ int main(void) {
     char *recv_buffer = malloc(bytes_to_send_recv);
 
     // Child doesn't need write file descriptor
-    // TODO
     close(ends[1]);
     // Read the string from the pipe
-    // TODO
     read(ends[0], recv_buffer, bytes_to_send_recv);
     // Done reading
-    // TODO
     close(ends[0]);
     // Print result
     printf("Child Received: %s\n", recv_buffer);
