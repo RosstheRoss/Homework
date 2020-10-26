@@ -26,8 +26,10 @@ int main(int argc, char **argv) {
 	pid_t pid;
 	for (int i=0; i<n; i++) {
 		pid = fork();
-		if (pid != 0) {
-			printf("%d\n", getpid());
+		if (pid == 0) {
+			
+		} else {
+printf("%d\n", getpid());
 			execl("/bin/echo", "/bin/echo", "hello", "there", NULL);
 		}
 	}
