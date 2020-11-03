@@ -1,15 +1,16 @@
 /*
-* Recitation Section Number:
-* Breakout Number:
-* Member Name (X500)
-* Member Name (X500)
-* Member Name (X500)
-* Member Name (X500)
+* Recitation Section Number: 02
+* Breakout Number: 05
+* Graden Hill (hill1582)
+* Gustav Baumgart (baumg260)
+* Matt Strapp (strap012)
+* Skylan Recnana (recan001)
 */
 
 #include <stdio.h>
 #include <sys/ipc.h>
 #include <sys/msg.h>
+#include <sys/wait.h>
 #include <zconf.h>
 #include <string.h>
 #include <stdlib.h>
@@ -84,7 +85,7 @@ int main(void) {
     for (int j = 0; j < NCHILD; j++) {
         if ((pid2 = fork()) == 0) {
             // receive message
-            msgrcv(msgid, &msg, MSGSIZE, +222, 0);
+            msgrcv(msgid, &msg, MSGSIZE, 222, 0);
 
 
             // display the message
