@@ -8,7 +8,7 @@
                 "/usr/include/**",
                 "${workspaceFolder}/**"
             ],
-            "defines": [],
+            "defines": []
         }
     ],
     "version": 4
