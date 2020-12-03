@@ -40,12 +40,20 @@ module mipspipe(clock);
       MEMWBIR = nop; // no-ops placed in pipeline latches
       // test some instructions
       for (i=0;i<=31;i=i+1) Regs[i] = i; // initialize registers
-IMemory[0] = 32'h00412820; // ADD OPCODE: 000000 00010 00001 00101 00000 100000
-      IMemory[1] = 32'h8CA30004; // First LW:   100011 00101 00011 00000 00000 00 0100
-      IMemory[2] = 32'h8C420000; // Second LW:  100011 00010 00010 00000 00000 000000
-      IMemory[3] = 32'h00A31825; // OR OPCODE:  000000 00101 00011 00011 00000 100101
-      IMemory[4] = 32'hACA30000; // SW:         101011 00101 00011 00000 00000 000000
-      for (j=5;j<=1023;j=j+1) IMemory[j] = nop;
+      IMemory[0] = 32'h00412820; // ADD OPCODE: 000000 00010 00001 00101 00000 100000
+      IMemory[1] = nop;
+      IMemory[2] = nop;
+      IMemory[3] = nop;
+      IMemory[4] = 32'h8CA30004; // First LW:   100011 00101 00011 00000 00000 000100
+      IMemory[5] = 32'h8C420000; // Second LW:  100011 00010 00010 00000 00000 000000
+      IMemory[6] = nop;
+      IMemory[7] = nop;
+      IMemory[8] = 32'h00A31825; // OR OPCODE:  000000 00101 00011 00011 00000 100101
+      IMemory[9] = nop;
+      IMemory[10] =nop;
+      IMemory[11] = nop;
+      IMemory[12] = 32'hACA30000; // SW:         101011 00101 00011 00000 00000 000000
+      for (j=13;j<=1023;j=j+1) IMemory[j] = nop;
       DMemory[0] = 32'h00000000;
       DMemory[1] = 32'hffffffff;
       for (k=2;k<=1023;k=k+1) DMemory[k] = 0;
