@@ -80,13 +80,18 @@ module mipspipe_mp2 (clock);
     IMemory[0] = 32'h00412820; // ADD $5, $2, $1
     IMemory[1] = 32'h8ca30004; // LW $3, 4($5)
     IMemory[2] = 32'haca70005; // SW $7, 5($5)
+    // Hazard 1: ADD might not have written to $5 before SW reads from $5 (Type 2: Read after Write)
     IMemory[3] = 32'h00602020; // ADD $4, $3, $0
+    // Hazard 2: ADD might read $3 before LW writes to $3 (Type 3: Write after read)
     IMemory[4] = 32'h01093020; // ADD $6, $8, $9
     IMemory[5] = 32'hac06000c; // SW $6, $12($0)
+    // Hazard 3: ADD and SW are trying to access the same register (Type 1: Write after Write)
     IMemory[6] = 32'h00c05020; // ADD $10, $6, $0
+    // Hazard 4: ADD reads from $6 and is written to (twice) immediately beforehand (Type 2: Read after Write)
     IMemory[7] = 32'h8c0b0010; // LW $11, 32($0)
     IMemory[8] = 32'h00000020; // ADD $0, $0, $0
     IMemory[9] = 32'h002b6020; // ADD $12, $1, $11
+    // Hazard 5: LW might not have written to $11 before the last ADD reads from $11 (Type 2: Read after Write)
     for (j=10; j<=1023; j=j+1) IMemory[j] = nop;
     
     DMemory[0] = 32'h00000000;
