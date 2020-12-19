@@ -43,7 +43,7 @@ module mipspipe_mp2 (clock);
   assign bypassAfromLWinWB = (IDEXrs == MEMWBIR[20:16]) & (IDEXrs!=0) & (MEMWBop==LW);
   // The bypass to input B from the WB stage for an LW operation
   assign bypassBfromLWinWB = 0;
-  //Stall in case of WB
+  //Stall to bypass A or B if need b (I'm not sorry)
   assign bypassIDEXAfromWB = ((MEMWBIR != nop) & (IFIDIR != nop) & (IFIDrs == MEMWBrt) & (MEMWBop == LW)) | 
     ((MEMWBop == ALUop) & (MEMWBrd == IFIDrs)); 
   assign bypassIDEXBfromWB = ((MEMWBIR != nop) & (IFIDIR != nop) & (IFIDrt == MEMWBrt) & (MEMWBop == LW)) | 
