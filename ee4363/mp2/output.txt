@@ -1,3 +1,6 @@
+VCD info: dumpfile test_mipspipe.vcd opened for output.
+
+
 clock cycle =  1 (time = 10)
 IF/ID registers
 	 IF/ID.PC+4 = 00000004, IF/ID.IR = 00412820 
