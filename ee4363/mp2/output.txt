@@ -1,0 +1,319 @@
+VCD info: dumpfile test_mipspipe.vcd opened for output.
+
+
+clock cycle =  1 (time = 10)
+IF/ID registers
+	 IF/ID.PC+4 = 00000004, IF/ID.IR = 00412820 
+
+ID/EX registers
+	 ID/EX.rs =  0, ID/EX.rt =  0
+	 ID/EX.A = xxxxxxxx, ID/EX.B = xxxxxxxx
+	 ID/EX.op = 00
+
+EX/MEM registers
+	 EX/MEM.rs =  0, EX/MEM.rt =  0
+	 EX/MEM.ALUOut = xxxxxxxx, EX/MEM.ALUout = xxxxxxxx
+	 EX/MEM.op = 00
+
+MEM/WB registers
+	 MEM/WB.rd =  0, MEM/WB.rt =  0
+	 MEM/WB.value = xxxxxxxx
+	 EX/MEM.op = 00
+
+
+
+clock cycle =  2 (time = 20)
+IF/ID registers
+	 IF/ID.PC+4 = 00000008, IF/ID.IR = 8ca30004 
+
+ID/EX registers
+	 ID/EX.rs =  2, ID/EX.rt =  1
+	 ID/EX.A = 00000002, ID/EX.B = 00000001
+	 ID/EX.op = 00
+
+EX/MEM registers
+	 EX/MEM.rs =  2, EX/MEM.rt =  1
+	 EX/MEM.ALUOut = xxxxxxxx, EX/MEM.ALUout = xxxxxxxx
+	 EX/MEM.op = 00
+
+MEM/WB registers
+	 MEM/WB.rd =  0, MEM/WB.rt =  0
+	 MEM/WB.value = xxxxxxxx
+	 EX/MEM.op = 00
+
+
+
+clock cycle =  3 (time = 30)
+IF/ID registers
+	 IF/ID.PC+4 = 0000000c, IF/ID.IR = aca70005 
+
+ID/EX registers
+	 ID/EX.rs =  5, ID/EX.rt =  3
+	 ID/EX.A = 00000005, ID/EX.B = 00000003
+	 ID/EX.op = 23
+
+EX/MEM registers
+	 EX/MEM.rs =  5, EX/MEM.rt =  3
+	 EX/MEM.ALUOut = 00000003, EX/MEM.ALUout = 00000001
+	 EX/MEM.op = 00
+
+MEM/WB registers
+	 MEM/WB.rd =  0, MEM/WB.rt =  0
+	 MEM/WB.value = xxxxxxxx
+	 EX/MEM.op = 00
+
+
+
+clock cycle =  4 (time = 40)
+IF/ID registers
+	 IF/ID.PC+4 = 00000010, IF/ID.IR = 00602020 
+
+ID/EX registers
+	 ID/EX.rs =  5, ID/EX.rt =  7
+	 ID/EX.A = 00000005, ID/EX.B = 00000007
+	 ID/EX.op = 2b
+
+EX/MEM registers
+	 EX/MEM.rs =  5, EX/MEM.rt =  7
+	 EX/MEM.ALUOut = 00000007, EX/MEM.ALUout = 00000003
+	 EX/MEM.op = 23
+
+MEM/WB registers
+	 MEM/WB.rd =  5, MEM/WB.rt =  1
+	 MEM/WB.value = 00000003
+	 EX/MEM.op = 00
+
+
+
+clock cycle =  5 (time = 50)
+IF/ID registers
+	 IF/ID.PC+4 = 00000014, IF/ID.IR = 01093020 
+
+ID/EX registers
+	 ID/EX.rs =  3, ID/EX.rt =  0
+	 ID/EX.A = 00000003, ID/EX.B = 00000000
+	 ID/EX.op = 00
+
+EX/MEM registers
+	 EX/MEM.rs =  3, EX/MEM.rt =  0
+	 EX/MEM.ALUOut = 0000000a, EX/MEM.ALUout = 00000007
+	 EX/MEM.op = 2b
+
+MEM/WB registers
+	 MEM/WB.rd =  0, MEM/WB.rt =  3
+	 MEM/WB.value = ffffffff
+	 EX/MEM.op = 23
+
+
+
+clock cycle =  6 (time = 60)
+IF/ID registers
+	 IF/ID.PC+4 = 00000018, IF/ID.IR = ac06000c 
+
+ID/EX registers
+	 ID/EX.rs =  8, ID/EX.rt =  9
+	 ID/EX.A = 00000008, ID/EX.B = 00000009
+	 ID/EX.op = 00
+
+EX/MEM registers
+	 EX/MEM.rs =  8, EX/MEM.rt =  9
+	 EX/MEM.ALUOut = ffffffff, EX/MEM.ALUout = 00000000
+	 EX/MEM.op = 00
+
+MEM/WB registers
+	 MEM/WB.rd =  0, MEM/WB.rt =  7
+	 MEM/WB.value = ffffffff
+	 EX/MEM.op = 2b
+
+
+
+clock cycle =  7 (time = 70)
+IF/ID registers
+	 IF/ID.PC+4 = 0000001c, IF/ID.IR = 00c05020 
+
+ID/EX registers
+	 ID/EX.rs =  0, ID/EX.rt =  6
+	 ID/EX.A = 00000000, ID/EX.B = 00000006
+	 ID/EX.op = 2b
+
+EX/MEM registers
+	 EX/MEM.rs =  0, EX/MEM.rt =  6
+	 EX/MEM.ALUOut = 00000011, EX/MEM.ALUout = 00000009
+	 EX/MEM.op = 00
+
+MEM/WB registers
+	 MEM/WB.rd =  4, MEM/WB.rt =  0
+	 MEM/WB.value = ffffffff
+	 EX/MEM.op = 00
+
+
+
+clock cycle =  8 (time = 80)
+IF/ID registers
+	 IF/ID.PC+4 = 00000020, IF/ID.IR = 8c0b0010 
+
+ID/EX registers
+	 ID/EX.rs =  6, ID/EX.rt =  0
+	 ID/EX.A = 00000006, ID/EX.B = 00000000
+	 ID/EX.op = 00
+
+EX/MEM registers
+	 EX/MEM.rs =  6, EX/MEM.rt =  0
+	 EX/MEM.ALUOut = 0000000c, EX/MEM.ALUout = 00000006
+	 EX/MEM.op = 2b
+
+MEM/WB registers
+	 MEM/WB.rd =  6, MEM/WB.rt =  9
+	 MEM/WB.value = 00000011
+	 EX/MEM.op = 00
+
+
+
+clock cycle =  9 (time = 90)
+IF/ID registers
+	 IF/ID.PC+4 = 00000024, IF/ID.IR = 00000020 
+
+ID/EX registers
+	 ID/EX.rs =  0, ID/EX.rt = 11
+	 ID/EX.A = 00000000, ID/EX.B = 0000000b
+	 ID/EX.op = 23
+
+EX/MEM registers
+	 EX/MEM.rs =  0, EX/MEM.rt = 11
+	 EX/MEM.ALUOut = 00000006, EX/MEM.ALUout = 00000000
+	 EX/MEM.op = 00
+
+MEM/WB registers
+	 MEM/WB.rd =  0, MEM/WB.rt =  6
+	 MEM/WB.value = 00000011
+	 EX/MEM.op = 2b
+
+
+
+clock cycle = 10 (time = 100)
+IF/ID registers
+	 IF/ID.PC+4 = 00000028, IF/ID.IR = 002b6020 
+
+ID/EX registers
+	 ID/EX.rs =  0, ID/EX.rt =  0
+	 ID/EX.A = 00000000, ID/EX.B = 00000000
+	 ID/EX.op = 00
+
+EX/MEM registers
+	 EX/MEM.rs =  0, EX/MEM.rt =  0
+	 EX/MEM.ALUOut = 00000010, EX/MEM.ALUout = 0000000b
+	 EX/MEM.op = 23
+
+MEM/WB registers
+	 MEM/WB.rd = 10, MEM/WB.rt =  0
+	 MEM/WB.value = 00000006
+	 EX/MEM.op = 00
+
+
+
+clock cycle = 11 (time = 110)
+IF/ID registers
+	 IF/ID.PC+4 = 0000002c, IF/ID.IR = 00000020 
+
+ID/EX registers
+	 ID/EX.rs =  1, ID/EX.rt = 11
+	 ID/EX.A = 00000001, ID/EX.B = 0000000b
+	 ID/EX.op = 00
+
+EX/MEM registers
+	 EX/MEM.rs =  1, EX/MEM.rt = 11
+	 EX/MEM.ALUOut = 00000000, EX/MEM.ALUout = 00000000
+	 EX/MEM.op = 00
+
+MEM/WB registers
+	 MEM/WB.rd =  0, MEM/WB.rt = 11
+	 MEM/WB.value = fffffffe
+	 EX/MEM.op = 23
+
+
+
+clock cycle = 12 (time = 120)
+IF/ID registers
+	 IF/ID.PC+4 = 00000030, IF/ID.IR = 00000020 
+
+ID/EX registers
+	 ID/EX.rs =  0, ID/EX.rt =  0
+	 ID/EX.A = 00000000, ID/EX.B = 00000000
+	 ID/EX.op = 00
+
+EX/MEM registers
+	 EX/MEM.rs =  0, EX/MEM.rt =  0
+	 EX/MEM.ALUOut = 0000000c, EX/MEM.ALUout = 0000000b
+	 EX/MEM.op = 00
+
+MEM/WB registers
+	 MEM/WB.rd =  0, MEM/WB.rt =  0
+	 MEM/WB.value = 00000000
+	 EX/MEM.op = 00
+
+
+
+clock cycle = 13 (time = 130)
+IF/ID registers
+	 IF/ID.PC+4 = 00000034, IF/ID.IR = 00000020 
+
+ID/EX registers
+	 ID/EX.rs =  0, ID/EX.rt =  0
+	 ID/EX.A = 00000000, ID/EX.B = 00000000
+	 ID/EX.op = 00
+
+EX/MEM registers
+	 EX/MEM.rs =  0, EX/MEM.rt =  0
+	 EX/MEM.ALUOut = 00000000, EX/MEM.ALUout = 00000000
+	 EX/MEM.op = 00
+
+MEM/WB registers
+	 MEM/WB.rd = 12, MEM/WB.rt = 11
+	 MEM/WB.value = 0000000c
+	 EX/MEM.op = 00
+
+
+
+clock cycle = 14 (time = 140)
+IF/ID registers
+	 IF/ID.PC+4 = 00000038, IF/ID.IR = 00000020 
+
+ID/EX registers
+	 ID/EX.rs =  0, ID/EX.rt =  0
+	 ID/EX.A = 00000000, ID/EX.B = 00000000
+	 ID/EX.op = 00
+
+EX/MEM registers
+	 EX/MEM.rs =  0, EX/MEM.rt =  0
+	 EX/MEM.ALUOut = 00000000, EX/MEM.ALUout = 00000000
+	 EX/MEM.op = 00
+
+MEM/WB registers
+	 MEM/WB.rd =  0, MEM/WB.rt =  0
+	 MEM/WB.value = 00000000
+	 EX/MEM.op = 00
+
+
+
+clock cycle = 15 (time = 150)
+IF/ID registers
+	 IF/ID.PC+4 = 0000003c, IF/ID.IR = 00000020 
+
+ID/EX registers
+	 ID/EX.rs =  0, ID/EX.rt =  0
+	 ID/EX.A = 00000000, ID/EX.B = 00000000
+	 ID/EX.op = 00
+
+EX/MEM registers
+	 EX/MEM.rs =  0, EX/MEM.rt =  0
+	 EX/MEM.ALUOut = 00000000, EX/MEM.ALUout = 00000000
+	 EX/MEM.op = 00
+
+MEM/WB registers
+	 MEM/WB.rd =  0, MEM/WB.rt =  0
+	 MEM/WB.value = 00000000
+	 EX/MEM.op = 00
+
+
+
+clock cycle =  0 (time = 160)
