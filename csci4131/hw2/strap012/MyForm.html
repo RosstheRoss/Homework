@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>There is no form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <table>
+            <tr>
+                <td class="linkTable"><a href="./myWidgets.html">myWidgets</a></td>
+                <td class="linkTable"><a href="./myContacts.html">myContacts</a></td>
+                <td class="linkTable"><a href="./MyForm.html">MyForm</a></td>
+            </tr>
+        </table>
+    </nav><br>
+    <h2>Simple Form</h2>
+    <form method="post">
+        <p>
+            <label>Name:
+                <input name="name" type="text" size="25" maxlength="30"><br><br>
+            </label>
+            <label>Email:
+                <input name="email" Type="email" size="25" maxlength="30"> (name@test.dom)<br><br>
+            </label>
+            <label> URL
+                <input name="URL" Type="url" size="25" maxlength="30">(/https?/g://web.site)<br>
+            </label>
+
+
+        </p>
+        <p>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Clear">
+        </p>
+    </form>
+</body>

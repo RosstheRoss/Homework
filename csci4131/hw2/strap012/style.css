@@ -1,0 +1,49 @@
+.linkTable {
+    border: 1px solid black;
+    margin-left: 20px;
+    background-color: white;
+}
+#bigboi {
+    float: right;
+    height: auto;
+    max-width: 28%;
+}
+
+.smol {
+    max-height: 100%;
+    width: 6em;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-content: center;
+}
+
+.griditem {
+    padding: .3em;
+}
+
+table, th, td {
+    max-width: 90%;
+    overflow-x:auto;
+    border: 1px solid black; 
+    border-collapse: collapse;
+}
+table {
+    float:left;
+    max-width: 70%;
+}
+tr:nth-child(even) {
+    background-color:blanchedalmond;
+}
+tr:nth-child(odd) {
+    background-color: burlywood;
+}
+iframe {
+    border: 0px;
+}
+
+body {
+    background-color:antiquewhite;
+}

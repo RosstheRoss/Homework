@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>My Contacts</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:dnt" content="on">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function change(big, small, row) {
+            document.getElementById("bigboi").src = big;
+            document.getElementById("smol" + row).src = small;
+        }
+    </script>
+</head>
+
+<body>
+    <nav>
+        <table>
+            <tr class="linkTable">
+                <td class="linkTable"><a href="./myWidgets.html">myWidgets</a></td>
+                <td class="linkTable"><a href="./myContacts.html">myContacts</a></td>
+                <td class="linkTable"><a href="./MyForm.html">MyForm</a></td>
+            </tr>
+        </table>
+    </nav>
+    <br>
+    <h1>University Contacts</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Location</th>
+            <th>Information</th>
+            <th>Email</th>
+            <th>URL</th>
+        </tr>
+        <tr onmouseover="change('morrill.jpg', 'morrill.jpg', 0)" onmouseout="change('gophers-mascot.png', 'data:,', 0)">
+            <td>Joan Gabel</td>
+            <td>Industry</td>
+            <td>100 Church Street SE<br> 202 Morrill Hall<br> Minneapolis MN 55455</td>
+            <td>President of the University of Minnesota<br><img class="smol" id="smol0" src="data:," alt></td>
+            <td><a href="mailto:upres@umn.edu">upres@umn.edu</a></td>
+            <td><a href="https://president.umn.edu/">Home Page</a></td>
+        </tr>
+        <tr onmouseover="change('walter.jpg', 'walter.jpg', 1)" onmouseout="change('gophers-mascot.png', 'data:,', 1)">
+            <td>Mostafa Kaveh</td>
+            <td>Industry</td>
+            <td>117 Pleasant St SE<br> 105 Walter Library<br> Minneapolis MN 55455</td>
+            <td>Dean of the College of Science and Engineering<br><img class="smol" id="smol1" src="data:," alt></td>
+            <td><a href="mailto:mos@umn.edu">mos@umn.edu</a></td>
+            <td><a href="https://cse.umn.edu/college/office-dean">Home Page</a></td>
+        </tr>
+        <tr onmouseover="change('johnston.jpg', 'johnston.jpg', 2)" onmouseout="change('gophers-mascot.png', 'data:,', 2)">
+            <td>John Coleman</td>
+            <td>Industry</td>
+            <td>101 Pleasant Street SE<br> 215 Johnston Hall<br> Minneapolis MN 55455</td>
+            <td>Dean of the College of Liberal Arts<br><img class="smol" id="smol2" src="data:," alt></td>
+            <td><a href="mailto:coleman@umn.edu">coleman@umn.edu</a></td>
+            <td><a href="https://cla.umn.edu/units/dean">Home Page</a></td>
+        </tr>
+        <tr onmouseover="change('snyder.jpg', 'snyder.jpg', 3)" onmouseout="change('gophers-mascot.png', 'data:,', 3)">
+            <td>Valery Forbes</td>
+            <td>Industry</td>
+            <td>1475 Gortner Avenue<br> 123 Snyder Hall<br> St. Paul MN 55108</td>
+            <td>Dean of the College of Biological Sciences<br><img class="smol" id="smol3" src="data:," alt></td>
+            <td><a href="mailto:cbsdeans@umn.edu">cbsdeans@umn.edu</a></td>
+            <td><a href="https://cbs.umn.edu/about/college-leadership">Home Page</a></td>
+        </tr>
+        <tr onmouseover="change('carlson.jpg', 'carlson.jpg', 4)" onmouseout="change('gophers-mascot.png', 'data:,', 4)">
+            <td>Sri Zaheer</td>
+            <td>Industry</td>
+            <td>321 19th Avenue S<br> Suite 4-300 Carlson School of Management<br> Minneapolis MN 55455</td>
+            <td>Dean of the Carlson School of Management<br><img class="smol" id="smol4" src="data:," alt></td>
+            <td><a href="mailto:szaheer@umn.edu">szaheer@umn.edu</a></td>
+            <td><a href="https://carlsonschool.umn.edu/about-us/leadership-team">Home Page</a></td>
+        </tr>
+    </table>
+    <div>
+        <img id="bigboi" src="gophers-mascot.png" alt="Goldy Gopher">
+    </div>
+
+</body>
+
+</html>
