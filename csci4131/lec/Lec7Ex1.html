@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Titles are for better people</title>
+    <script>
+        function clock() {
+            var datenow = new Date;
+            var timenow = datenow.toLocaleTimeString();
+            document.getElementById("clock").value = timenow;
+        }
+        var intId = setInterval(function () { clock() }, 1000);
+    </script>
+</head>
+<body>
+    <input type="text" id="clock">
+    <button onclick="intId=clearInterval(intId)">STOP</button>
+    <button onclick="intId = setInterval(function(){clock()}, 1000)">START</button>
+    <button onclick="document.getElementById('clock').value = ''">CLEAR</button>
+</body>
