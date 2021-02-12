@@ -1,11 +1,17 @@
+body {
+    background-color:antiquewhite;
+}
+
 .linkTable {
     border: 1px solid black;
     margin-left: 20px;
     background-color: white;
+    border-collapse: separate;
 }
 
-label {
-    color: black;
+.smol {
+    max-height: 100%;
+    width: 6em;
 }
 
 #bigboi {
@@ -14,20 +20,22 @@ label {
     max-width: 28%;
 }
 
-.smol {
-    max-height: 100%;
-    width: 6em;
+.Form {
+    background-color: whitesmoke;
+    padding-left: 5%;
+    max-width: 15%;
 }
 
 .grid {
+    align-content: center;
     display: inline-grid;
-    grid-template-columns: auto auto auto;
-    grid-gap: 2%;
+    grid-template-columns: 40% 40%;
+    grid-template-rows: 30%;
+    gap: .1em 10%;
 }
 
 .griditem {
-    align-content: center;
-    padding: 1%;
+    padding: 10%;
 }
 
 table, th, td {
@@ -50,6 +58,4 @@ iframe {
     border: 0px;
 }
 
-body {
-    background-color:antiquewhite;
-}
+

@@ -18,28 +18,28 @@
     </nav><br>
     <h2>Simple Form</h2>
     <form action="http://www-users.cselabs.umn.edu/~joh13266/echo.php/" method="post">
-        <p>
+        <p class="Form">
             <label>Name:
-                <input name="name" type="text" size="25" maxlength="30" id="name"><br><br>
+                <input name="name" pattern="[A-za-z0-9]+" required title="Contact's name must be alphanumeric." type="text" size="25" maxlength="30" id="name"><br><br>
             </label>
             <label>Category:
-            	<select name="category" type="text" id="category">
+            	<select name="category" required id="category" size=3>
             		<option value="Personal">Personal</option>
   			<option value="Academic">Academic</option>
                 	<option value="Industry">Industry</option>
             	</select><br><br>
             </label>
             <label>Location:
-            <input name="location" type="text" size="25" maxlength="250" id="location"><br><br>
+            <input name="location" required type="text" size="25" maxlength="250" id="location"><br><br>
             </label>
             <label>Contact Information:
-            <input name="contact" size="25" maxlength="250" id="contact"><br><br>
+            <input name="contact" required size="25" maxlength="250" id="contact"><br><br>
             </label>
             <label>Email:
-                <input name="email" Type="email" size="25" maxlength="30" id="email"><br><br>
+                <input name="email" required Type="email" size="25" maxlength="30" id="email"><br><br>
             </label>
             <label> URL
-                <input name="website" Type="url" size="25" maxlength="30" id="website"><br>
+                <input name="website" required Type="url" size="25" maxlength="30" id="website"><br>
             </label>
         </p>
         <p>
