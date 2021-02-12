@@ -3,6 +3,11 @@
     margin-left: 20px;
     background-color: white;
 }
+
+label {
+    color: black;
+}
+
 #bigboi {
     float: right;
     height: auto;
@@ -15,13 +20,14 @@
 }
 
 .grid {
-    display: grid;
+    display: inline-grid;
     grid-template-columns: auto auto auto;
-    align-content: center;
+    grid-gap: 2%;
 }
 
 .griditem {
-    padding: .3em;
+    align-content: center;
+    padding: 1%;
 }
 
 table, th, td {

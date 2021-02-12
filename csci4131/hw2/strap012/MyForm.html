@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 
 <head>
     <meta charset="utf-8">
@@ -17,19 +17,30 @@
         </table>
     </nav><br>
     <h2>Simple Form</h2>
-    <form method="post">
+    <form action="http://www-users.cselabs.umn.edu/~joh13266/echo.php/" method="post">
         <p>
             <label>Name:
-                <input name="name" type="text" size="25" maxlength="30"><br><br>
+                <input name="name" type="text" size="25" maxlength="30" id="name"><br><br>
+            </label>
+            <label>Category:
+            	<select name="category" type="text" id="category">
+            		<option value="Personal">Personal</option>
+  			<option value="Academic">Academic</option>
+                	<option value="Industry">Industry</option>
+            	</select><br><br>
+            </label>
+            <label>Location:
+            <input name="location" type="text" size="25" maxlength="250" id="location"><br><br>
+            </label>
+            <label>Contact Information:
+            <input name="contact" size="25" maxlength="250" id="contact"><br><br>
             </label>
             <label>Email:
-                <input name="email" Type="email" size="25" maxlength="30"> (name@test.dom)<br><br>
+                <input name="email" Type="email" size="25" maxlength="30" id="email"><br><br>
             </label>
             <label> URL
-                <input name="URL" Type="url" size="25" maxlength="30">(/https?/g://web.site)<br>
+                <input name="website" Type="url" size="25" maxlength="30" id="website"><br>
             </label>
-
-
         </p>
         <p>
             <input type="submit" value="Submit">
