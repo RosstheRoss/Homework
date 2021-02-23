@@ -40,6 +40,15 @@ tr:nth-child(odd) {
     object-fit: cover;
     margin-right: 0;
 }
+.isRotating { 
+    animation:5s rotate infinite linear; 
+}
+.isntRotating {
+    animation-play-state: paused;
+}
+@keyframes rotate{
+    100%{ transform:rotate(1turn) } // or 360deg
+}
 #map {
     padding-top: 30%;
     margin-top: 25em;

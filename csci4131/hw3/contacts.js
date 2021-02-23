@@ -1,9 +1,20 @@
+document.getElementById("bigboi").classList.add("isntRotating");
+
 function change(small, row) {
     document.getElementsByClassName("smol")[row].src = small;
 }
 function lucky() {
     var image = ["carlson.jpg", "johnston.jpg", "morrill.jpg", "shepherd.jpg", "snyder.jpg", "walter.jpg"];
     document.getElementById("bigboi").src = image[Math.floor(6 * Math.random())];
+}
+let isRotating=0;
+function dizzy() {
+    if (!isRotating) {
+        document.getElementById("bigboi").classList.remove("isntRotating");
+    } else {
+    	document.getElementById("bigboi").classList.add("isntRotating");
+    }
+    isRotating^=1;   
 }
 let map;
 function initMap() {
@@ -53,8 +64,8 @@ function addPoints(locations) {
             if (!this.infoWindow) {
                 this.infoWindow = new google.maps.InfoWindow({
                     content: this.data.content,
-                    
                 });
+                
             }
             this.infoWindow.open(map, this);
         })
