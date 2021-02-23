@@ -8,16 +8,17 @@ body {
     background-color: white;
     border-collapse: separate;
 }
+
 /* Contacts */
 table, th, td {
-    max-width: 70%;
+    max-width: 80%;
     overflow-x:auto;
     border: 1px solid black; 
     border-collapse: collapse;
 }
 table {
     float:left;
-    max-width: 50%;
+    max-width: 60%;
 }
 tr:nth-child(even) {
     background-color:blanchedalmond;
@@ -31,20 +32,27 @@ tr:nth-child(odd) {
 }
 .large {
     float: right;
-    max-width:max-content
+    max-width: max-content;
 }
 #bigboi {
     width: 25em;
     height: 15em;
     object-fit: cover;
+    margin-right: 0;
 }
 #map {
-	height: 50%;
-	margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 10%;
-    float: bottom;
+    padding-top: 30%;
+    margin-top: 25em;
+    margin-left: .2em;
+    position: bottom;
+    width: 60%;
+    height: 30%;
+    max-height: 40%;
 }
+.id {
+    text-align: center;
+}
+
 /* Form */
 .Form {
     background-color: whitesmoke;

@@ -30,43 +30,43 @@
             <th>Email</th>
             <th>URL</th>
         </tr>
-        <tr onmouseover="change('morrill.jpg', 'morrill.jpg', 0)" onmouseout="change('morrill.jpg', 'data:,', 0)">
-            <td>Joan Gabel</td>
-            <td>Industry</td>
-            <td>100 Church Street SE<br> 202 Morrill Hall<br> Minneapolis MN 55455</td>
-            <td>President of the University of Minnesota<br><img class="smol" id="smol0" src="data:," alt></td>
+        <tr class ="entry" onmouseover="change('morrill.jpg', 0)" onmouseout="change('data:,', 0)">
+            <td class="name">Joan Gabel</td>
+            <td class="category">Industry</td>
+            <td class="address"><span class="street">100 Church Street SE</span><br> <div class="room">202 Morrill Hall</div> <span class="city">Minneapolis MN 55455</span></td>
+            <td class="title">President of the University of Minnesota<br><img class="smol" id="smol0" src="data:," alt></td>
             <td><a href="mailto:upres@umn.edu">upres@umn.edu</a></td>
             <td><a href="https://president.umn.edu/">Home Page</a></td>
         </tr>
-        <tr onmouseover="change('walter.jpg', 'walter.jpg', 1)" onmouseout="change('walter.jpg', 'data:,', 1)">
-            <td>Mostafa Kaveh</td>
-            <td>Industry</td>
-            <td>117 Pleasant St SE<br> 105 Walter Library<br> Minneapolis MN 55455</td>
-            <td>Dean of the College of Science and Engineering<br><img class="smol" id="smol1" src="data:," alt></td>
+        <tr class ="entry" onmouseover="change('walter.jpg', 1)" onmouseout="change('data:,', 1)">
+            <td class="name">Mostafa Kaveh</td>
+            <td class="category">Industry</td>
+            <td class="address"><span class="street">117 Pleasant St SE</span><br> <div class="room">105 Walter Library</div> <span class="city">Minneapolis MN 55455</span></td>
+            <td class="title">Dean of the College of Science and Engineering<br><img class="smol" id="smol1" src="data:," alt></td>
             <td><a href="mailto:mos@umn.edu">mos@umn.edu</a></td>
             <td><a href="https://cse.umn.edu/college/office-dean">Home Page</a></td>
         </tr>
-        <tr onmouseover="change('johnston.jpg', 'johnston.jpg', 2)" onmouseout="change('johnston.jpg', 'data:,', 2)">
-            <td>John Coleman</td>
-            <td>Industry</td>
-            <td>101 Pleasant Street SE<br> 215 Johnston Hall<br> Minneapolis MN 55455</td>
-            <td>Dean of the College of Liberal Arts<br><img class="smol" id="smol2" src="data:," alt></td>
+        <tr class ="entry" onmouseover="change('johnston.jpg', 2)" onmouseout="change('data:,', 2)">
+            <td class="name">John Coleman</td>
+            <td class="category">Industry</td>
+            <td class="address"><span class="street">101 Pleasant Street SE</span><br> <div class="room">215 Johnston Hall</div> <span class="city">Minneapolis MN 55455</span></td>
+            <td class="title">Dean of the College of Liberal Arts<br><img class="smol" id="smol2" src="data:," alt></td>
             <td><a href="mailto:coleman@umn.edu">coleman@umn.edu</a></td>
             <td><a href="https://cla.umn.edu/units/dean">Home Page</a></td>
         </tr>
-        <tr onmouseover="change('snyder.jpg', 'snyder.jpg', 3)" onmouseout="change('snyder.jpg', 'data:,', 3)">
-            <td>Valery Forbes</td>
-            <td>Industry</td>
-            <td>1475 Gortner Avenue<br> 123 Snyder Hall<br> St. Paul MN 55108</td>
-            <td>Dean of the College of Biological Sciences<br><img class="smol" id="smol3" src="data:," alt></td>
+        <tr class ="entry" onmouseover="change('snyder.jpg', 3)" onmouseout="change('data:,', 3)">
+            <td class="name">Valery Forbes</td>
+            <td class="category">Industry</td>
+            <td class="address"><span class="street">1475 Gortner Avenue</span><br> <div class="room">123 Snyder Hall</div> <span class="city">St. Paul MN 55108</span></td>
+            <td class="title">Dean of the College of Biological Sciences<br><img class="smol" id="smol3" src="data:," alt></td>
             <td><a href="mailto:cbsdeans@umn.edu">cbsdeans@umn.edu</a></td>
             <td><a href="https://cbs.umn.edu/about/college-leadership">Home Page</a></td>
         </tr>
-        <tr onmouseover="change('carlson.jpg', 'carlson.jpg', 4)" onmouseout="change('carlson.jpg', 'data:,', 4)">
-            <td>Sri Zaheer</td>
-            <td>Industry</td>
-            <td>321 19th Avenue S<br> Suite 4-300 Carlson School of Management<br> Minneapolis MN 55455</td>
-            <td>Dean of the Carlson School of Management<br><img class="smol" id="smol4" src="data:," alt></td>
+        <tr class ="entry" onmouseover="change('carlson.jpg', 4)" onmouseout="change('data:,', 4)">
+            <td class="name">Sri Zaheer</td>
+            <td class="category">Industry</td>
+            <td class="address"><span class="street">321 19th Avenue S</span><br> <div class="room">Suite 4-300 Carlson School of Management</div> <span class="city">Minneapolis MN 55455</span></td>
+            <td class="title">Dean of the Carlson School of Management<br><img class="smol" id="smol4" src="data:," alt></td>
             <td><a href="mailto:szaheer@umn.edu">szaheer@umn.edu</a></td>
             <td><a href="https://carlsonschool.umn.edu/about-us/leadership-team">Home Page</a></td>
         </tr>
@@ -75,18 +75,9 @@
         <img id="bigboi" src="gophers-mascot.png" alt="Goldy Gopher"><br>
         <button id="luck" onclick="lucky()">Feeling Lucky</button>
     </div><br>
-    <div id="contactMap"></div>
-        <script>
-            var map;
-                function initMap() {
-                    var myLatLng = { lat: 44.9727, lng: -93.23540000000003 };
-                    map = new google.maps.Map(document.getElementById('contactMap'), {
-                        center: myLatLng,
-                        zoom: 14
-                    });
-                }
-        </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHA_O_rW2n6AAb9lvwOQ3wO36rtstdc90&libraries=places&callback=initMap" async defer></script>
+    <div id="map"></div>
+    <div id="search"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHA_O_rW2n6AAb9lvwOQ3wO36rtstdc90&libraries=places&callback=initMap" async defer></script>
 </body>
 
 </html>
