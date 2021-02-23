@@ -39,7 +39,8 @@ function addPoints(locations) {
             map,
             position: locations[x].geometry.location,
             title: newEntry.getElementsByClassName("name")[0].textContent,
-            data : {
+            icon: "./Untitled.png",
+            data: {
                 content:    "<div class='id'>" + 
                             "<b>" + newEntry.getElementsByClassName("name")[0].textContent + "</b>" + "<br>" +
                             newEntry.getElementsByClassName("category")[0].textContent + "<br>" +
@@ -52,7 +53,7 @@ function addPoints(locations) {
             if (!this.infoWindow) {
                 this.infoWindow = new google.maps.InfoWindow({
                     content: this.data.content,
-                    // content: newEntry.getElementsByClassName("address")[0],
+                    
                 });
             }
             this.infoWindow.open(map, this);
