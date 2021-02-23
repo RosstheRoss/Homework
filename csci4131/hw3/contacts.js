@@ -45,7 +45,7 @@ function initMap() {
 
 function addPoints(locations) {
     for (x in locations) {
-        newEntry = document.getElementsByClassName("entry")[x];
+        var newEntry = document.getElementsByClassName("entry")[x];
         var marker = new google.maps.Marker({
             map,
             position: locations[x].geometry.location,
@@ -58,16 +58,15 @@ function addPoints(locations) {
                             newEntry.getElementsByClassName("room")[0].textContent + " " + newEntry.getElementsByClassName("street")[0].textContent + "<br>" +
                             newEntry.getElementsByClassName("city")[0].textContent + 
                             "</div>",
-            }
+            },
         });
         marker.addListener('click', function () {
             if (!this.infoWindow) {
                 this.infoWindow = new google.maps.InfoWindow({
                     content: this.data.content,
                 });
-                
+                this.infoWindow.open(map, this);
             }
-            this.infoWindow.open(map, this);
         })
     }
 }

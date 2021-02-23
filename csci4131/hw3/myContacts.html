@@ -75,9 +75,24 @@
         <img id="bigboi" src="gophers-mascot.png" alt="Goldy Gopher" class="isRotating"><br>
         <button id="luck" onclick="lucky()">Feeling Lucky</button>
         <button id="spin" onclick="dizzy()" >Feeling Dizzy</button>
-    </div><br><br>
-    <div id="map"></div>
-    <div id="search"></div>
+    </div>
+    <span id="googlymap">
+        <div id="map"></div>
+        <span id="SearchPoints">
+            <div id="search" class="inputBox">
+                <label for="places">Find  </label>
+                <select id="places" name="places">
+                    <option value="Restaurants">Restaurants</option>
+                    <option value="Hospitals">Hospitals</option>
+                    <option value="Parking">Parking</option>
+                    <option value="Groceries">Grocery Stores</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div id="transit" class="inputBox">g</div>
+        </span>
+        
+    </span>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHA_O_rW2n6AAb9lvwOQ3wO36rtstdc90&libraries=places&callback=initMap" async defer></script>
 </body>
 
