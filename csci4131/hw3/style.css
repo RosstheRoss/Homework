@@ -50,12 +50,11 @@ tr:nth-child(odd) {
     100%{ transform:rotate(1turn) }
 }
 #map {
-    float: left;
     clear: both;
+    float: left;
     padding-top: 30%;
     margin-top: 1em;
     margin-left: .2em;
-    position: bottom;
     width: 60%;
     height: 30%;
     max-height: 40%;
@@ -75,8 +74,7 @@ tr:nth-child(odd) {
     float: right;
     clear: both;
     border: 1px solid black;
-    width: 30%;
-    margin-right: 0;
+    width: 32%;
 }
 .inputBox:nth-child(even) {
     background-color:blanchedalmond;
