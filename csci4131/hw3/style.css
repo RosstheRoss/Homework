@@ -82,6 +82,9 @@ tr:nth-child(odd) {
 .inputBox:nth-child(odd) {
     background-color: burlywood;
 }
+#others {
+    display:none;
+}
 
 /* Form */
 .Form {

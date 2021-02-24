@@ -81,20 +81,22 @@
         <span id="SearchPoints">
             <div id="search" class="inputBox">
                 <label for="places">Find  </label>
-                <select id="places" name="places">
-                    <option value="Restaurants">Restaurants</option>
-                    <option value="Hospitals">Hospitals</option>
-                    <option value="Parking">Parking</option>
-                    <option value="Groceries">Grocery Stores</option>
+                <select id="places" name="places" onchange="check(this.value)">
+                    <option value="restaurant">Restaurants</option>
+                    <option value="hospital">Hospitals</option>
+                    <option value="parking">Parking</option>
+                    <option value="light_rail_station">Grocery Stores</option>
                     <option value="Other">Other</option>
                 </select><br>
-                <input type="text" id="others" name="other" minlength="1">
+                <input type="text" id="others" name="other" minlength="1"><br>
+                in <input type="text" id="distance" name="distance" minlength="1"> meters
+                <button onclick="searchPlaces()">Submit</button>
             </div>
             <div id="transit" class="inputBox">TRANSIT PLACEHOLDER</div>
         </span>
         
     </span>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHA_O_rW2n6AAb9lvwOQ3wO36rtstdc90&libraries=places&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHA_O_rW2n6AAb9lvwOQ3wO36rtstdc90&libraries=places,geometry&callback=initMap" async defer></script>
 </body>
 
 </html>
