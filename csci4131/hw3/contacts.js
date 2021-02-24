@@ -99,7 +99,6 @@ function searchPlaces() {
             query: document.getElementById("others").value,
         };
         otherRadius = request.radius;
-        console.log(otherRadius);
         service = new google.maps.places.PlacesService(map);
         service.textSearch(request, (results, status) => {
             if (status === google.maps.places.PlacesServiceStatus.OK && results) {
@@ -109,7 +108,6 @@ function searchPlaces() {
     }
 }
 function addPointsSearch(locations, isOther) {
-    console.log(locations);
     for (x in locations) {
         var marker;
         if (isOther) {
