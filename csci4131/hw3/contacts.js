@@ -113,7 +113,7 @@ function addPointsSearch(locations, isOther) {
     for (x in locations) {
         var marker;
         if (isOther) {
-            if (google.maps.geometry.spherical.computeDistanceBetween(locations[x].geometry.location, center) < parseInt(otherRadius)) {
+            if (google.maps.geometry.spherical.computeDistanceBetween(locations[x].geometry.location, map.getCenter()) < parseInt(otherRadius)) {
                 marker = new google.maps.Marker({
                     map,
                     title: locations[x].name,
@@ -135,14 +135,15 @@ function addPointsSearch(locations, isOther) {
                 },
             });
         }
-        
-        marker.addListener('click', function () {
-            if (!this.infoWindow) {
-                this.infoWindow = new google.maps.InfoWindow({
-                    content: this.data.content,
-                });
-                this.infoWindow.open(map, this);
-            }
-        })
+        if (marker) {
+            marker.addListener('click', function () {
+                if (!this.infoWindow) {
+                    this.infoWindow = new google.maps.InfoWindow({
+                        content: this.data.content,
+                    });
+                    this.infoWindow.open(map, this);
+                }
+            })
+        }
     }
 }
