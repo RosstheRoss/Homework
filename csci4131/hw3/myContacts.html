@@ -71,15 +71,15 @@
             <td><a href="https://carlsonschool.umn.edu/about-us/leadership-team">Home Page</a></td>
         </tr>
     </table>
-    <div class="large">
+    <span class="large">
         <img id="bigboi" src="gophers-mascot.png" alt="Goldy Gopher" class="isRotating"><br>
         <button id="luck" onclick="lucky()">Feeling Lucky</button>
         <button id="spin" onclick="dizzy()" >Feeling Dizzy</button>
-    </div>
-    <span id="googlymap">
+    </span>
+    <div id="googlymap">
         <div id="transitList"></div>
         <div id="map"></div>
-        <span id="SearchPoints">
+        <div id="SearchPoints">
             <div id="search" class="inputBox">
                 <label for="places">Find  </label>
                 <select id="places" name="places" onchange="check(this.value)">
@@ -102,10 +102,12 @@
                 <input type="radio" id="transit" name="means" value="TRANSIT"> <label for="transit">Transit</label>
                 <button onclick="directions()">GO</button>
             </div>
-        </span>
-        
-    </span>
+        </div>
+    </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHA_O_rW2n6AAb9lvwOQ3wO36rtstdc90&libraries=places,geometry&callback=initMap" async defer></script>
+    <script>
+        document.getElementById("bigboi").classList.add("isntRotating");
+    </script>
 </body>
 
 </html>

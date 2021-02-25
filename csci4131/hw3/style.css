@@ -49,32 +49,38 @@ tr:nth-child(odd) {
 @keyframes rotate{
     100%{ transform:rotate(1turn) }
 }
-#map {
-    clear: both;
+#map, #formap {
+    /* clear: both; */
     float: left;
     padding-top: 30%;
     margin-top: 1em;
     margin-left: .2em;
-    width: 60%;
+    width: 50%;
     height: 30%;
     max-height: 40%;
+}
+#formap {
+    float: right;
+}
+#transitList {
+    float: left;
+    width: 20%;
+    color: white;
 }
 .id {
     text-align: center;
 }
-#GooglyMap {
-    overflow: hidden;
-    display: inline-block;
-    position: absolute;
+#googlymap {
+    width: 100%;
+    overflow: auto;
+    /* display: flex; */
+    /* position: absolute; */
 }
-#SearchPoints {
-    margin-bottom: 80em;
-}
+
 .inputBox {
-    float: right;
-    clear: both;
+    float: left;
     border: 1px solid black;
-    width: 32%;
+    width: 25%;
 }
 .inputBox:nth-child(even) {
     background-color:blanchedalmond;
@@ -88,6 +94,7 @@ tr:nth-child(odd) {
 
 /* Form */
 .Form {
+    float: left;
     background-color: whitesmoke;
     padding-left: 5%;
     max-width: 15%;
@@ -106,5 +113,6 @@ tr:nth-child(odd) {
 iframe {
     border: 0px;
 }
+
 
 

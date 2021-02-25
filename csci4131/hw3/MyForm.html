@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>There is no form</title>
     <link rel="stylesheet" href="style.css">
+    <script src="contacts.js" defer></script>
 </head>
 <body>
     <nav>
@@ -47,4 +48,8 @@
             <input type="reset" value="Clear">
         </p>
     </form>
+    <div id="formap"></div>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHA_O_rW2n6AAb9lvwOQ3wO36rtstdc90&libraries=places,geometry&callback=initForm"
+        async defer></script>
 </body>
