@@ -78,6 +78,7 @@ function addPointsContacts(locations) {
 }
 var service;
 var otherRadius;
+var searchMarker = [];
 function searchPlaces() {
     var request;
     if (document.getElementById("places").value!="Other") {
@@ -107,7 +108,9 @@ function searchPlaces() {
         });
     }
 }
+
 function addPointsSearch(locations, isOther) {
+    deleteMarkers();
     for (x in locations) {
         var marker;
         if (isOther) {
@@ -123,7 +126,7 @@ function addPointsSearch(locations, isOther) {
                 });
             }
         } else {
-            var marker = new google.maps.Marker({
+            marker = new google.maps.Marker({
                 map,
                 title: locations[x].name,
                 position: locations[x].geometry.location,
@@ -142,6 +145,18 @@ function addPointsSearch(locations, isOther) {
                     this.infoWindow.open(map, this);
                 }
             })
+            searchMarker.push(marker);
         }
+        
     }
+}
+function deleteMarkers() {
+    for (let i = 0; i < searchMarker.length; i++) {
+        searchMarker[i].setMap(null);
+    }
+    searchMarker = [];
+}
+
+function directions () {
+    
 }

@@ -77,6 +77,7 @@
         <button id="spin" onclick="dizzy()" >Feeling Dizzy</button>
     </div>
     <span id="googlymap">
+        <div id="transitList"></div>
         <div id="map"></div>
         <span id="SearchPoints">
             <div id="search" class="inputBox">
@@ -90,9 +91,17 @@
                 </select><br>
                 <input type="text" id="others" name="other" minlength="1"><br>
                 in <input type="text" id="distance" name="distance" minlength="1"> meters
-                <button onclick="searchPlaces()">Submit</button>
+                <button onclick="searchPlaces()">Search</button>
             </div>
-            <div id="transit" class="inputBox">TRANSIT PLACEHOLDER</div>
+            <div id="transit" class="inputBox">
+                Directions to <br>
+                <input type="text" id="destination" name="destination"><br>
+                <label id="means">by </label> 
+                <input type="radio" id="walk" name="means" value="WALKING"> <label for="walk">Foot</label>
+                <input type="radio" id="drive" name="means" value="DRIVING"> <label for="drive">Driving</label>
+                <input type="radio" id="transit" name="means" value="TRANSIT"> <label for="transit">Transit</label>
+                <button onclick="directions()">GO</button>
+            </div>
         </span>
         
     </span>
