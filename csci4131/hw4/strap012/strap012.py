@@ -36,7 +36,7 @@ def getContents(type, file):
 def client_recv(client_sock, client_addr):
     print('talking to {}'.format(client_addr))
     data = client_sock.recv(BUFSIZE)
-    data = data.decode('utf-8').replace("\r", "")
+    data = data.decode('utf-8').strip("\r")
     data = data.split("\n")
     request = data[0].split(" ")
     want = getContents(request[0], request[1][1:])
