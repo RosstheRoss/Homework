@@ -9,21 +9,23 @@ from argparse import ArgumentParser
 BUFSIZE = 4096
 CRLF = '\r\n'
 METHOD_NOT_ALLOWED = 'HTTP/1.1 405  METHOD NOT ALLOWED{}Allow: GET, HEAD, POST {}Connection: close{}{}'.format(CRLF, CRLF, CRLF, CRLF)
-OK = 'HTTP/1.1 200 OK{}{}{}'.format(CRLF, CRLF, CRLF) # head request only
+OK = 'HTTP/1.1 200 OK{}{}'.format(CRLF, CRLF, CRLF) # head request only
 
 def getContents(type, file):
   returnValue = "".encode()
   try:
     content = open(file, 'rb')
   except FileNotFoundError:
-    getContents(type, "404.html")
+    returnValue = getContents(type, "404.html")
   except PermissionError:
-    getContents(type, "403.html")
+    returnValue = getContents(type, "403.html")
   else:
     if type == "HEAD" or "GET":
       returnValue = OK.encode()
       if type == "GET":
-        returnValue =b"".join([returnValue, content.read(), "{}{}".format(CRLF, CRLF).encode()])
+        returnValue = b"".join([returnValue, content.read(), "{}{}".format(CRLF, CRLF).encode()])
+      else:
+        returnValue = b"".join([returnValue, "{}{}".format(CRLF, CRLF).encode()])
     elif type == "POST":
       print("B")
     else:
