@@ -21,13 +21,13 @@ def getContents(type, file):
     getContents(type, "403.html")
   else:
     if type == "HEAD" or "GET":
-      returnValue.join(OK.encode())
+      returnValue = OK.encode()
       if type == "GET":
-        returnValue.join([content.read(), "{}{}".format(CRLF, CRLF).encode()])
+        returnValue =b"".join([returnValue, content.read(), "{}{}".format(CRLF, CRLF).encode()])
     elif type == "POST":
       print("B")
     else:
-      returnValue.join(METHOD_NOT_ALLOWED.encode())
+      returnValue= METHOD_NOT_ALLOWED.encode()
     content.close()
   return returnValue
 
@@ -39,7 +39,7 @@ def client_recv(client_sock, client_addr):
     request = data[0].split(" ")
     want = getContents(request[0], request[1][1:])
     client_sock.send(want)
-
+    print(want)
     client_sock.shutdown(1)
     client_sock.close()
    
