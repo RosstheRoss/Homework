@@ -1,0 +1,118 @@
+/* Global */
+body {
+    background-color:antiquewhite;
+}
+.linkTable {
+    border: 1px solid black;
+    margin-left: 20px;
+    background-color: white;
+    border-collapse: separate;
+}
+
+/* Contacts */
+table, th, td {
+    max-width: 80%;
+    overflow-x:auto;
+    border: 1px solid black; 
+    border-collapse: collapse;
+}
+table {
+    float:left;
+    max-width: 60%;
+}
+tr:nth-child(even) {
+    background-color:blanchedalmond;
+}
+tr:nth-child(odd) {
+    background-color: burlywood;
+}
+.smol {
+    max-height: 100%;
+    width: 6em;
+}
+.large {
+    float: right;
+    max-width: max-content;
+}
+#bigboi {
+    width: 25em;
+    height: 15em;
+    object-fit: cover;
+    margin-right: 0;
+}
+.isRotating { 
+    animation:5s rotate infinite linear; 
+}
+.isntRotating {
+    animation-play-state: paused;
+}
+@keyframes rotate{
+    100%{ transform:rotate(1turn) }
+}
+#map, #formap {
+    /* clear: both; */
+    float: left;
+    padding-top: 30%;
+    margin-top: 1em;
+    margin-left: .2em;
+    width: 50%;
+    height: 30%;
+    max-height: 40%;
+}
+#formap {
+    float: right;
+}
+#transitList {
+    float: left;
+    width: 20%;
+    color: white;
+}
+.id {
+    text-align: center;
+}
+#googlymap {
+    width: 100%;
+    overflow: auto;
+    /* display: flex; */
+    /* position: absolute; */
+}
+
+.inputBox {
+    float: left;
+    border: 1px solid black;
+    width: 25%;
+}
+.inputBox:nth-child(even) {
+    background-color:blanchedalmond;
+}
+.inputBox:nth-child(odd) {
+    background-color: burlywood;
+}
+#others {
+    display:none;
+}
+
+/* Form */
+.Form {
+    float: left;
+    background-color: whitesmoke;
+    padding-left: 5%;
+    max-width: 25%;
+}
+/* Widgets */
+.grid {
+    align-content: center;
+    display: inline-grid;
+    grid-template-columns: 40% 40%;
+    grid-template-rows: 30%;
+    gap: .1em 10%;
+}
+.griditem {
+    padding: 10%;
+}
+iframe {
+    border: 0px;
+}
+
+
+

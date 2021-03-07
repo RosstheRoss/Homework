@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>My Contacts</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:dnt" content="on">
+    <link rel="stylesheet" href="style.css">
+    <script src="contacts.js" defer></script>
+</head>
+
+<body>
+    <nav>
+        <table>
+            <tr class="linkTable">
+                <td class="linkTable"><a href="./MyWidgets.html">myWidgets</a></td>
+                <td class="linkTable"><a href="./MyContacts.html">myContacts</a></td>
+                <td class="linkTable"><a href="./MyForm.html">MyForm</a></td>
+            </tr>
+        </table>
+    </nav><br>
+    <h1>University Contacts</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Location</th>
+            <th>Information</th>
+            <th>Email</th>
+            <th>URL</th>
+        </tr>
+        <tr class ="entry" onmouseover="change('morrill.jpg', 0)" onmouseout="change('data:,', 0)">
+            <td class="name">Joan Gabel</td>
+            <td class="category">Industry</td>
+            <td class="address"><span class="street">100 Church Street SE</span><br> <div class="room">202 Morrill Hall</div> <span class="city">Minneapolis MN 55455</span></td>
+            <td class="title">President of the University of Minnesota<br><img class="smol" id="smol0" src="data:," alt></td>
+            <td><a href="mailto:upres@umn.edu">upres@umn.edu</a></td>
+            <td><a href="https://president.umn.edu/">Home Page</a></td>
+        </tr>
+        <tr class ="entry" onmouseover="change('walter.jpg', 1)" onmouseout="change('data:,', 1)">
+            <td class="name">Mostafa Kaveh</td>
+            <td class="category">Industry</td>
+            <td class="address"><span class="street">117 Pleasant St SE</span><br> <div class="room">105 Walter Library</div> <span class="city">Minneapolis MN 55455</span></td>
+            <td class="title">Dean of the College of Science and Engineering<br><img class="smol" id="smol1" src="data:," alt></td>
+            <td><a href="mailto:mos@umn.edu">mos@umn.edu</a></td>
+            <td><a href="https://cse.umn.edu/college/office-dean">Home Page</a></td>
+        </tr>
+        <tr class ="entry" onmouseover="change('johnston.jpg', 2)" onmouseout="change('data:,', 2)">
+            <td class="name">John Coleman</td>
+            <td class="category">Industry</td>
+            <td class="address"><span class="street">101 Pleasant Street SE</span><br> <div class="room">215 Johnston Hall</div> <span class="city">Minneapolis MN 55455</span></td>
+            <td class="title">Dean of the College of Liberal Arts<br><img class="smol" id="smol2" src="data:," alt></td>
+            <td><a href="mailto:coleman@umn.edu">coleman@umn.edu</a></td>
+            <td><a href="https://cla.umn.edu/units/dean">Home Page</a></td>
+        </tr>
+        <tr class ="entry" onmouseover="change('snyder.jpg', 3)" onmouseout="change('data:,', 3)">
+            <td class="name">Valery Forbes</td>
+            <td class="category">Industry</td>
+            <td class="address"><span class="street">1475 Gortner Avenue</span><br> <div class="room">123 Snyder Hall</div> <span class="city">St. Paul MN 55108</span></td>
+            <td class="title">Dean of the College of Biological Sciences<br><img class="smol" id="smol3" src="data:," alt></td>
+            <td><a href="mailto:cbsdeans@umn.edu">cbsdeans@umn.edu</a></td>
+            <td><a href="https://cbs.umn.edu/about/college-leadership">Home Page</a></td>
+        </tr>
+        <tr class ="entry" onmouseover="change('carlson.jpg', 4)" onmouseout="change('data:,', 4)">
+            <td class="name">Sri Zaheer</td>
+            <td class="category">Industry</td>
+            <td class="address"><span class="street">321 19th Avenue S</span><br> <div class="room">Suite 4-300 Carlson School of Management</div> <span class="city">Minneapolis MN 55455</span></td>
+            <td class="title">Dean of the Carlson School of Management<br><img class="smol" id="smol4" src="data:," alt></td>
+            <td><a href="mailto:szaheer@umn.edu">szaheer@umn.edu</a></td>
+            <td><a href="https://carlsonschool.umn.edu/about-us/leadership-team">Home Page</a></td>
+        </tr>
+    </table>
+    <span class="large">
+        <img id="bigboi" src="gophers-mascot.png" alt="Goldy Gopher" class="isRotating"><br>
+        <button id="luck" onclick="lucky()">Feeling Lucky</button>
+        <button id="spin" onclick="dizzy()" >Feeling Dizzy</button>
+    </span>
+    <div id="googlymap">
+        <div id="transitList"></div>
+        <div id="map"></div>
+        <div id="SearchPoints">
+            <div id="search" class="inputBox">
+                <label for="places">Find  </label>
+                <select id="places" name="places" onchange="check(this.value)">
+                    <option value="restaurant">Restaurants</option>
+                    <option value="hospital">Hospitals</option>
+                    <option value="parking">Parking</option>
+                    <option value="light_rail_station">Grocery Stores</option>
+                    <option value="Other">Other</option>
+                </select><br>
+                <input type="text" id="others" name="other" minlength="1"><br>
+                in <input type="text" id="distance" name="distance" minlength="1"> meters
+                <button onclick="searchPlaces()">Search</button>
+            </div>
+            <div id="tranport" class="inputBox">
+                Directions to <br>
+                <input type="text" id="destination" name="destination"><br>
+                <label id="means">by </label> 
+                <input type="radio" id="walk" name="means" value="WALKING"> <label for="walk">Foot</label>
+                <input type="radio" id="drive" name="means" value="DRIVING"> <label for="drive">Driving</label>
+                <input type="radio" id="transit" name="means" value="TRANSIT"> <label for="transit">Transit</label>
+                <button onclick="directions()">GO</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHA_O_rW2n6AAb9lvwOQ3wO36rtstdc90&libraries=places,geometry&callback=initMap" async defer></script>
+    <script>
+        document.getElementById("bigboi").classList.add("isntRotating");
+    </script>
+</body>
+
+</html>
