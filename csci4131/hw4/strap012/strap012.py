@@ -10,23 +10,23 @@ BUFSIZE = 4096
 CRLF = '\r\n'
 METHOD_NOT_ALLOWED = 'HTTP/1.1 405  METHOD NOT ALLOWED{}Allow: GET, HEAD, POST {}Connection: close{}{}'.format(CRLF, CRLF, CRLF, CRLF)
 OK = 'HTTP/1.1 200 OK{}{}{}'.format(CRLF, CRLF, CRLF) # head request only
-NOT_FOUND = 'HTTP/1.1 404 NOT FOUND{}Connection: close{}{}'.format(CRLF, CRLF, CRLF)
-FORBIDDEN = 'HTTP/1.1 403 FORBIDDEN{}Connection: close{}{}'.format(CRLF, CRLF, CRLF)
 
 def getContents(type, file):
-  fileExist = False
   returnValue = ""
   try:
-    content = open(file)
+    content = open(file, 'r')
   except FileNotFoundError:
-    returnValue = NOT_FOUND
+    getContents(type, "404.html")
   except PermissionError:
-    returnValue = FORBIDDEN
+    getContents(type, "403.html")
   else:
     if type == "HEAD":
       returnValue = OK
     elif type == "GET":
-      returnValue = OK + content.read() + "{}{}".format(CRLF, CRLF)
+      try:
+        returnValue = OK + content.read() + "{}{}".format(CRLF, CRLF)
+      except:
+        content.close()
     elif type == "POST":
       print("B")
     else:
@@ -41,7 +41,6 @@ def client_recv(client_sock, client_addr):
     data = data.split("\n")
     request = data[0].split(" ")
     want = getContents(request[0], request[1][1:])
-    print(want)
     client_sock.send(bytes(want, 'utf-8'))
 
     client_sock.shutdown(1)
