@@ -12,25 +12,22 @@ METHOD_NOT_ALLOWED = 'HTTP/1.1 405  METHOD NOT ALLOWED{}Allow: GET, HEAD, POST {
 OK = 'HTTP/1.1 200 OK{}{}{}'.format(CRLF, CRLF, CRLF) # head request only
 
 def getContents(type, file):
-  returnValue = ""
+  returnValue = "".encode()
   try:
-    content = open(file, 'r')
+    content = open(file, 'rb')
   except FileNotFoundError:
     getContents(type, "404.html")
   except PermissionError:
     getContents(type, "403.html")
   else:
-    if type == "HEAD":
-      returnValue = OK
-    elif type == "GET":
-      try:
-        returnValue = OK + content.read() + "{}{}".format(CRLF, CRLF)
-      except:
-        content.close()
+    if type == "HEAD" or "GET":
+      returnValue.join(OK.encode())
+      if type == "GET":
+        returnValue.join([content.read(), "{}{}".format(CRLF, CRLF).encode()])
     elif type == "POST":
       print("B")
     else:
-      returnValue = METHOD_NOT_ALLOWED
+      returnValue.join(METHOD_NOT_ALLOWED.encode())
     content.close()
   return returnValue
 
@@ -41,7 +38,7 @@ def client_recv(client_sock, client_addr):
     data = data.split("\n")
     request = data[0].split(" ")
     want = getContents(request[0], request[1][1:])
-    client_sock.send(bytes(want, 'utf-8'))
+    client_sock.send(want)
 
     client_sock.shutdown(1)
     client_sock.close()
