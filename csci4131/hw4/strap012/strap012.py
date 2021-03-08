@@ -2,30 +2,49 @@
 # See https://docs.python.org/3.2/library/socket.html
 # for a decscription of python socket and its parameters
 import socket
+import os
+import stat
 
 from threading import Thread
 from argparse import ArgumentParser
 
 BUFSIZE = 4096
 CRLF = '\r\n'
+NOT_FOUND = 'HTTP/1.1 404 NOT FOUND{}Connection: close{}{}'.format(CRLF, CRLF, CRLF)
+FORBIDDEN = 'HTTP/1.1 403 FORBIDDEN{}Connection: close{}{}'.format(CRLF, CRLF, CRLF)
 METHOD_NOT_ALLOWED = 'HTTP/1.1 405  METHOD NOT ALLOWED{}Allow: GET, HEAD, POST {}Connection: close{}{}'.format(CRLF, CRLF, CRLF, CRLF)
 OK = 'HTTP/1.1 200 OK{}{}'.format(CRLF, CRLF, CRLF) # head request only
+
+# check file permissions -is file world readable?
+def check_perms(resource): 
+  stmode = os.stat(resource).st_mode
+  return(getattr(stat, 'S_IROTH') & stmode) > 0
 
 def getContents(type, file):
   returnValue = "".encode()
   try:
     content = open(file, 'rb')
+    if not check_perms(file):
+      raise PermissionError
   except FileNotFoundError:
-    returnValue = getContents(type, "404.html")
+    returnValue = NOT_FOUND.encode()
+    with open("404.html", "rb") as fof:
+      returnValue = b"".join(
+        [returnValue, fof.read(), "{}{}".format(CRLF, CRLF).encode()])
   except PermissionError:
-    returnValue = getContents(type, "403.html")
+    returnValue = FORBIDDEN.encode()
+    with open("403.html", "rb") as forb:
+      returnValue = b"".join(
+          [returnValue, forb.read(), "{}{}".format(CRLF, CRLF).encode()])
   else:
     if type == "HEAD" or "GET":
       returnValue = OK.encode()
       if type == "GET":
-        returnValue = b"".join([returnValue, content.read(), "{}{}".format(CRLF, CRLF).encode()])
+        returnValue = b"".join(
+          [returnValue, content.read(), "{}{}".format(CRLF, CRLF).encode()])
       else:
-        returnValue = b"".join([returnValue, "{}{}".format(CRLF, CRLF).encode()])
+        returnValue = b"".join(
+          [returnValue, "{}{}".format(CRLF, CRLF).encode()])
     elif type == "POST":
       print("B")
     else:
@@ -39,9 +58,10 @@ def client_recv(client_sock, client_addr):
     data = data.decode('utf-8').strip("\r")
     data = data.split("\n")
     request = data[0].split(" ")
-    want = getContents(request[0], request[1][1:])
-    client_sock.send(want)
-    print(want)
+    if len(data) != 0:
+      want = getContents(request[0], request[1][1:])
+      client_sock.send(want)
+      print(want)
     client_sock.shutdown(1)
     client_sock.close()
    
