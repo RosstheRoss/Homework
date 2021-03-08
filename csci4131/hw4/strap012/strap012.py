@@ -37,14 +37,13 @@ def getContents(type, file):
       returnValue = b"".join(
           [returnValue, forb.read(), "{}{}".format(CRLF, CRLF).encode()])
   else:
-    if type == "HEAD" or "GET":
-      returnValue = OK.encode()
-      if type == "GET":
-        returnValue = b"".join(
-          [returnValue, content.read(), "{}{}".format(CRLF, CRLF).encode()])
-      else:
-        returnValue = b"".join(
-          [returnValue, "{}{}".format(CRLF, CRLF).encode()])
+    returnValue = OK.encode()
+    if type == "HEAD":
+      returnValue = b"".join(
+        [returnValue, "{}{}".format(CRLF, CRLF).encode()])
+    elif type == "GET":
+      returnValue = b"".join(
+        [returnValue, content.read(), "{}{}".format(CRLF, CRLF).encode()])
     elif type == "POST":
       print("B")
     else:
