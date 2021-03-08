@@ -23,9 +23,9 @@ def check_perms(resource):
 def getContents(type, file):
   returnValue = "".encode()
   try:
-    content = open(file, 'rb')
     if not check_perms(file):
       raise PermissionError
+    content = open(file, 'rb')
   except FileNotFoundError:
     returnValue = NOT_FOUND.encode()
     with open("404.html", "rb") as fof:
