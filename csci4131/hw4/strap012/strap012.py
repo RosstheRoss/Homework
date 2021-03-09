@@ -20,6 +20,11 @@ def check_perms(resource):
   stmode = os.stat(resource).st_mode
   return(getattr(stat, 'S_IROTH') & stmode) > 0
 
+def POST(form):
+  contents = form.decode(utf-8)
+  print(contents)
+  return
+
 def getContents(type, file):
   returnValue = "".encode()
   try:
@@ -45,7 +50,9 @@ def getContents(type, file):
       returnValue = b"".join(
         [returnValue, content.read(), "{}{}".format(CRLF, CRLF).encode()])
     elif type == "POST":
-      print("B")
+      POST(content.read())
+      #returnValue = b"".join(
+      #  [returnValue, POST(content.read(), "{}{}".format(CRLF, CRLF).encode())])
     else:
       returnValue= METHOD_NOT_ALLOWED.encode()
     content.close()
@@ -55,12 +62,12 @@ def client_recv(client_sock, client_addr):
     print('talking to {}'.format(client_addr))
     data = client_sock.recv(BUFSIZE)
     data = data.decode('utf-8').strip("\r")
+    print(data)
     data = data.split("\n")
     request = data[0].split(" ")
-    if len(data) != 0:
+    if len(request) > 1:
       want = getContents(request[0], request[1][1:])
       client_sock.send(want)
-      print(want)
     client_sock.shutdown(1)
     client_sock.close()
    
