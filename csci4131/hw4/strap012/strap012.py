@@ -25,12 +25,9 @@ def check_perms(resource):
 def POST(form):
   form = unquote(form)
   form = form.replace("+", " ")
-  form = form.split("&")
-  print(form)
   contents = ""
   for x in form:
     x = x.split("=")
-    print(x)
     contents = contents + "<tr>\n<td>" + x[0] + "</td>\n<td>" + x[1] + "</td>\n</tr>\n"
   table = "<table>" + contents + "</table>"
   ret = "<!DOCTYPE html>\n<html>\n<head>\n<meta charset='utf-8'>\n<link rel='stylesheet' href='style.css'>\n<title>Test</title>\n</head>\n<body>\n<h2>\nFollowing Form Data Submitted Successfully:</h2><br>\n{}\n</body>\n</html>".format(table)
@@ -38,14 +35,13 @@ def POST(form):
 
 def getContents(type, file, contents):
   if type =="POST":
-    if file != "redirect":
-      return b"".join(
+    return b"".join(
           [OK.encode(), POST(contents).encode(), "{}{}".format(CRLF, CRLF).encode()])
-    else:
-      contents = contents.split("=")[-1]
-      return "HTTP/1.1 307 TEMPORARY REDIRECT{}Connection: close{}Location:{}{}{}".format(CRLF, CRLF, "https://youtube.com/results?search_query=" + contents, CRLF, CRLF).encode()
   returnValue = "".encode()
   try:
+    if file.split("?")[0] == "redirect":
+      contents = file.split("?")[1].split("=")[-1]
+      return "HTTP/1.1 307 TEMPORARY REDIRECT{}Connection: close{}Location:{}{}{}".format(CRLF, CRLF, "https://youtube.com/results?search_query=" + contents, CRLF, CRLF).encode()
     if not check_perms(file):
       raise PermissionError
     content = open(file, 'rb')
