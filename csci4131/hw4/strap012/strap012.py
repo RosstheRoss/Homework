@@ -23,7 +23,8 @@ def check_perms(resource):
 def POST(form):
   contents = form.decode(utf-8)
   print(contents)
-  return
+  ret = "<!DOCTYPE html><html><head><meta charset='utf-8'><title>Test</title></head><body>E</body></html>"
+  return ret
 
 def getContents(type, file):
   returnValue = "".encode()
@@ -49,10 +50,6 @@ def getContents(type, file):
     elif type == "GET":
       returnValue = b"".join(
         [returnValue, content.read(), "{}{}".format(CRLF, CRLF).encode()])
-    elif type == "POST":
-      POST(content.read())
-      #returnValue = b"".join(
-      #  [returnValue, POST(content.read(), "{}{}".format(CRLF, CRLF).encode())])
     else:
       returnValue= METHOD_NOT_ALLOWED.encode()
     content.close()
