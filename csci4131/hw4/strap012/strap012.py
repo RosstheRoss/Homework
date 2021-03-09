@@ -5,15 +5,17 @@ import socket
 import os
 import stat
 
+
 from threading import Thread
 from argparse import ArgumentParser
+from urllib.parse import unquote
 
 BUFSIZE = 4096
 CRLF = '\r\n'
 NOT_FOUND = 'HTTP/1.1 404 NOT FOUND{}Connection: close{}{}'.format(CRLF, CRLF, CRLF)
 FORBIDDEN = 'HTTP/1.1 403 FORBIDDEN{}Connection: close{}{}'.format(CRLF, CRLF, CRLF)
 METHOD_NOT_ALLOWED = 'HTTP/1.1 405  METHOD NOT ALLOWED{}Allow: GET, HEAD, POST {}Connection: close{}{}'.format(CRLF, CRLF, CRLF, CRLF)
-OK = 'HTTP/1.1 200 OK{}{}'.format(CRLF, CRLF, CRLF) # head request only
+OK = 'HTTP/1.1 200 OK{}Connection: close{}{}'.format(CRLF, CRLF, CRLF) # head request only
 
 # check file permissions -is file world readable?
 def check_perms(resource): 
@@ -21,12 +23,27 @@ def check_perms(resource):
   return(getattr(stat, 'S_IROTH') & stmode) > 0
 
 def POST(form):
-  contents = form.decode(utf-8)
-  print(contents)
-  ret = "<!DOCTYPE html><html><head><meta charset='utf-8'><title>Test</title></head><body>E</body></html>"
+  form = unquote(form)
+  form = form.replace("+", " ")
+  form = form.split("&")
+  print(form)
+  contents = ""
+  for x in form:
+    x = x.split("=")
+    print(x)
+    contents = contents + "<tr>\n<td>" + x[0] + "</td>\n<td>" + x[1] + "</td>\n</tr>\n"
+  table = "<table>" + contents + "</table>"
+  ret = "<!DOCTYPE html>\n<html>\n<head>\n<meta charset='utf-8'>\n<link rel='stylesheet' href='style.css'>\n<title>Test</title>\n</head>\n<body>\n<h2>\nFollowing Form Data Submitted Successfully:</h2><br>\n{}\n</body>\n</html>".format(table)
   return ret
 
-def getContents(type, file):
+def getContents(type, file, contents):
+  if type =="POST":
+    if file != "redirect":
+      return b"".join(
+          [OK.encode(), POST(contents).encode(), "{}{}".format(CRLF, CRLF).encode()])
+    else:
+      contents = contents.split("=")[-1]
+      return "HTTP/1.1 307 TEMPORARY REDIRECT{}Connection: close{}Location:{}{}{}".format(CRLF, CRLF, "https://youtube.com/results?search_query=" + contents, CRLF, CRLF).encode()
   returnValue = "".encode()
   try:
     if not check_perms(file):
@@ -63,7 +80,7 @@ def client_recv(client_sock, client_addr):
     data = data.split("\n")
     request = data[0].split(" ")
     if len(request) > 1:
-      want = getContents(request[0], request[1][1:])
+      want = getContents(request[0], request[1][1:], data[-1])
       client_sock.send(want)
     client_sock.shutdown(1)
     client_sock.close()
@@ -101,7 +118,7 @@ def parse_args():
   parser.add_argument('--host', type=str, default='localhost',
                       help='specify a host to operate on (default: localhost)')
   parser.add_argument('-p', '--port', type=int, default=9001,
-                      help='specify a port to operate on (default: 900)')
+                      help='specify a port to operate on (default: 9001)')
   args = parser.parse_args()
   return (args.host, args.port)
 
