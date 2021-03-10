@@ -15,7 +15,7 @@ CRLF = '\r\n'
 NOT_FOUND = 'HTTP/1.1 404 NOT FOUND{}Connection: close{}{}'.format(CRLF, CRLF, CRLF)
 FORBIDDEN = 'HTTP/1.1 403 FORBIDDEN{}Connection: close{}{}'.format(CRLF, CRLF, CRLF)
 METHOD_NOT_ALLOWED = 'HTTP/1.1 405  METHOD NOT ALLOWED{}Allow: GET, HEAD, POST {}Connection: close{}{}'.format(CRLF, CRLF, CRLF, CRLF)
-OK = 'HTTP/1.1 200 OK{}Connection: close{}{}'.format(CRLF, CRLF, CRLF) # head request only
+OK = 'HTTP/1.1 200 OK{}Connection: close{}'.format(CRLF, CRLF) # head request only
 
 # check file permissions -is file world readable?
 def check_perms(resource): 
@@ -24,8 +24,10 @@ def check_perms(resource):
 
 def POST(form):
   form = unquote(form)
-  form = form.replace("+", " ")
+  form = form.replace("+", " ").split("&")
   contents = ""
+  if len(form) == 0:
+    return contents
   for x in form:
     x = x.split("=")
     contents = contents + "<tr>\n<td>" + x[0] + "</td>\n<td>" + x[1] + "</td>\n</tr>\n"
@@ -33,10 +35,26 @@ def POST(form):
   ret = "<!DOCTYPE html>\n<html>\n<head>\n<meta charset='utf-8'>\n<link rel='stylesheet' href='style.css'>\n<title>Test</title>\n</head>\n<body>\n<h2>\nFollowing Form Data Submitted Successfully:</h2><br>\n{}\n</body>\n</html>".format(table)
   return ret
 
+def getType(type):
+  if type == "html":
+    return "text/html"
+  elif type == "css":
+    return "text/css"
+  elif type == "js":
+    return "text/javascript"
+  elif type == "mp3":
+    return "audio/mpeg"
+  elif type == "jpg" or type == "jpeg":
+    return "image/jpeg"
+  elif type == "png":
+    return "image/png"
+  else:
+    raise TypeError
+
 def getContents(type, file, contents):
   if type =="POST":
     return b"".join(
-          [OK.encode(), POST(contents).encode(), "{}{}".format(CRLF, CRLF).encode()])
+          [OK.encode(), "{}".format(CRLF), POST(contents).encode(), "{}{}".format(CRLF, CRLF).encode()])
   returnValue = "".encode()
   try:
     if file.split("?")[0] == "redirect":
@@ -54,13 +72,16 @@ def getContents(type, file, contents):
     returnValue = FORBIDDEN.encode()
     with open("403.html", "rb") as forb:
       returnValue = b"".join(
-          [returnValue, forb.read(), "{}{}".format(CRLF, CRLF).encode()])
+        [returnValue, forb.read(), "{}{}".format(CRLF, CRLF).encode()])
   else:
     returnValue = OK.encode()
     if type == "HEAD":
       returnValue = b"".join(
         [returnValue, "{}{}".format(CRLF, CRLF).encode()])
     elif type == "GET":
+      ext = getType(file.split(".")[1])
+      returnValue = b"".join(
+        [returnValue, "Content Type: {}".format(ext).encode(), "{}{}".format(CRLF, CRLF).encode()])
       returnValue = b"".join(
         [returnValue, content.read(), "{}{}".format(CRLF, CRLF).encode()])
     else:
