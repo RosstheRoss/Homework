@@ -52,7 +52,7 @@
 		F	T	F	F				T
 		F	F	T	F				T
 		F	F	F	T				T
-	10. Valid (this truth table is really long)
+	10. Valid (this truth table is really long but it turns out to be a tautology)
 
 2) (A^B)⇒C == (~A∨~B)⇒C
 	1. They are both true iff all 3 are true so no?
