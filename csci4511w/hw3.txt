@@ -1,0 +1,91 @@
+1)
+	1. Valid (it is always true)
+	2. Neither (this is occasionally true)
+	3. Neither
+		A⇒B (C)	~A⇒~B (D)	C⇒D
+		T		T			T
+		F		T			T
+		T		F			F
+		T		T			T
+		
+	4. Valid (A v ~A is always true)
+	5. Neither
+		A	B	C	A⇒B (D)	B⇒C	(E)	D⇒E	
+		T	T	T	T		T		T
+		T	T	F	T		F		F
+		T	F	T	F		T		T
+		T	F	F	F		T		T
+		F	T	T	T		T		T
+		F	T	F	T		F		F
+		F	F	T	T		T		T
+		F	F	F	T		T		T
+	6. Valid
+		(A⇒B)⇒((~A|~C)⇒B)
+		A	B	C	A⇒B (D)	((~A|~C)⇒B)	(E)	D⇒E	
+		T	T	T	T		T				T
+		T	T	F	T		T				T
+		T	F	T	F		F				T
+		T	F	F	F		T				T
+		F	T	T	T		T				T
+		F	T	F	T		T				T
+		F	F	T	T		T				T
+		F	F	F	T		T				T
+	7. Valid (at least one is always true)
+		A	B	A⇒B
+		T	T	T			
+		T	F	F
+		F	T	T
+		F	F	T
+	8. Neither
+		A	B	A^B (C)	C∨~B
+		T	T	T		T
+		T	F	F		T
+		F	T	F		F
+		F	F	F		T
+	9. Valid
+		A	B	C	(P⇒Q)∧(Q⇒R)	(D)	D⇒(A⇒C)
+		T	T	T	T				T
+		T	T	F	T				T
+		T	F	T	F				T
+		T	F	F	T				T
+		F	T	T	F				T
+		F	T	F	F				T
+		F	F	T	F				T
+		F	F	F	T				T
+	10. Valid (this truth table is really long)
+
+2) (A^B)⇒C == (~A∨~B)⇒C
+	1. They are both true iff all 3 are true so no?
+	2. Yes. This is the statement.
+	3. No. AND and OR are not interchangable.
+	4. No.
+		
+	5. No.
+3)
+	1. ~~(~C∨~D)∨P
+		-> ~C∨~D∨P
+	2. ~J∨(Wi^We)
+		-> (~J∨Wi) [a]^(~J∨We) [b]
+	3. ~Wi∨D
+	4. ~We∨C
+	5. J
+	--REFUTATION--
+	6. ~P
+	7. (1,6) ~C∨~D
+	8. (7,3) ~Wi∨~C
+	9. (8,4) ~Wi∨~We
+   10. (9,2a) ~J∨~We
+   11. (10,5) ~We
+   12. (11,2b) ~J
+   13. (5,12) NIL
+4)
+	1. A∨B∨C
+	2. ~A∨B
+	3. ~B [a]^ ~D [b]
+	4. ~C∨D
+	--REFUTATION--
+	5. (1,4) A∨B∨D
+	6. (3,5) A∨D
+	7. (6,4) A
+	8. (7,2) B
+	9. (8,3) NIL
