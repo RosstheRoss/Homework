@@ -59,8 +59,9 @@
 	2. Yes. This is the statement.
 	3. No. AND and OR are not interchangable.
 	4. No.
-		
+		"If the night is quiet, then both the dog sleeps and the house is warm"
 	5. No.
+		"The dog does not sleep or the night is not quiet or the house is warm"
 3)
 	1. ~~(~C∨~D)∨P
 		-> ~C∨~D∨P
