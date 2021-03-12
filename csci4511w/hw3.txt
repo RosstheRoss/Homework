@@ -62,6 +62,7 @@
 		"If the night is quiet, then both the dog sleeps and the house is warm"
 	5. No.
 		"The dog does not sleep or the night is not quiet or the house is warm"
+
 3)
 	1. ~~(~C∨~D)∨P
 		-> ~C∨~D∨P
@@ -79,6 +80,7 @@
    11. (10,5) ~We
    12. (11,2b) ~J
    13. (5,12) NIL
+
 4)
 	1. A∨B∨C
 	2. ~A∨B
