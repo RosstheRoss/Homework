@@ -22,6 +22,7 @@ def check_perms(resource):
   stmode = os.stat(resource).st_mode
   return(getattr(stat, 'S_IROTH') & stmode) > 0
 
+# Puts together the HTML for the POST form return
 def POST(form):
   form = unquote(form)
   form = form.replace("+", " ").split("&")
@@ -32,9 +33,9 @@ def POST(form):
     x = x.split("=")
     contents = contents + "<tr>\n<td>" + x[0] + "</td>\n<td>" + x[1] + "</td>\n</tr>\n"
   table = "<table>" + contents + "</table>"
-  ret = "<!DOCTYPE html>\n<html>\n<head>\n<meta charset='utf-8'>\n<link rel='stylesheet' href='style.css'>\n<title>Test</title>\n</head>\n<body>\n<h2>\nFollowing Form Data Submitted Successfully:</h2><br>\n{}\n</body>\n</html>".format(table)
+  ret = "<!DOCTYPE html>\n<html>\n<head>\n<meta charset='utf-8'>\n<link rel='stylesheet' href='style.css'>\n<title>Test</title>\n</head>\n<body>\n<h3>\nFollowing Form Data Submitted Successfully:</h3><br>\n{}\n</body>\n</html>".format(table)
   return ret
-
+#For Content Type
 def getType(type):
   if type == "html":
     return "text/html"
@@ -54,7 +55,7 @@ def getType(type):
 def getContents(type, file, contents):
   if type =="POST":
     return b"".join(
-          [OK.encode(), "{}".format(CRLF), POST(contents).encode(), "{}{}".format(CRLF, CRLF).encode()])
+          [OK.encode(), "{}".format(CRLF).encode(), POST(contents).encode(), "{}{}".format(CRLF, CRLF).encode()])
   returnValue = "".encode()
   try:
     if file.split("?")[0] == "redirect":
