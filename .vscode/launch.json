@@ -8,7 +8,8 @@
             "command": "npm start",
             "name": "Node Start (npm)",
             "request": "launch",
-            "type": "node-terminal"
+            "type": "node-terminal",
+            "cwd": "${fileDirname}"
         },
 
         {
