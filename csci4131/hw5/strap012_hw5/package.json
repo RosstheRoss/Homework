@@ -1,0 +1,11 @@
+{
+  "name": "strap012_hw5",
+  "version": "1.0.0",
+  "description": "Assignment 5",
+  "main": "createServer.js",
+  "scripts": {
+    "test": "node createServer.js"
+  },
+  "author": "strap012",
+  "license": "ISC"
+}

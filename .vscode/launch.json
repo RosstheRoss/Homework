@@ -5,11 +5,19 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "command": "npm start",
+            "name": "Node Start (npm)",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+
+        {
             "type": "java",
             "name": "Debug (Launch) with Arguments Prompt",
             "request": "launch",
             "mainClass": "",
-            "args": "${command:SpecifyProgramArgs}"
+            "args": "${command:SpecifyProgramArgs}",
+            "cwd": "${fileDirname}"
         },
         {
             "name": "Python",
@@ -27,7 +35,7 @@
             "program": "${workspaceFolder}/DEBUG_C",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
+            "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
