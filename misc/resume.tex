@@ -1,0 +1,195 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage[margin=1.00in]{geometry}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+% \addtolength{\oddsidemargin}{-0.5in}
+% \addtolength{\evensidemargin}{-0.5in}
+% \addtolength{\textwidth}{1in}
+% \addtolength{\topmargin}{-.5in}
+% \addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+
+\begin{center}
+    \textbf{\Huge Matthew Strapp} \\ \vspace{1pt}
+    \small (507)-429-1743 $|$ \href{mailto:strap012@umn.edu}{\underline{strap012@umn.edu}} $|$ 
+   % \href{https://linkedin.com/in/...}{\underline{linkedin.com/in/jake}} $|$
+    \href{https://cutt.ly/MSGitHub}{\underline{cutt.ly/MSGitHub}}
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University of Minnesota}{Minneapolis, MN}
+      {Bachelor of Computer Engineering, Minor in History}{Expected May 2022}
+    %\resumeSubSubheading{\textbf{Coursework}}{}
+    %\resumeSubItem
+    %  {Computer Architecture and Machine Organization, Introduction to Operating Systems, Introduction to Artificial Intelligence, Internet Programming}
+  \resumeSubHeadingListEnd
+
+%----------LEADERSHIP--------
+\section{Leadership}
+    \resumeSubHeadingListStart
+        \resumeProjectHeading 
+            {\textbf{At-Large Representative} $|$ Minnesota Student Assoication}{April 2020 -- Present}
+        \resumeItemListStart
+            \resumeItem{Elected as one of 20 reperesentatives to represent the entire undergraduate body}
+            \resumeItem{Organized back end of a campaign that allowed students to take classes Pass/Fail}
+            \resumeItem{Hosted the Academic Affairs Committee meetings over Zoom}
+        \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Differential Current Sensor} $|$ \emph{Circuits and Electronics Lab II}}{January 2021 -- Present}
+          \resumeItemListStart
+            \resumeItem{Collaborated with others designing a circuit that senses current differences via magnetic fields}
+            \resumeItem{Used Altium to design a PCB implementing the prototype}
+            \resumeItem{Programmed microcontroller to log the voltage differential and convert it with an ADC}
+            \resumeItem{Assisted in creating output of corresponding current differential to a screen over I2C}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{HTTP Server} $|$ \emph{Introduction to Operating Systems, in C}}{November -- December 2020}
+          \resumeItemListStart
+            \resumeItem{Developed an HTTP server from scrach that processed simple GET requests}
+            \resumeItem{Interfaced with the Linux kernel to create and interface with sockets}
+            \resumeItem{Implemented POSIX threads to allow multiple pages to be served}
+            \resumeItem{Created a fixed-sized FIFO cache to reduce needed disk I/O and increase speed}
+          \resumeItemListEnd
+      \resumeProjectHeading
+        {\textbf{Internet of Things Door} $|$ \emph{Introduction to Computing Systems, in C++}} {March -- May 2019}
+        \resumeItemListStart
+          \resumeItem{Built the framework for a door to operating using a pair of Particle Photon microcontrollers}
+          \resumeItem{Configured keypad and motion detector for security, logged with timestamps}
+          \resumeItem{Drafted communication using Particle's API to allow the microcontrollers to share states}
+        \resumeItemListEnd
+      
+    \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Computer Sales Associate}{October 2018 -- Present}
+      {University of Minnesota Bookstores}{Minneapolis, MN}
+      \resumeItemListStart
+        \resumeItem{Recommended customers devices based on needs and budget}
+        \resumeItem{Helped stock shelves and stock computers as shipments arrive}
+        \resumeItem{Answered emails and phone calls of various customer queries on products and logistics}
+        \resumeItem{Read about the latest products being manufactured and sold to be able to answer questions about them}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Software}{: Microsoft Office, Adobe Photoshop, \LaTeX, Apache} \\
+     \textbf{Programming Languages}{: C/C++, Python, Java, HTML/CSS, JavaScript,  MATLAB, Verilog, Assembly} \\
+     \textbf{Frameworks}{: Node.js, AJAX, jQuery} \\
+     \textbf{Development Environments}{: Linux, Windows, macOS} \\
+     \textbf{Developer Tools}{: Git, Docker, Visual Studio Code, Vim} \\
+    }}
+ \end{itemize}
+
+
+%-------------------------------------------
+\end{document}
