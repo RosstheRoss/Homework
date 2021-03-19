@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+
+\title{Writing 3}
+\author{Jack Vehmeier, Andrea Smith, Matt Strapp}
+\date{2021-03-16}
+\begin{document}
+   \maketitle
+   \section*{Project Proposal}
+La Pipopipette, or Dots \& Boxes, is a simple paper and pen game designed by Édouard Lucas in the nineteenth century.
+The game is similar to tic tac toe in that it is quick, easy to learn, and popular amongst children or bored people with access to paper and writing utensils.
+We are all familiar with this game from our own childhoods and were curious if we could design an AI opponent that can compete and potentially outperform humans.
+
+
+We hope the AI will be unbeatable or at least a reasonable challenge for a human player.
+We approach the problem by first building a program which allows the game to be played.
+After this we will implement Minimax with Alpha-Beta pruning as the main algorithm used to navigate the game tree the AI will see.
+The tree will see what will have the highest possibility of victory and take it, because most games usually end with one side having significantly more points than the other if play is not perfect.
+This should allow the AI to simulate many different possible moves it could make and then it will pick the best move based on criteria that is yet to be determined.
+We need to make sure that the AI understands the rules and is able to discern the best approach to win.
+We plan to implement our program in Python, and have no preliminary results at the moment of writing.
+If possible, we would also like to make our implementation open source and post it on GitHub.
+
+
+Our solution will be validated by first making sure it follows all rules of the game and when successful comparing our implementation to other possible implementations with different search algorithms and ranks them based on win percentage.
+Possible other implementations include using a Minimax Search, Monte Carlo Tree Search, and a random search that only looks for empty spaces.
+We can compare all of these search methods and have them play dots and boxes against each other as well as humans.
+
+
+
+Given that we currently have approximately seven weeks to complete this project, our tentative timeline will span all of them.
+Within the first three to four weeks, the game should be playable such that the board renders properly, and a random-search based AI is implemented that can play against a human opponent.
+By weeks four through six, we plan to accomplish the bulk of the work (implementing the “best” AI, as well as the other variations previously mentioned).
+In the final two weeks a GUI will be added and experiments run with various matchups (AI against AI, AI against human, human against human).
+The main data collected will be comparing the different implementations against each other to see which one is the best by the highest ratio of victories to defeats.
+In the final weeks, we will write the final report and finish the analysis of our experimental data.
+We plan on using all of the weeks available as a failsafe for something than takes longer than expected and to balance our workload with other classes.
+
+   \medskip
+   \nocite{*}
+   \bibliographystyle{unsrt}
+   \bibliography{writing3}
+\end{document}
