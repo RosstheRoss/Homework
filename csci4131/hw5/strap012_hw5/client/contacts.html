@@ -5,6 +5,41 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" defer>
+        //Get JSON
+          var xmlhttp = new XMLHttpRequest();
+          var url = "contacts.json";
+          xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+              var parse = JSON.parse(xmlhttp.responseText);
+              process(parse);
+            }
+          }
+          xmlhttp.open("GET", url, true);
+          xmlhttp.send();
+
+          function process(a) {
+            var table = document.getElementsByTagName("tbody")[0];
+            var contacts = a.contacts;
+            for (let i = 0; i < contacts.length; i++) {
+              var contact = contacts[i];
+              var row = table.insertRow(-1);
+              var nam = row.insertCell(0);
+              nam.innerHTML = contact.name;
+              var cat = row.insertCell(1);
+              cat.innerHTML = contact.category;
+              var loc = row.insertCell(2);
+              loc.innerHTML = contact.location;
+              var con = row.insertCell(3);
+              con.innerHTML = contact.contact;
+              var ema = row.insertCell(4);
+              ema.innerHTML = contact.email;
+              var url = row.insertCell(5);
+              url.innerHTML = "<a href =" + contact.website_url + ">" + contact.website_url + "</a>";
+            }
+          }
+
+        </script>
   </head>
   <body>
     <nav class="navbar navbar-default">
@@ -35,9 +70,7 @@
       </table>
     </div>
     <script type="text/javascript">
-     /* TODO Fill this script in with a request to your server to GET contacts.json
-     /  and display it in the contactsTable.
-     /*/
+    
     </script>
   </body>
 </html>

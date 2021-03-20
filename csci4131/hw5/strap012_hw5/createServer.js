@@ -9,7 +9,8 @@ http.createServer(function (req, res) {
   var q = url.parse(req.url, true);
   var filename = "." + q.pathname;
   if(req.url === '/'){
-    indexPage(req,res);
+    res.writeHead(302, { 'Location': 'contacts.html' });
+    return res.end("302 Temporary Redirect");
   }
   else if (req.url === '/index.html') {
     indexPage(req, res, '/index.html');
@@ -21,7 +22,13 @@ http.createServer(function (req, res) {
     indexPage(req, res, '/addContact.html');
   }
   else if (req.url === '/stock.html') {
-    jsonSock(req, res, '/stock.html');
+    indexPage(req, res, '/stock.html');
+  }
+  else if (req.url === '/contacts.json') {
+    jsonSock(req, res, 'contacts.json')
+  }
+  else if (req.url === "/postContactEntry") {
+    
   }
   else{
     res.writeHead(404, {'Content-Type': 'text/html'});
@@ -43,7 +50,7 @@ function indexPage(req, res, file) {
 }
 
 function jsonSock(req, res, file) {
-  fs.readFile('client/' + file, function (err, json) {
+  fs.readFile(file, function (err, json) {
     if (err) {
       throw err;
     }
