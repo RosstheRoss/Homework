@@ -23,19 +23,16 @@
             var contacts = a.contacts;
             for (let i = 0; i < contacts.length; i++) {
               var contact = contacts[i];
-              var row = table.insertRow(-1);
-              var nam = row.insertCell(0);
-              nam.innerHTML = contact.name;
-              var cat = row.insertCell(1);
-              cat.innerHTML = contact.category;
-              var loc = row.insertCell(2);
-              loc.innerHTML = contact.location;
-              var con = row.insertCell(3);
-              con.innerHTML = contact.contact;
-              var ema = row.insertCell(4);
-              ema.innerHTML = contact.email;
-              var url = row.insertCell(5);
-              url.innerHTML = "<a href =" + contact.website_url + ">" + contact.website_url + "</a>";
+              var row = table.insertRow();
+              for (var j in contact) {
+                if (j != "website_url") {
+                  var value = row.insertCell();
+                  value.innerHTML = contact[j];
+                } else {
+                  var url = row.insertCell();
+                  url.innerHTML = "<a href =" + contact[j] + ">" + contact[j] + "</a>";
+                }
+              }
             }
           }
 

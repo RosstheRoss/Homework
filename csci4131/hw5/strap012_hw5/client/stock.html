@@ -7,6 +7,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
+      pre {
+        max-height: 12em;
+      }
       textarea {
           width: 100%;
           min-height: 30rem;
@@ -47,7 +50,7 @@
               <td class="col-md-6">Company</td>
               <td class="col-md-6">
                 <div class="form-group">
-                  <select name="Company">
+                  <select id="Company" name="Company">
                     <option value="GME">Gamestop</option>
                     <option value="MSFT">Microsoft</option>
                     <option value="BA">Boeing Company</option>
@@ -60,7 +63,7 @@
             </tr>
             <tr>
               <td colspan="2">
-                <button type="button">Get Data</button>
+                <button type="button" onclick="Click()">Get Data</button>
               </td>
             </tr>
           </tbody>
@@ -77,15 +80,36 @@
     <table class="table" id="StockData">
       <thead>
         <tr>
-          <th scope="col">Company-MetaData</th>
-          <th scope="col">Stock-Info</th>
+          <th scope="col" id="meta">Company-MetaData</th>
+          <th scope="col" id="Time">Stock-Info</th>
         </tr>
       </thead>
+      <pre>
       <tbody></tbody>
+      </pre>
     </table>
   </div>
 
-  <!-- <script>
+  <script>
+    function Click() {
+      var comp = document.getElementById("Company").value;
+      var xmlhttp = new XMLHttpRequest();
+      var url = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=" + comp + "&apikey=8MWSNPDWKH0BTBH2";
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          var parse = JSON.parse(xmlhttp.responseText);
+          var table = document.getElementById("StockData").getElementsByTagName("tbody")[0];
+          var row = table.insertRow();
+          for (var i in parse) {
+            var cell = row.insertCell();
+            cell.innerHTML = "<pre>" + JSON.stringify(parse[i], undefined, 2) + "</pre>";
+          }
+        }
+      }
+      xmlhttp.open("GET", url, true);
+      xmlhttp.send();
+
+    }
    /* TODO:
    /    Bonus 1. Request the TIME_SERIES_DAILY endpoint of alphavantage API
    /             for the company selected in the dropdown. Display the JSON
@@ -94,6 +118,6 @@
    /             line chart using Chart.js to the chartContainer div. Ensure
    /             the chart meets all requirements from the HW writeup.
    /*/
-  </script> -->
+  </script>
 </body>
 </html>

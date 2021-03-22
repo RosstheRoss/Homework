@@ -78,14 +78,13 @@ function POST(req, res) {
     jsonO["email"] = postObj.email;
     jsonO["website_name"] = postObj.website_name;
     jsonO["website_url"] = postObj.website_url;
-    let read = fs.readFile('./contacts.json', 'utf8', function(err, data) {
+    fs.readFile('./contacts.json', 'utf8', function(err, data) {
       var file = JSON.parse(data);
       file.contacts.push(jsonO);
       var string = JSON.stringify(file);
       fs.writeFile('./contacts.json', string, function(err, data) {
         console.log(string);
-      });
-    });
-    
-  });
+      }); //Write clojure
+    }); //Read clojure
+  }); //req clojure
 }
