@@ -5,3 +5,5 @@ GRTAGS
 *synctex*
 *.pdf
 *.zip
+node_modules/
+csci4131/hw6/strap012_hw6/package-lock.json
