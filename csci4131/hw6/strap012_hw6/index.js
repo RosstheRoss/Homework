@@ -84,11 +84,6 @@ app.post('/logintry', function(req, res) {
 
 });
 
-
-// TODO: Add implementation for other necessary end-points
-
-
-
 // Makes Express use a router called utilities
 app.use('/api', utilities);
 

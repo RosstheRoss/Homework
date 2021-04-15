@@ -3,6 +3,7 @@ const router = express.Router()
 
 router.get('/contacts', function (req, res) {
     // TODO: Implement code to fetch contacts from the database
+	res.send("AAAAAAAAAAAA")
 });
 
 // TODO: Add implementation for other necessary end-points
