@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <form id="myForm" name="myForm">
+        <div>
+            <label for="login">login:</label>
+                <input type="text" id="login" name="login">
+        </div>
+        <div>
+            <label for="password">password:</label>
+                <input type="text"id="password"name="password">
+        </div>
+        <input type="submit"value="Submit!">
+    </form>
+    <script>
+    $(document).ready(function () { 
+        $('#myForm').submit(function (event) { 
+            event.preventDefault();//collect the form data using Id Selector for whatever data you need to send to server
+            let login=$('#login').val();
+            let password=$('#password').val();
+            $.post('logintry',
+            {"login": login,"password": password},
+            (data) => {
+                console.log(data);
+                if(data.status === 'success'){
+                    //pseudo code
+                    //Make sure error message is not displayed
+                    //Re-direct to contacts page,
+                    window.location.href='contacts';}
+            else{
+                //Display error message
+            }});});});</script>
+
+</html>

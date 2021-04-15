@@ -39,7 +39,7 @@ app.use(session({
 // middle ware to serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// server listens on port 9002 for incoming connections
+// server listens on port for incoming connections
 app.listen(port, () => console.log('Listening on port', port));
 
 app.get('/', function (req, res) {
@@ -49,10 +49,45 @@ app.get('/', function (req, res) {
 // GET method route for the contacts page.
 // It serves contact.html present in public folder
 app.get('/contacts', function(req, res) {
-    // TODO: Add Implementation
+    if(!req.session.value) {
+        res.redirect('/login');
+    } else {
+        res.sendFile(path.join(__dirname, 'public/contacts.html'));
+    }
 });
 
+app.get('/stock', function (req, res) {
+    if (!req.session.value) {
+        res.redirect('/login');
+    } else {
+        res.sendFile(path.join(__dirname, 'public/stock.html'));
+    }
+});
+
+app.get('/addContact', function (req, res) {
+    if (!req.session.value) {
+        res.redirect('/login');
+    } else {
+        res.sendFile(path.join(__dirname, 'public/addContact.html'));
+    }
+});
+
+app.get('/login', function (req, res) {
+    if (req.session.value) {
+        res.redirect('/contacts');
+    } else {
+        res.sendFile(path.join(__dirname, 'public/login.html'));
+    }
+});
+
+app.post('/logintry', function(req, res) {
+
+});
+
+
 // TODO: Add implementation for other necessary end-points
+
+
 
 // Makes Express use a router called utilities
 app.use('/api', utilities);

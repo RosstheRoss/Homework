@@ -6,7 +6,7 @@
     "configurations": [
 
         {
-            "command": "npm start",
+            "command": "npm test",
             "name": "Node Start (npm)",
             "request": "launch",
             "type": "node-terminal",
