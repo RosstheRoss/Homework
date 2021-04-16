@@ -76,12 +76,8 @@ app.get('/login', function (req, res) {
     if (req.session.value) {
         res.redirect('/contacts');
     } else {
-        res.sendFile(path.join(__dirname, 'public/login.html'));
+        res.sendFile(path.join(__dirname, 'login.html'));
     }
-});
-
-app.post('/logintry', function(req, res) {
-
 });
 
 // Makes Express use a router called utilities
