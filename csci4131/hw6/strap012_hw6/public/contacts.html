@@ -8,7 +8,7 @@
         <script type="text/javascript" defer>
         //Get JSON
           var xmlhttp = new XMLHttpRequest();
-          var url = "contacts.json";
+          var url = "api/contacts";
           xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
               var parse = JSON.parse(xmlhttp.responseText);
@@ -20,17 +20,21 @@
 
           function process(a) {
             var table = document.getElementsByTagName("tbody")[0];
-            var contacts = a.contacts;
+            var contacts = a;
             for (let i = 0; i < contacts.length; i++) {
               var contact = contacts[i];
               var row = table.insertRow();
               for (var j in contact) {
-                if (j != "website_url") {
-                  var value = row.insertCell();
-                  value.innerHTML = contact[j];
-                } else {
+                if (j === "contact_id") continue;
+                if (j === "website_url") {
                   var url = row.insertCell();
                   url.innerHTML = "<a href =" + contact[j] + ">" + contact[j] + "</a>";
+                } else if (j === "email") {
+                  var email = row.insertCell();
+                  email.innerHTML = "<a href =mailto://" + contact[j] + ">" + contact[j] + "</a>";
+                } else {
+                  var value = row.insertCell();
+                  value.innerHTML = contact[j];
                 }
               }
             }
@@ -42,10 +46,11 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <ul class="nav navbar-nav">
-          <li><a href="index.html"><b>Home</b></a></li>
-          <li><a href="contacts.html"><b>Contacts</b></a></li>
-          <li><a href="addContact.html"><b>Add Contact</b></a></li>
-          <li><a href="stock.html"><b>Stock Page</b></a></li>
+          <li><a href="/"><b>Home</b></a></li>
+          <li><a href="contacts"><b>Contacts</b></a></li>
+          <li><a href="addContact"><b>Add Contact</b></a></li>
+          <li><a href="stock"><b>Stock Page</b></a></li>
+          <li><a href="logout"><b>Logout</b></a></li>
         </ul>
       </div>
     </nav>

@@ -49,15 +49,19 @@ app.get('/', function (req, res) {
 // GET method route for the contacts page.
 // It serves contact.html present in public folder
 app.get('/contacts', function(req, res) {
-    if(!req.session.value) {
+    if(!req.session.user) {
         res.redirect('/login');
     } else {
         res.sendFile(path.join(__dirname, 'public/contacts.html'));
     }
 });
 
+app.get('/stocks', function(req, res) {
+    res.redirect('/stock');
+})
+
 app.get('/stock', function (req, res) {
-    if (!req.session.value) {
+    if (!req.session.user) {
         res.redirect('/login');
     } else {
         res.sendFile(path.join(__dirname, 'public/stock.html'));
@@ -65,7 +69,7 @@ app.get('/stock', function (req, res) {
 });
 
 app.get('/addContact', function (req, res) {
-    if (!req.session.value) {
+    if (!req.session.user) {
         res.redirect('/login');
     } else {
         res.sendFile(path.join(__dirname, 'public/addContact.html'));
@@ -73,11 +77,15 @@ app.get('/addContact', function (req, res) {
 });
 
 app.get('/login', function (req, res) {
-    if (req.session.value) {
+    if (req.session.user) {
         res.redirect('/contacts');
     } else {
         res.sendFile(path.join(__dirname, 'login.html'));
     }
+});
+
+app.get('/logout', function(req, res) {
+    res.redirect('/api/logout')
 });
 
 // Makes Express use a router called utilities

@@ -1,11 +1,17 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-    <form id="myForm" name="myForm">
+    <div class="jumbotron" style="background: DarkSeaGreen !important">
+        <h1>Login Page</h1>
+        <div id="error"></div>
+        <br><br>
+    <form id="myForm" name="myForm" style="list-style-type:none">
         <div>
             <label for="login">login:</label>
                 <input type="text" id="login" name="login" required>
@@ -16,23 +22,27 @@
         </div>
         <input type="submit"value="Submit!">
     </form>
+    </div>
     <script>
-    $(document).ready(function () { 
-        $('#myForm').submit(function (event) { 
-            event.preventDefault();//collect the form data using Id Selector for whatever data you need to send to server
-            let login=$('#login').val();
-            let password=$('#password').val();
-            $.post('api/login',
-            {"login": login,"password": password},
-            (data) => {
-                console.log(data);
-                if(data.status === 'success'){
-                    //pseudo code
-                    //Make sure error message is not displayed
-                    //Re-direct to contacts page,
-                    window.location.href='contacts';}
-            else{
-                //Display error message
-            }});});});</script>
+        //jQuery below. Tread with caution as sneezing near here may rupture the fabric of reality.
+        $(document).ready(function () { 
+            $('#myForm').submit(function (event) { 
+                event.preventDefault();//collect the form data using Id Selector for whatever data you need to send to server
+                let login=$('#login').val();
+                let password=$('#password').val();
+                $.post('api/login',
+                {"login": login,"password": password},
+                (data) => {
+                    if(data.status === 'success'){
+                        //pseudo code
+                        //Make sure error message is not displayed
+                        //Re-direct to contacts page,
+                        window.location.href='contacts';}
+                    else{
+                    //Display error message
+                    $('#error').html("<b>Login failed. Please try again.</b>")
+                }});
+            });
+        });</script>
 
 </html>

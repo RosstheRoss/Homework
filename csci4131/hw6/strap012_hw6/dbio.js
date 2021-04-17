@@ -16,56 +16,59 @@ connection.connect(function(err) {
   console.log("Connected to MYSQL database!");
 });
 
-async function passcheck(user,pass) {
-	let ret = '';
-	connection.query('SELECT * FROM tbl_accounts', function(err,rows,fields) {
-		if (err) throw err;
-		if (rows.length == 0) {
-			console.log("There are no entries in the accounts field!");
-		} else {
-			for (var i = 0 ; i < rows.length; i++) {
+function passcheck(user,pass) {
+	return new Promise(function(resolve, reject) {
+		connection.query('SELECT * FROM tbl_accounts', function(err, rows, fields) {
+			let ret = [];
+			if (err) {
+				return reject(err);
+			}
+			for (var i = 0; i < rows.length; i++) {
 				if (rows[i].acc_login.localeCompare(user) === 0) {
 					if (bcrypt.compareSync(pass, rows[i].acc_password)) {
-    							ret += rows[i];
+						ret += rows[i];
 					}
 				}
 			}
-		}
-	return ret;
+			resolve(ret);
+		});
+	});
+}
+
+function getContacts() {
+	return new Promise (function(resolve, reject) {
+		let conTab = []
+		connection.query('SELECT * FROM tbl_contacts', function (err, rows, fields) {
+			if (err) {
+				return reject(err);
+			}
+			resolve(rows);
+		});
+	});
+}
+
+function addContacts(contact) {
+	let newCon = {
+		name: contact.name,
+		category: contact.category,
+		location: contact.location,
+		contact_info: contact.contact,
+		email: contact.email,
+		website_url: contact.website_name,
+	}
+	return new Promise(function(resolve, reject) {
+		connection.query('INSERT tbl_contacts SET ?', newCon, function (err, result) {  //Parameterized insert
+			if (err) throw err;
+			console.log("Values inserted");
+			resolve();
+		});
 	});
 	
 }
 
-function getContacts() {
-	let conTab = []
-	connection.query('SELECT * FROM tbl_contacts', function(err,rows,fields) {
-		for (let i=0; i<rows.length; i++) {
-			conTab[i] = rows[i];
-		}
-	});
-	return conTab;
-}
 
-// Parameterized Insert
-var rowToBeInserted = {
-    Title: 'A Book', // Dummy Book Name
-    Category: 'General', // Dummy Category Type
-    ISBN : '0000001234'// Dummy 
-  };
 
-//connection.query('INSERT books SET ?', rowToBeInserted, function(err, result) {  //Parameterized insert
-//    if(err) throw err;
-//    console.log("Values inserted");
-//  });
   
-var Title = 'Another Book';
-var Cat = 'Fiction';
-var ISBN = '0000002345';
-  
-//var sql = 'INSERT INTO books (Title,Category,ISBN) VALUES (' + '"' + Title + '"' + ',' + '"' + Cat + '"' + ',' + '"' + ISBN + '"' + ')';
-//connection.query(sql,function(err,result) {
-//	  if (err) throw err;
-//	  console.log ("Version 2 values inserted");
-//	});
-
+exports.addContact = addContacts;
 exports.query = passcheck;
+exports.getContacts = getContacts;
