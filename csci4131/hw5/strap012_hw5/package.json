@@ -4,7 +4,6 @@
   "description": "Assignment 5",
   "main": "createServer.js",
   "scripts": {
-    "start": "node createServer.js",
     "test": "node createServer.js"
   },
   "author": "strap012",

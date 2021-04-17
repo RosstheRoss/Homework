@@ -16,10 +16,9 @@ connection.connect(function(err) {
   console.log("Connected to MYSQL database!");
 });
 
-function passcheck(user,pass) {
+async function passcheck(user,pass) {
 	let ret = '';
 	connection.query('SELECT * FROM tbl_accounts', function(err,rows,fields) {
-		
 		if (err) throw err;
 		if (rows.length == 0) {
 			console.log("There are no entries in the accounts field!");
@@ -32,8 +31,9 @@ function passcheck(user,pass) {
 				}
 			}
 		}
-	});
 	return ret;
+	});
+	
 }
 
 function getContacts() {
@@ -68,4 +68,4 @@ var ISBN = '0000002345';
 //	  console.log ("Version 2 values inserted");
 //	});
 
-
+exports.query = passcheck;
