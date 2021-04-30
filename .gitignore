@@ -7,4 +7,4 @@ GRTAGS
 *.zip
 node_modules/
 **/package-lock.json
-**/public/contacts_old.html
+**/public/contacts.html
