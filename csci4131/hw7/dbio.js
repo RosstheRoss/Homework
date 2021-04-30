@@ -1,20 +1,34 @@
 var mysql = require("mysql");
 var bcrypt = require("bcrypt");
+var fs = require("fs");
+var xml2js = require("xml2js");
+var parser = new xml2js.Parser();
+var conInfo;
+var connection;
 
-var connection = mysql.createConnection({
-  host: "cse-mysql-classes-01.cse.umn.edu",
-    user: "C4131S21U83",              
-    password: "6919",                  
-    database: "C4131S21U83",           
-    port: 3306
+fs.readFile(__dirname + '/dbconfig.xml', function (err, data) {
+	if (err) throw err; 
+	parser.parseString(data, function (err, result) { 
+		if (err) throw err; 
+		conInfo = result; 
+	});
+	connection = mysql.createConnection({
+		host: conInfo.dbconfig.host[0],
+		user: conInfo.dbconfig.user[0],
+		password: conInfo.dbconfig.password[0],
+		database: conInfo.dbconfig.database[0],
+		port: conInfo.dbconfig.port[0]
+	});
+
+	connection.connect(function (err) {
+		if (err) {
+			throw err;
+		};
+		console.log("Connected to MYSQL database!");
+	});
 });
 
-connection.connect(function(err) {
-  if (err) {
-    throw err;
-  };
-  console.log("Connected to MYSQL database!");
-});
+
 
 function passcheck(user,pass) {
 	return new Promise(function(resolve, reject) {
