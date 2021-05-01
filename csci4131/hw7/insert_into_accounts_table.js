@@ -24,12 +24,12 @@ dbCon.connect(function (err) {
     console.log("Connected to database!");
 
     const saltRounds = 10;
-    const myPlaintextPassword = 'tango'; // replace with password chosen by you OR retain the same value
+    const myPlaintextPassword = 'admin%'; // replace with password chosen by you OR retain the same value
     const passwordHash = bcrypt.hashSync(myPlaintextPassword, saltRounds);
 
     const rowToBeInserted = {
-        acc_name: 'charlie',            // replace with acc_name chosen by you OR retain the same value
-        acc_login: 'charlie',           // replace with acc_login chosen by you OR retain the same value
+        acc_name: 'admin$',            // replace with acc_name chosen by you OR retain the same value
+        acc_login: 'admin$',           // replace with acc_login chosen by you OR retain the same value
         acc_password: passwordHash      
     };
 

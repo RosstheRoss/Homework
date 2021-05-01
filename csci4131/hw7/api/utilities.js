@@ -40,9 +40,25 @@ router.get('/logout', function(req, res) {
 
 router.post('/addContact', function(req, res) {
 	var contact = req.body;
-	db.addContact(contact).then(function() {
-		res.redirect('/contacts');
-	});
+	db.addContact(contact).then(function(r) {
+		res.send({flag: r});
+	}).catch(function() {
+
+	})
 });
+
+router.post('/updateContact', function(req, res) {
+	var edit = req.body;
+	db.editContact(edit).then(function(f) {
+		res.send({flag:f});
+	});
+})
+
+router.post('/deleteContact', function(req, res) {
+	var contact = req.body.name;
+	db.deleteContact(contact).then(function(r) {
+		res.send({flag: r});
+	})
+})
 
 module.exports = router;
