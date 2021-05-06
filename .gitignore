@@ -8,3 +8,4 @@ GRTAGS
 node_modules/
 **/package-lock.json
 **/public/contacts.html
+.DS_Store
