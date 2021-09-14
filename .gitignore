@@ -9,4 +9,4 @@ node_modules/
 **/package-lock.json
 **/public/contacts.html
 .DS_Store
-OLD/csci4511w/colab/
+colab/
