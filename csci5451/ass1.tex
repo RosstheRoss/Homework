@@ -1,10 +1,16 @@
 \documentclass[12pt]{article}
-\usepackage{fullpage}\usepackage{indentfirst}
+\usepackage{fullpage}\usepackage{listings}
+\title{Assignment 1}
+\author{Andrea Smith (smit9523@umn.edu), Matt Strapp (strap012@umn.edu)}
+\date{2021-09-18}
 
 \begin{document}
+\maketitle
     \section{Question 1}
     \subsection{Overlapping Intervals}
+    
     \subsection{Non-Overlapping Intervals}
+        \(t_{transfer} = t_s+t_w*d*m/k*k\) or \(\sum_{i=1}^{k} t_s+t+w*d*m/k\)
     \section{Question 2}
     \subsection*{A}
     Shared memory has all of the processors access one large pool of memory while distributed memory has each processor have a section of the memory.
@@ -15,42 +21,112 @@
     \subsection*{D}
     Distributed is easier to scale because the cluster can have nodes added or removed easily without affecting the other nodes.
     \section{Question 3}
-    \subsection*{A}
-    Concurrency: 8\\
+    \subsection*{A}\
+    \noindent Concurrency: 8\\
     Critical path length: 4\\
     Maximum achievable speedup: \(15/4\) \\
     Minimum number of processes needed: 8\\
-    Maximum achievable speedup if the number of processes is limited to: \\
-        2- \(15/8\)\\
-        4- \(15/5\)\\ 
-        8- \(15/4\)\\
+    Maximum achievable speedup if the number of processes is limited to: 
+    \begin{itemize}
+        \item[2]-- \(15/8\)
+        \item[4]-- \(15/5\)
+        \item[8]-- \(15/4\)
+    \end{itemize}
     \subsection*{B}
     Concurrency: 8\\
     Critical path length: \\
     Maximum achievable speedup: \\
     Minimum number of processes needed: \\
-    Maximum achievable speedup if the number of processes is limited to: \\
-        2- \(15/8\)\\
-        4- \(15/5\)\\ 
-        8- \(15/4\)\\
+    Maximum achievable speedup if the number of processes is limited to:
+    \begin{itemize}
+        \item[2]-- \(15/8\)
+        \item[4]-- \(15/5\)
+        \item[8]-- \(15/4\)
+    \end{itemize}
     \subsection*{C}
     Concurrency: 8\\
     Critical path length: 7\\
     Maximum achievable speedup: \(14/7\)\\
     Minimum number of processes needed: \\
-    Maximum achievable speedup if the number of processes is limited to: \\
-        2- \(14/10\)\\
-        4- \(14/8\)\\ 
-        8- \(14/7\)\\
+    Maximum achievable speedup if the number of processes is limited to:
+    \begin{itemize}
+        \item[2]-- \(14/10\)
+        \item[4]-- \(14/8\)
+        \item[8]-- \(14/7\)  
+    \end{itemize}
     \subsection*{D}
     Concurrency: 2\\
     Critical path length: 8\\
     Maximum achievable speedup: \(15/8\)\\
     Minimum number of processes needed: 2\\
-    Maximum achievable speedup if the number of processes is limited to: \\
-        2- \(15/8\)\\
-        4- \(15/8\)\\ 
-        8- \(15/8\)\\
+    Maximum achievable speedup if the number of processes is limited to:
+    \begin{itemize}
+        \item[2]-- \(15/8\)
+        \item[4]-- \(15/8\)
+        \item[8]-- \(15/8\)
+    \end{itemize}
+     
     \section{Question 4}
+     \subsection*{A}
+    A[] is partitioned into uniform sub arrays that are of size N/P. Each process counts the frequency of every integer in the range R in its subarray. Each process then forwards its result to the next process, summing each integer count in its appropriate index until H[] is complete.
+     \subsection*{B}
+    Each process gets a subsection of the range of size R/P and all of A[]. Each process counts the frequency of the integers in its subsection. At the end each process forwards its result to the next process until the final process contains the array of counts H[].
+     \subsection*{C}
+    Input Partitioning:
+    \begin{itemize}
+        \item Requires less memory bc each proc gets N/P 
+        \item Almost always faster than output partitioning 
+        \item IF \(R>>N\), could waste time looking for R values that aren’t even in A
+    \end{itemize}
+    Output Partitioning:
+    \begin{itemize}
+        \item Requires more memory because every process gets all of A[], potentially impossible depending on memory size.
+        \item Almost always slower unless \(R>>N\),, where input partitioning would waste time
+    \end{itemize}
+    \section{Question 5}
+    Propagate message to all of column 1:
+    \begin{displaymath}
+        t_{single}=t_s+t_w*m*C/2
+    \end{displaymath}
+    \begin{displaymath}
+        t_{column}=\sum_{i=0}^{\log_2(C)-1} t_s+t_w*m*d
+    \end{displaymath}
+    After message propagates down the column, do the same for the rows in parallel.
+    \begin{displaymath}
+        t_{row}=\sum_{i=0}^{\log_2(R)-1} t_s+t_w*m*d
+    \end{displaymath}
+    The total time is the sum of the time along the rows and the columns.
+    \begin{displaymath}
+        t_{comm}=t_{column}+t_{row}
+    \end{displaymath}
+
+    Pseudo code:
+    \begin{lstlisting}[language=C]]
+        //Assume first processor with message is (0,0)
+        for(int c=0;c<(C/2);c++) {
+            forward_message(i,c,msg);
+        }
+        int i=0, j=0;
+        //Column loop, parallelized between both messages
+        while(true) {
+            if (message is not in node) {
+                send_message(i,j++,msg);
+            } else {
+                break;
+            }
+        }
+        //Row loop, parallelized between all rows
+        while(true) {
+            if (message is not in node) {
+                send_message(i++,j,msg);
+            } else {
+                break;
+            }
+        }
+    \end{lstlisting}
+    \section{Question 6}
     \subsection*{A}
+    Loops: One way to parallelize the heat problem is to compute the inner loop that computes H[t+1] values simultaneously. It would not be feasible to select the outer, doubly nested loop because t increments with every outer loop. You cannot parallelize a process that relies on the previous time. The other loops either display the chart or set the problem up which needs to be sequential.
+    \subsection*{B}
+    Let each processor have a single chunk of the rod, with the processors lined up so that the chunks are in a straight line shaped like the rod. Each node only needs to communicate with nodes directly adjacent to it as time progresses, minimizing the needed communication.
 \end{document}
