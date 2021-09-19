@@ -104,7 +104,7 @@
     \begin{lstlisting}[language=C]]
         //Assume first processor with message is (0,0)
         for(int c=0;c<(C/2);c++) {
-            forward_message(i,c,msg);
+            forward_message(0,c,msg);
         }
         int i=0, j=0;
         //Column loop, parallelized between both messages
@@ -115,7 +115,11 @@
                 break;
             }
         }
-        //Row loop, parallelized between all rows
+        //Parallelized among all rows
+        for(int r=0;r<(r/2);r++) {
+            forward_message(r,0,msg);
+        }
+        //Row loop, parallelized between all rows with messages
         while(true) {
             if (message is not in node) {
                 send_message(i++,j,msg);
