@@ -7,10 +7,13 @@
 \begin{document}
 \maketitle
     \section{Question 1}
-    \subsection{Overlapping Intervals}
-    
-    \subsection{Non-Overlapping Intervals}
-        \(t_{transfer} = t_s+t_w*d*m/k*k\) or \(\sum_{i=1}^{k} t_s+t+w*d*m/k\)
+    \subsection*{Overlapping Intervals}
+    The time for one message to be sent 1 hop is \(t_s+t_w*m/k\). After the first message is sent forward one hop, we account for the final message \((d-1)*t_w*m/k\), making the final expression
+    \[k(t_s+t_w+m/k)+((d-1)t_w*m/k)\]
+    \subsection*{Non-Overlapping Intervals}
+        \[t_{transfer} = t_s*k+t_w*d*m\]
+    \subsection*{}
+        For both cases, as \(k\) goes to \(m\), the time to transfer will increase greatly. If \(t_s\) is very large, the optimal value of \(k\) is 1. In other words, it is better to transfer the message all at once instead of in \(k\) parts. If \(t_s\) is 0 it has little to no effect on overall transmission time regardless of \(k\) being large or small.
     \section{Question 2}
     \subsection*{A}
     Shared memory has all of the processors access one large pool of memory while distributed memory has each processor have a section of the memory.
