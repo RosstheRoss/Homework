@@ -26,7 +26,8 @@
 //  is run for a fixed number of time steps rather than until
 //  temperatures reach steady state.
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
   int max_time = 50;          // Number of time steps to simulate
   int width = 20;             // Number of cells in the rod
   double initial_temp = 50.0; // Initial temp of internal cells
@@ -38,25 +39,30 @@ int main(int argc, char **argv) {
   // Allocate memory
   H = malloc(sizeof(double *) * max_time);
   int t, p;
-  for (t = 0; t < max_time; t++) {
+  for (t = 0; t < max_time; t++)
+  {
     H[t] = malloc(sizeof(double *) * width);
   }
 
   // Initialize constant left/right boundary temperatures
-  for (t = 0; t < max_time; t++) {
+  for (t = 0; t < max_time; t++)
+  {
     H[t][0] = L_bound_temp;
     H[t][width - 1] = R_bound_temp;
   }
 
   // Initialize temperatures at time 0
   t = 0;
-  for (p = 1; p < width - 1; p++) {
+  for (p = 1; p < width - 1; p++)
+  {
     H[t][p] = initial_temp;
   }
 
   // Simulate the temperature changes for internal cells
-  for (t = 0; t < max_time - 1; t++) {
-    for (p = 1; p < width - 1; p++) {
+  for (t = 0; t < max_time - 1; t++)
+  {
+    for (p = 1; p < width - 1; p++)
+    {
       double left_diff = H[t][p] - H[t][p - 1];
       double right_diff = H[t][p] - H[t][p + 1];
       double delta = -k * (left_diff + right_diff);
@@ -71,19 +77,23 @@ int main(int argc, char **argv) {
 
   // Column headers
   printf("%3s| ", "");
-  for (p = 0; p < width; p++) {
+  for (p = 0; p < width; p++)
+  {
     printf("%5d ", p);
   }
   printf("\n");
   printf("%3s+-", "---");
-  for (p = 0; p < width; p++) {
+  for (p = 0; p < width; p++)
+  {
     printf("------");
   }
   printf("\n");
   // Row headers and data
-  for (t = 0; t < max_time; t++) {
+  for (t = 0; t < max_time; t++)
+  {
     printf("%3d| ", t);
-    for (p = 0; p < width; p++) {
+    for (p = 0; p < width; p++)
+    {
       printf("%5.1f ", H[t][p]);
     }
     printf("\n");
