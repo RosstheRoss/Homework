@@ -93,7 +93,7 @@ void reverse_range(int *a, int from, int to) {
     }
 ```
 
-The main difference is that the function needs the size of the array since it can't be found from the function itself.
+The main difference is that the function needs the size of the array since it can't be found from the scope of the function itself.
 
 ## Q5
 
