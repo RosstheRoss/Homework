@@ -2,23 +2,43 @@
 
 ## Q1
 
+### Database Threat Model
 
+The main threat of the model is accessing the database. Any access to the server of the database is considered a threat because it can potentially be used as a vector for privilege escalation and database access. The server can be accessed either over a network that may or may not exist or directly connecting to the machine itself.
+
+The potential attackers would be any students or other users who potentially have access to the machine with the database.
+
+The most reasonable attacks would be guessing the credentials to access the database, most likely by brute forcing a password if one exists.
+
+Impossible threats would be from people and devices that cannot access the machine containing the database.
+
+### Without Network
+
+Without networking hardware, one major threat vector (the network) is gone.
+
+One way to mitigate threats is to encrypt the database and the computer containing the database with a password resistant to brute forcing if someone were to obtain the computer. If the algorithm is slow, an old computer could be even more slowed down by the decryption.
+
+Another way to mitigate threats is to lock the computer up when it is not being used.
 
 ## Q2
 
 ### A: Perl
 
-After adding a name to the request, add a semicolon followed by the command. The semicolon is the shell command separator which allows it to parse commands.
+After adding a name to the request, add a semicolon followed by the command. The semicolon is the shell command separator which allows it to parse new commands.
 
-#### Example Request
+#### Example Request Body
 
-```
-"?field-name=;perl+-e+'`command`'"
+```perl
+'field-name=; ls'
 ```
 
 ### B: C
 
 ## Q3
+
+Overfilling the buffer normally causes the program to crash from stack smashing. This can be undone by finding the canary value and using it to overwrite the canary value after the buffer overflow. The CFI can be beaten by jumping to a known legal target.
+
+On big and little endian machines, the byte order is reversed.
 
 ## Q4
 
@@ -28,15 +48,13 @@ After adding a name to the request, add a semicolon followed by the command. The
 
 If the function is called with `to` larger than outer bound of the array, there is a buffer overflow that happens. For example, running it by default with an array of size 10 with a `to` of 11 on gcc 11.1 causes it to crash because of stack smashing.
 
-##### Mistake 1b: Underloading the array
+#### Mistake 1b: Negative numbers the array
 
-If the function is called with `from` smaller than 0 will cause some values of the array to be replaced with other values from memory addresses nearby. It did not crash, but it is not the intended behavior.
+If the function is called with `from` smaller than 0 will cause the array to look at addresses before the array, potentially causing the program to segfault.
 
-#### Mistake 2
+#### Mistake 2: Swapping the to and from
 
-a
-
-#### Mistake 3
+If the function is called with `from` larger than `to`, the program will segfault from accessing invalid memory addresses.
 
 ### B: Same Signature
 
@@ -61,18 +79,21 @@ void reverse_range(int *a, int from, int to) {
 ### C: Different Signature
 
 ```c
-    int* reverse_range(int arr[], int arrSize, int from, int to) {
+    void reverse_range(int *arr, int arrSize, int from, int to) {
+        //Program should exit if it works backwards or goes out of bounds
         if (from < 0 || to >= arrSize || to < from)
-            return NULL;
+            return;
         for (int i = from; i < to; i++) {
             int temp = arr[i];
             arr[i] = arr[to];
             arr[to] = temp;
             to--;
         }
-        return arr;
+        return;
     }
 ```
+
+The main difference is that the function needs the size of the array since it can't be found from the function itself.
 
 ## Q5
 
