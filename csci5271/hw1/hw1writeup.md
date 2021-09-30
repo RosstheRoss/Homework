@@ -32,7 +32,13 @@ After adding a name to the request, add a semicolon followed by the command. The
 'field-name=; ls'
 ```
 
+#### Fixes (taken from <https://docstore.mik.ua/orelly/perl4/cook/ch19_06.htm>)
+
+One way to fix the script would be replacing the unsafe `last -1000 | grep $username_to_look_for` command with a more safe call that cannot be hijacked for arbitrary code execution. Another way would be rewriting the script to prevent the shell being run at all.
+
 ### B: C
+
+
 
 ## Q3
 
@@ -44,15 +50,15 @@ On big and little endian machines, the byte order is reversed.
 
 ### A
 
-#### Mistake 1a: Potentially overloading the array
+#### Mistake 1: Potentially overloading the array
 
 If the function is called with `to` larger than outer bound of the array, there is a buffer overflow that happens. For example, running it by default with an array of size 10 with a `to` of 11 on gcc 11.1 causes it to crash because of stack smashing.
 
-#### Mistake 1b: Negative numbers the array
+#### Mistake 2: Negative numbers the array
 
 If the function is called with `from` smaller than 0 will cause the array to look at addresses before the array, potentially causing the program to segfault.
 
-#### Mistake 2: Swapping the to and from
+#### Mistake 3: Swapping the to and from
 
 If the function is called with `from` larger than `to`, the program will segfault from accessing invalid memory addresses.
 
@@ -60,17 +66,14 @@ If the function is called with `from` larger than `to`, the program will segfaul
 
 ```c
 void reverse_range(int *a, int from, int to) {
-    unsigned int *p = &a[from];
-    unsigned int *q = &a[to];
-/* Until the pointers move past each other: */
-    while (!(p == q + 1 || p == q + 2)) {
-/* Swap *p with *q, without using a temporary variable */
-        *p += *q; /* *p == P + Q */
-        *q = *p - *q; /* *q == P + Q - Q = P */
-        *p = *p - *q; /* *p == P + Q - P = Q */
-/* Advance pointers towards each other */
-        p++;
-        q--;
+    //Not sure how to check if to is too big
+    if (from < 0 || to < from)
+            return;
+    for (int i = from; i < to; i++) {
+        int temp = a[i];
+        a[i] = a[to];
+        a[to] = temp;
+        to--;
     }
 }
 
@@ -93,7 +96,7 @@ void reverse_range(int *a, int from, int to) {
     }
 ```
 
-The main difference is that the function needs the size of the array since it can't be found from the scope of the function itself.
+The main difference is that the function needs the size of the array since it can't be found from the function itself.
 
 ## Q5
 
