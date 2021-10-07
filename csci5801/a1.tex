@@ -79,7 +79,7 @@ Sports League Administration Manager (SLAM) Use Cases
 \section{Product Perspective}
 \includegraphics[width=\textwidth]{diagram} \\
 
-The Sports League Administation Manager is developed to organize a 
+The Sports League Administration Manager is developed to organize a 
 $<$Describe the context and origin of the product being specified in this SRS.  
 For example, state whether this product is a follow-on member of a product 
 family, a replacement for certain existing systems, or a new, self-contained 
@@ -98,242 +98,169 @@ related requirements and how they relate, such as a top level data flow diagram
 or object class diagram, is often effective.$>$
 
 \section{User Classes and Characteristics}
-The system is divided into four users: administrators, officials, coaches, and the public. The roles are defined as follows: \\
-Adminisrators:
+The system is divided into four users: administrators, officials, coaches, and the public. The roles are defined below.
 \begin{itemize}
-    \item Create and manage leagues
-    \item Create and manage league and tournament schedules 
-    \item Generate user statistics on demand
-    \item Assign officials to leagues and games
-    \item Accept sponsorships
+    \item Administrators:
+    \begin{itemize}
+        \item Create and manage leagues
+        \item Create and manage league and tournament schedules 
+        \item Generate user statistics on demand
+        \item Assign officials to leagues and games
+    \end{itemize}
 \end{itemize}
-Officials:
+Administrators include Staff members and the Parks and Recreation Organizer.  They have the highest privilege level. Administrators are the ones in charge of creating leagues, scheduling games, and assigning officials. They also are the users that create statistics and deal with finances.
 \begin{itemize}
-    \item Submit their availability to official games
-    \item View the schedule of games they need to attend
+    \item Officials:
+    \begin{itemize}
+        \item Submit their availability to official games
+        \item Accept or reject games to officiate
+        \item View the schedule of games they need to attend
+        \item Submit scores when game is complete
+    \end{itemize}
 \end{itemize}
-Coaches:
+Officials are responsible for submitting scores when games are over. They also are responsible for submitting their schedules so all games played have a sufficient number of officials.
 \begin{itemize}
-    \item Create teams
-    \item 
+    \item Coaches:
+    \begin{itemize}
+        \item Create teams
+        \item Add athletes to teams
+    \end{itemize}
 \end{itemize}
-$<$Identify the various user classes that you anticipate will use this product.  
-User classes may be differentiated based on frequency of use, subset of product 
-functions used, technical expertise, security or privilege levels, educational 
-level, or experience. Describe the pertinent characteristics of each user class.  
-Certain requirements may pertain only to certain user classes. Distinguish the 
-most important user classes for this product from those who are less important 
-to satisfy.$>$
+Coaches are responsible for creating teams and adding athletes to teams.
+\begin{itemize}
+    \item Athletes, the Public:
+    \begin{itemize}
+        \item View schedule
+    \end{itemize}
+\end{itemize}
+Athletes and other end users need to be able to view the schedule of games they plan on attending or playing in.
 
-\section{Operating Environment}
-$<$Describe the environment in which the software will operate, including the 
-hardware platform, operating system and versions, and any other software 
-components or applications with which it must peacefully coexist.$>$
-
-\section{Design and Implementation Constraints}
-$<$Describe any items or issues that will limit the options available to the 
-developers. These might include: corporate or regulatory policies; hardware 
-limitations (timing requirements, memory requirements); interfaces to other 
-applications; specific technologies, tools, and databases to be used; parallel 
-operations; language requirements; communications protocols; security 
-considerations; design conventions or programming standards (for example, if the 
-customer’s organization will be responsible for maintaining the delivered 
-software).$>$
-
-\section{User Documentation}
-$<$List the user documentation components (such as user manuals, on-line help, 
-and tutorials) that will be delivered along with the software. Identify any 
-known user documentation delivery formats or standards.$>$
 \section{Assumptions and Dependencies}
 
-$<$List any assumed factors (as opposed to known facts) that could affect the 
-requirements stated in the SRS. These could include third-party or commercial 
-components that you plan to use, issues around the development or operating 
-environment, or constraints. The project could be affected if these assumptions 
-are incorrect, are not shared, or change. Also identify any dependencies the 
-project has on external factors, such as software components that you intend to 
-reuse from another project, unless they are already documented elsewhere (for 
-example, in the vision and scope document or the project plan).$>$
-
-
-\chapter{External Interface Requirements}
-
-\section{User Interfaces}
-$<$Describe the logical characteristics of each interface between the software 
-product and the users. This may include sample screen images, any GUI standards 
-or product family style guides that are to be followed, screen layout 
-constraints, standard buttons and functions (e.g., help) that will appear on 
-every screen, keyboard shortcuts, error message display standards, and so on.  
-Define the software components for which a user interface is needed. Details of 
-the user interface design should be documented in a separate user interface 
-specification.$>$
-
-\section{Hardware Interfaces}
-$<$Describe the logical and physical characteristics of each interface between 
-the software product and the hardware components of the system. This may include 
-the supported device types, the nature of the data and control interactions 
-between the software and the hardware, and communication protocols to be 
-used.$>$
-
-\section{Software Interfaces}
-$<$Describe the connections between this product and other specific software 
-components (name and version), including databases, operating systems, tools, 
-libraries, and integrated commercial components. Identify the data items or 
-messages coming into the system and going out and describe the purpose of each.  
-Describe the services needed and the nature of communications. Refer to 
-documents that describe detailed application programming interface protocols.  
-Identify data that will be shared across software components. If the data 
-sharing mechanism must be implemented in a specific way (for example, use of a 
-global data area in a multitasking operating system), specify this as an 
-implementation constraint.$>$
-
-\section{Communications Interfaces}
-$<$Describe the requirements associated with any communications functions 
-required by this product, including e-mail, web browser, network server 
-communications protocols, electronic forms, and so on. Define any pertinent 
-message formatting. Identify any communication standards that will be used, such 
-as FTP or HTTP. Specify any communication security or encryption issues, data 
-transfer rates, and synchronization mechanisms.$>$
-
+It is assumed that an external database and interface already exist.
 
 \chapter{System Features}
-$<$This template illustrates organizing the functional requirements for the 
-product by system features, the major services provided by the product. You may 
-prefer to organize this section by use case, mode of operation, user class, 
-object class, functional hierarchy, or combinations of these, whatever makes the 
-most logical sense for your product.$>$
 
 \section{League Creation}
 
 \subsection{Description and Priority}
-
+The system shall allow administrators to create leagues for sports. The system will list sports to create a league for and the user will select the sport. The system will then list the leagues that are available for the sport and the user will select the league.
 
 \subsection{Stimulus/Response Sequences}
-$<$List the sequences of user actions and system responses that stimulate the 
-behavior defined for this feature. These will correspond to the dialog elements 
-associated with use cases.$>$
+A user must be logged in as an administrator to be able to create a league. The user submits the sport they want to create a league for and the system will respond by verifying the response and creating a new league if the response is valid.
 
 \subsection{Functional Requirements}
-$<$Itemize the detailed functional requirements associated with this feature.  
-These are the software capabilities that must be present in order for the user 
-to carry out the services provided by the feature, or to execute the use case.  
-Include how the product should respond to anticipated error conditions or 
-invalid inputs. Requirements should be concise, complete, unambiguous, 
-verifiable, and necessary. Use “TBD” as a placeholder to indicate when necessary 
-information is not yet available.$>$
-$<$This template illustrates organizing the functional requirements for the 
-product by system features, the major services provided by the product. You may 
-prefer to organize this section by use case, mode of operation, user class, 
-object class, functional hierarchy, or combinations of these, whatever makes the 
-most logical sense for your product.$>$
+REQ-101: The system shall list all sports that leagues can be created for. \\
+REQ-102: The system shall validate the user input. \\
+REQ-103: The system shall return an error if the user tries to create a league for a sport that does not exist or is no longer allowing league creation. \\
+REQ-104: The system shall create the league after verifying the input. \\
+\indent Valid sports are as follows: Sand Volleyball, Kickball, Indoor Soccer, Softball, Outdoor Soccer, Tennis, Flag Football, Fall Soccer, Dodgeball, Indoor Volleyball, Fall Kickball, Fall Softball, Basketball, Broomball, and Pond Hockey.
 
-\section{League Creation}
+
+\section{Schedule Generation}
 
 \subsection{Description and Priority}
-
+The system shall allow administrators to create schedules for leagues.
 
 \subsection{Stimulus/Response Sequences}
-$<$List the sequences of user actions and system responses that stimulate the 
-behavior defined for this feature. These will correspond to the dialog elements 
-associated with use cases.$>$
+A user must be signed in as an administrator. The user supplies a beginning and ending date for the schedule and the system will generate a schedule for the league.
 
 \subsection{Functional Requirements}
-$<$Itemize the detailed functional requirements associated with this feature.  
-These are the software capabilities that must be present in order for the user 
-to carry out the services provided by the feature, or to execute the use case.  
-Include how the product should respond to anticipated error conditions or 
-invalid inputs. Requirements should be concise, complete, unambiguous, 
-verifiable, and necessary. Use “TBD” as a placeholder to indicate when necessary 
-information is not yet available.$>$
 
-$<$Each requirement should be uniquely identified with a sequence number or a 
-meaningful tag of some kind.$>$
-
-REQ-1:	REQ-2:
+REQ-201: The user must specify a start and end date for the league. \\
+REQ-202: The system shall verify the dates. The verification process is TBD.
+REQ-203: The system shall generate a valid schedule for the league provided between the dates provided. The verification process for this is TBD.\\
+REQ-204: The system shall return an error if the dates are invalid. \\
+REQ-205: The system shall return an error if it cannot generate a schedule for the league.
+REQ-206: The system shall return a valid generated schedule after it has validated the inputs. What constitutes a valid schedule is TBD. \\
 
 \section{Team Creation}
     
     \subsection{Description and Priority}   
-        
-        \subsection{Stimulus/Response Sequences}    
+    The system shall allow coaches and administrators to register teams.
+    \subsection{Stimulus/Response Sequences}    
+    A user must be signed in as a coach or administrator. The user supplies the name of the team and the system will create the team. The user must supply a valid roster and the league they want to register the team for.
+    \subsection{Functional Requirements}
+    REQ-301: The system shall validate the number of team members and return an error if the team is too small for the sport. \\
+    REQ-302: The system shall validate the team name and return an error if the team name is invalid. What constitutes an invalid team name is TBD. \\
+    REQ-303: The system shall create a team with the supplied roster and name and add it to the database.
 
-        \subsection{Functional Requirements}
-$<$Each requirement should be uniquely identified with a sequence number or a 
-meaningful tag of some kind.$>$
-
-REQ-1:	REQ-2:
-
-\section{Team Creation}
-    
+\section{Roster Editing}
+  
     \subsection{Description and Priority}   
-        
+    The system shall allow coaches and administrators to edit rosters.
         \subsection{Stimulus/Response Sequences}    
-
+    A user must be signed in as a coach or administrator. The user submits the change that they want to make to the roster. The system responds by changing the roster as requested.
         \subsection{Functional Requirements}
+    REQ-401: The system shall return an error if the user does not have permission to edit that team's roster. \\
+    REQ-402: The system shall return an error if the user tries to edit a team that does not exist. \\
+    REQ-403: The system shall change the roster as requested if the user has permission to edit that team's roster.
+\section{Generate Statistics}
 
+    \subsection{Description and Priority}
+    The system shall allow administrators to generate statistics.
+    \subsection{Stimulus/Response Sequences}
+    A user must be signed in as an administrator. The user submits the type of statistics they want to generate. The system will generate the statistics asked.
+    \subsection{Functional Requirements}
+    REQ-501: The system shall return an error if the user tries to generate statistics for a sport, league or player that does not exist. \\
+    REQ-502: The system shall generate the statistics and display them to the user when generated.
 
+\section{Assign Officials}
+    \subsection{Description and Priority}
+    The system shall allow administrators to assign officials to leagues and games.
+    \subsection{Stimulus/Response Sequences}
+    A user must be signed in as an administrator. The user submits the league and game they want to assign officials to. The system will assign the officials to the game based on the schedule given by the officials.
+    \subsection{Functional Requirements}
+    REQ-601: The system shall return an error if the user tries to assign officials to a league or game that does not exist. \\
+    REQ-602: The system shall return an error if no officials can be found for a game. \\
+    REQ-603: The system shall assign the officials to the game and publish the schedule so the officals can see what games they need to officiate.
 
-\chapter{Other Nonfunctional Requirements}
+\section{Submit Scores}
+    \subsection{Description and Priority}
+    The system shall allow officials to submit scores for games they officiate.
+    \subsection{Stimulus/Response Sequences}
+    A user must be signed in as an official. The user submits the score for the game they are officiating.
+    \subsection{Functional Requirements}
+    REQ-701: The system shall return an error if the user tries to submit a score for a game that does not exist. \\
+    REQ-702: The system shall return an error if the user tries to submit a score for a game that is not officiating. \\
+    REQ-703: The system shall submit the score to the database and publish it to an external site after the submission is complete. \\
+    REQ-704: The system shall allow administrators to change scores if they contradict the official's reported scores.
 
-\section{Performance Requirements}
-$<$If there are performance requirements for the product under various 
-circumstances, state them here and explain their rationale, to help the 
-developers understand the intent and make suitable design choices. Specify the 
-timing relationships for real time systems. Make such requirements as specific 
-as possible. You may need to state performance requirements for individual 
-functional requirements or features.$>$
+    
+    \section{Generate Bracket}
+    \subsection{Description and Priority}
+    The system shall allow administrators to generate brackets for leagues.
+    \subsection{Stimulus/Response Sequences}
+    A user must be signed in as an administrator. The user submits the league they want to generate a bracket for. The system will generate the bracket along with the dates for the games. \\
+    This requirement is built off of requirement 2.
+    \subsection{Functional Requirements}
+    REQ-801: The system shall return an error if the user tries to generate a bracket for a league that does not exist. \\
+    REQ-802: The system shall generate the bracket and proceed to generate the schedule according to Requirement 2. \\
+    REQ-803: The system shall return an error if the system cannot generate the bracket requested. \\
+    
+    \section{View Schedules}
+    \subsection{Description and Priority}
+    The system shall allow users to view schedules for leagues.
+    \subsection{Stimulus/Response Sequences}
+    Any user can access the schedule for a league. They do not have to be signed in to view the public schedules. Officals can view the schedule for a league they are officiating and administrators can view any schedule for any league.
+    \subsection{Functional Requirements}
+    REQ-901: The system shall return an error if the user tries to view a schedule for a league that does not exist. \\
+    REQ-902: The system shall return an error if an unauthenticated user tries to view a schedule for a league that is not public. \\
+    REQ-903: The system shall return an error if an authenticated user tries to view a schedule for a league that they do not have permission to access. \\
+    REQ-904: The system shall return the schedule for the league requested.
 
-\section{Safety Requirements}
-$<$Specify those requirements that are concerned with possible loss, damage, or 
-harm that could result from the use of the product. Define any safeguards or 
-actions that must be taken, as well as actions that must be prevented. Refer to 
-any external policies or regulations that state safety issues that affect the 
-product’s design or use. Define any safety certifications that must be 
-satisfied.$>$
-
-\section{Security Requirements}
-$<$Specify any requirements regarding security or privacy issues surrounding use 
-of the product or protection of the data used or created by the product. Define 
-any user identity authentication requirements. Refer to any external policies or 
-regulations containing security issues that affect the product. Define any 
-security or privacy certifications that must be satisfied.$>$
-
-\section{Software Quality Attributes}
-$<$Specify any additional quality characteristics for the product that will be 
-important to either the customers or the developers. Some to consider are: 
-adaptability, availability, correctness, flexibility, interoperability, 
-maintainability, portability, reliability, reusability, robustness, testability, 
-and usability. Write these to be specific, quantitative, and verifiable when 
-possible. At the least, clarify the relative preferences for various attributes, 
-such as ease of use over ease of learning.$>$
-
-\section{Business Rules}
-$<$List any operating principles about the product, such as which individuals or 
-roles can perform which functions under specific circumstances. These are not 
-functional requirements in themselves, but they may imply certain functional 
-requirements to enforce the rules.$>$
-
-
-\chapter{Other Requirements}
-$<$Define any other requirements not covered elsewhere in the SRS. This might 
-include database requirements, internationalization requirements, legal 
-requirements, reuse objectives for the project, and so on. Add any new sections 
-that are pertinent to the project.$>$
 
 \section{Appendix A: Glossary}
 %see https://en.wikibooks.org/wiki/LaTeX/Glossary
-$<$Define all the terms necessary to properly interpret the SRS, including 
-acronyms and abbreviations. You may wish to build a separate glossary that spans 
-multiple projects or the entire organization, and just include terms specific to 
-a single project in each SRS.$>$
+SLAM: The Sports League Administration Manager
+Staff: The people who run the league, working for the Municipal Parks and Recreation Department.
+Administrators: People with administrative privileges.
+Officals: People who officiate games.
+Coaches: People who create teams.
+Athletes: People who play in the leagues.
+The Public: Everyone else.
 
-\section{Appendix B: Analysis Models}
-$<$Optionally, include any pertinent analysis models, such as data flow 
-diagrams, class diagrams, state-transition diagrams, or entity-relationship 
-diagrams.$>$
 
-\section{Appendix C: To Be Determined List}
-$<$Collect a numbered list of the TBD (to be determined) references that remain 
-in the SRS so they can be tracked to closure.$>$
-
+\section{Appendix B: To Be Determined List}
+TODO: specifications, testing, the rest of the document
 \end{document}

@@ -1,0 +1,474 @@
+%% Use Cases Template File
+%% Created by Tom Desair (http://www.tomdesair.com)
+%% Downloadable at: http://www.tomdesair.com/downloads/use-case-latex-template.zip
+%% Date Modified: 03/04/2012
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+
+\documentclass[a4paper, 10pt, oneside, draft]{article}
+
+%include the usecases package
+\usepackage{usecases}
+
+\begin{document}
+
+%Sometimes it is a good idea to put domain objects in \texttt{}
+%The template and the descriptions are based on the book Applying UML and Patterns: 
+%An Introduction to Object-Oriented Analysis and Design and Iterative Development
+%(3rd Edition) by Craig Larman.
+\begin{usecase}
+
+\addtitle{Use Case 1}{Creating a League} 
+
+%Scope: the system under design
+\addfield{Scope:}{System-wide}
+
+%Level: "user-goal" or "subfunction"
+\addfield{Level:}{User-goal}
+
+%Primary Actor: Calls on the system to deliver its services.
+\addfield{Primary Actor:}{Administrator}
+
+\addfield{Trigger:}{An administrator wants to create a new league.}
+
+%Preconditions: What must be true on start and worth telling the reader?
+\addfield{Preconditions:}{The user must be signed in as an administrator.}
+%when multiple
+%\additemizedfield{Preconditions:}{} 
+
+%Postconditions: What must be true on successful completion and worth telling the reader
+\addfield{Postconditions:}{The league will be created.}
+%when multiple
+%\additemizedfield{Preconditions:}{}
+
+%Main Success Scenario: A typical, unconditional happy path scenario of success.
+\addscenario{Main Success Scenario:}{
+	\item The administrator creates a new league.
+	\item The league is created
+}
+
+%Extensions: Alternate scenarios of success or failure.
+\addscenario{Extensions:}{
+	\item[1.a] The user is not an administrator:
+		\begin{enumerate}
+		\item[1.] System shows permission denied
+		\item[2.] User returns to login page
+		\end{enumerate}
+	\item[2.a] The league cannot be created:
+		\begin{enumerate}
+		\item[1.] System shows failure message
+		\item[2.] User returns to step 1
+		\end{enumerate}
+}
+\end{usecase}
+\pagebreak
+\begin{usecase}
+	
+\addtitle{Use Case 2}{Creating a Team}
+
+%Scope: the system under design
+\addfield{Scope:}{System-wide}
+
+%Level: "user-goal" or "subfunction"
+\addfield{Level:}{User-goal}
+
+%Primary Actor: Calls on the system to deliver its services.
+\addfield{Primary Actor:}{Coach}
+
+\addfield{Trigger:}{A coach wants to create a new team.}
+
+%Preconditions: What must be true on start and worth telling the reader?
+\addfield{Preconditions:}{The user must be signed in as a coach.}
+%when multiple
+%\additemizedfield{Preconditions:}{}
+
+%Postconditions: What must be true on successful completion and worth telling the reader
+% \addfield{Postconditions:}{The team will be created.}
+%when multiple
+\additemizedfield{Preconditions:}{\item The user must be signed in as a coach \item A league must already exist}
+
+
+%Main Success Scenario: A typical, unconditional happy path scenario of success.
+\addscenario{Main Success Scenario:}{
+	\item[1] The coach creates a new team.
+	\item[2] The team is created
+}
+
+%Extensions: Alternate scenarios of success or failure.
+\addscenario{Extensions:}{
+	\item[1.a] The user is not a coach:
+		\begin{enumerate}
+		\item[1.] System shows permission denied
+		\item[2.] User returns to login page
+		\end{enumerate}
+	\item[2.a] The team cannot be created:
+		\begin{enumerate}
+		\item[1.] System shows failure message
+		\item[2.] User returns to step 1
+		\end{enumerate}
+	\item[3.b] The league does not exist:
+		\begin{enumerate}
+		\item[1.] System shows failure message
+		\item[2.] The user returns to step 1
+		\end{enumerate} 
+}
+
+
+\end{usecase}
+
+\pagebreak
+
+\begin{usecase}
+	
+\addtitle{Use Case 3}{Generating a Schedule}
+
+%Scope: the system under design
+\addfield{Scope:}{System-wide}
+
+%Level: "user-goal" or "subfunction"
+\addfield{Level:}{User-goal}
+
+%Primary Actor: Calls on the system to deliver its services.
+\addfield{Primary Actor:}{Administrator}
+
+\addfield{Trigger:}{An administrator wants to generate a schedule.}
+
+%Preconditions: What must be true on start and worth telling the reader?
+\additemizedfield{Preconditions:}{\item The user must be singed in as an administrator \item A league must already exist}
+
+%Postconditions: What must be true on successful completion and worth telling the reader
+\addfield{Postconditions:}{The schedule will be generated.}
+
+%Main Success Scenario: A typical, unconditional happy path scenario of success.
+\addscenario{Main Success Scenario:}{
+	\item The administrator selects a league to generate a schedule for.
+	\item The administrator generates a schedule.
+	\item The schedule is generated.
+}
+
+%Extensions: Alternate scenarios of success or failure.
+\addscenario{Extensions:}{
+	\item[1.a] The user is not an administrator:
+		\begin{enumerate}
+		\item[1.] System shows permission denied
+		\item[2.] User returns to login page
+		\end{enumerate}
+	\item[2.a] The league does not exist:
+		\begin{enumerate}
+		\item[1.] System shows failure message
+		\item[2.] User returns to step 1
+		\end{enumerate} 
+	\item[3.a] The league does not have any teams:
+		\begin{enumerate}
+		\item[1.] System shows failure message
+		\item[2.] User returns to step 1
+		\end{enumerate}
+	\item[3.b] The schedule fails to be created:
+		\begin{enumerate}
+		\item[1.] System shows failure message
+		\item[2.] User returns to step 1
+		\end{enumerate}
+}
+
+\end{usecase}
+
+\pagebreak
+
+\begin{usecase}
+	
+\addtitle{Use Case 4}{Generating Statistics}
+
+
+%Scope: the system under design
+\addfield{Scope:}{System-wide}
+
+%Level: "user-goal" or "subfunction"
+\addfield{Level:}{User-goal}
+
+%Primary Actor: Calls on the system to deliver its services.
+\addfield{Primary Actor:}{Administrator}
+
+\addfield{Trigger:}{An administrator wants to generate statistics.}
+
+%Preconditions: What must be true on start and worth telling the reader?
+\additemizedfield{Preconditions:}{\item The user must be singed in as an administrator \item A league must already exist}
+
+%Postconditions: What must be true on successful completion and worth telling the reader
+\addfield{Postconditions:}{The statistics will be generated.}
+
+%Main Success Scenario: A typical, unconditional happy path scenario of success.
+\addscenario{Main Success Scenario:}{
+	\item The administrator selects a league to generate statistics for.
+	\item The administrator generates statistics.
+	\item The statistics are generated.
+}
+
+%Extensions: Alternate scenarios of success or failure.
+\addscenario{Extensions:}{
+	\item[1.a] The user is not an administrator:
+		\begin{enumerate}
+		\item[1.] System shows permission denied
+		\item[2.] User returns to login page
+		\end{enumerate}
+	\item[1.b] The league does not exist:
+		\begin{enumerate}
+		\item[1.] System shows failure message
+		\item[2.] User returns to step 1
+		\end{enumerate} 
+	\item[3.a] The league does not have any teams:
+		\begin{enumerate}
+		\item[1.] System shows failure message
+		\item[2.] User returns to step 1
+		\end{enumerate}
+	\item[3.b] The statistics fail to be generated:
+		\begin{enumerate}
+		\item[1.] System shows failure message
+		\item[2.] User returns to step 1
+		\end{enumerate}
+}
+
+\end{usecase}
+
+\pagebreak
+
+\begin{usecase}
+	
+\addtitle{Use Case 5}{Assign Officials}
+
+%Scope: the system under design
+\addfield{Scope:}{System-wide}
+
+%Level: "user-goal" or "subfunction"
+\addfield{Level:}{User-goal}
+
+%Primary Actor: Calls on the system to deliver its services.
+\addfield{Primary Actor:}{Administrator}
+
+\addfield{Trigger:}{An administrator wants to assign officials.}
+
+%Preconditions: What must be true on start and worth telling the reader?
+\additemizedfield{Preconditions:}{\item The user must be singed in as an administrator \item A league must already exist \item Officials must already exist for the league}
+
+
+%Postconditions: What must be true on successful completion and worth telling the reader
+\addfield{Postconditions:}{The officials will be assigned.}
+
+%Main Success Scenario: A typical, unconditional happy path scenario of success.
+\addscenario{Main Success Scenario:}{
+	\item The administrator selects a league to assign officials to.
+	\item The administrator assigns officials.
+	\item The officials are assigned.
+}
+
+%Extensions: Alternate scenarios of success or failure.
+\addscenario{Extensions:}{
+	\item[1.a] The user is not an administrator:
+		\begin{enumerate}
+		\item[1.] System shows permission denied
+		\item[2.] User returns to login page
+		\end{enumerate}
+	\item[2.a] The league does not exist:
+		\begin{enumerate}
+		\item[1.] System shows failure message
+		\item[2.] User returns to step 1
+		\end{enumerate} 
+	\item[3.a] There are no eligible officials:
+		\begin{enumerate}
+		\item[1.] System shows failure message
+		\item[2.] User returns to step 1
+		\end{enumerate}
+	\item[3.b] An unknown error occurs:
+		\begin{enumerate}
+		\item[1.] System shows failure message
+		\item[2.] User returns to step 1
+		\end{enumerate}
+}
+
+\end{usecase}
+
+\pagebreak
+
+
+\begin{usecase}
+	
+\addtitle{Use Case 6}{Generate Bracket}
+
+%Scope: the system under design
+\addfield{Scope:}{System-wide}
+
+%Level: "user-goal" or "subfunction"
+\addfield{Level:}{User-goal}
+
+%Primary Actor: Calls on the system to deliver its services.
+\addfield{Primary Actor:}{Administrator}
+
+\addfield{Trigger:}{An administrator wants to generate a bracket.}
+
+%Preconditions: What must be true on start and worth telling the reader?
+\additemizedfield{Preconditions:}{\item The user must be singed in as an administrator \item A league must already exist}
+
+%Postconditions: What must be true on successful completion and worth telling the reader
+\addfield{Postconditions:}{The bracket will be generated and a schedule will be created.}
+
+
+%Main Success Scenario: A typical, unconditional happy path scenario of success.
+\addscenario{Main Success Scenario:}{
+	\item The administrator selects a league to generate a bracket for.
+	\item The administrator generates a bracket.
+	\item The bracket is generated.
+	\item A schedule is created from the bracket, following Use Case 3.
+}
+
+%Extensions: Alternate scenarios of success or failure.
+\addscenario{Extensions:}{
+	\item[1.a] The user is not an administrator:
+		\begin{enumerate}
+		\item[1.] System shows permission denied
+		\item[2.] User returns to login page
+		\end{enumerate}
+	\item[2.a] The league does not exist:
+		\begin{enumerate}
+		\item[1.] System shows failure message
+		\item[2.] User returns to step 1
+		\end{enumerate} 
+	\item[3.a] The league does a cleanly divisible number of teams:
+		\begin{enumerate}
+		\item[1.] System shows failure message
+		\item[2.] User returns to step 1
+		\end{enumerate}
+	\item[3.b] The schedule fails to be created:
+		\begin{enumerate}
+		\item[1.] System shows failure message
+		\item[2.] User returns to step 1
+		\end{enumerate}
+	\item[4.b] A bracket is manually generated
+		\begin{enumerate}
+		\item[1.] The system follows all steps except step 5
+		\item[2.] The schedule is created
+		\end{enumerate}
+}
+\end{usecase}
+
+\pagebreak
+
+\begin{usecase}
+	
+\addtitle{Use Case 7}{Submit Scores}
+
+%Scope: the system under design
+\addfield{Scope:}{System-wide}
+
+%Level: "user-goal" or "subfunction"
+\addfield{Level:}{User-goal}
+
+%Primary Actor: Calls on the system to deliver its services.
+\addfield{Primary Actor:}{Official}
+
+\addfield{Trigger:}{An official wants to submit scores for a game they officiated.}
+
+%Preconditions: What must be true on start and worth telling the reader?
+\additemizedfield{Preconditions:}{\item The user must be singed in as an official \item A league must already exist \item A schedule must already exist \item A game must already exist \item The user must have permission to submit scores for that game}
+
+
+%Postconditions: What must be true on successful completion and worth telling the reader
+\addfield{Postconditions:}{The scores will be submitted.}
+
+%Main Success Scenario: A typical, unconditional happy path scenario of success.
+\addscenario{Main Success Scenario:}{
+	\item The official selects a game to submit scores for.
+	\item The official submits scores.
+	\item The scores are submitted.
+}
+
+%Extensions: Alternate scenarios of success or failure.
+\addscenario{Extensions:}{
+	\item[1.a] The user is not an official:
+		\begin{enumerate}
+		\item[1.] System shows permission denied
+		\item[2.] User returns to login page
+		\end{enumerate}
+		\item[1.b] An administrator:
+		\begin{enumerate}
+		\item[1.] System shows failure message
+		\item[2.] User returns to step 1
+		\end{enumerate}
+	\item[2.a] The league does not exist:
+		\begin{enumerate}
+		\item[1.] System shows failure message
+		\item[2.] User returns to step 1
+		\end{enumerate} 
+	\item[2.b] The schedule does not exist:
+		\begin{enumerate}
+		\item[1.] System shows failure message
+		\item[2.] User returns to step 1
+		\end{enumerate}
+	\item[2.c] The game does not exist:
+		\begin{enumerate}
+		\item[1.] System shows failure message
+		\item[2.] User returns to step 1
+		\end{enumerate}
+	\item[2.d] The user does not have permission to submit scores for that game:
+		\begin{enumerate}
+		\item[1.] System shows permission denied
+		\item[2.] User returns to step 1
+		\end{enumerate}
+	
+}
+\end{usecase}
+
+\pagebreak
+
+
+\begin{usecase}
+	
+\addtitle{Use Case 8}{View Schedule}
+
+%Scope: the system under design
+\addfield{Scope:}{System-wide}
+
+%Level: "user-goal" or "subfunction"
+\addfield{Level:}{User-goal}
+
+%Primary Actor: Calls on the system to deliver its services.
+\addfield{Primary Actor:}{End User}
+
+\addfield{Trigger:}{An end user wants to view a schedule.}
+
+
+%Preconditions: What must be true on start and worth telling the reader?
+\additemizedfield{Preconditions:}{ \item A schedule must already exist \item If the schedule is not public the user must be signed in}
+
+%Postconditions: What must be true on successful completion and worth telling the reader
+\addfield{Postconditions:}{The schedule will be displayed.}
+
+%Main Success Scenario: A typical, unconditional happy path scenario of success.
+\addscenario{Main Success Scenario:}{
+	\item The user selects a league to view a schedule for.
+	\item The schedule is displayed.
+}
+
+%Extensions: Alternate scenarios of success or failure.
+\addscenario{Extensions:}{
+	\item[1.a] The schedule is not public:
+		\begin{enumerate}
+		\item[1.] System shows failure message
+		\item[2.] User returns to step 1
+		\end{enumerate}
+		\item[2.a] The schedule does not exist:
+		\begin{enumerate}
+		\item[1.] System shows failure message
+		\item[2.] User returns to step 1
+		\end{enumerate}
+}
+\end{usecase}
+
+
+
+\end{document}
+
