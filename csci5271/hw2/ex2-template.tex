@@ -1,11 +1,13 @@
 \documentclass[11pt]{article}
 \usepackage{fullpage}\usepackage{listings}
+\usepackage{graphicx}
 \usepackage{times}
 
 \begin{document}
 \begin{center}
 CSci 5271 Fall 2021 Exercise Set 2 answers 
 \end{center}
+\graphicspath{{./}}
 
 \vspace{10pt}
 
@@ -40,10 +42,12 @@ Question 2 (a heap-related vulnerability, 20 pts):
 \end{verbatim}
 
 This code is an example of a use-after-free exploit. The way this exploit works is first the program allocates the herbivore with 0x4012ce hooves and is immediately freed. A carnivore is then created with the same address as the previously freed herbivore. The \verb|l| then reads the previously freed herbivore's hooves value as a function and it executes herbivore's toe count as a function, which was set to the address of \verb|shellcode()|.
+
 \newpage
 
 Question 3 (reference monitor without hardware support, 15 pts):
-One way to to implement a software reference monitor is to introduce Mandatory Access Control. 
+
+One way to to implement a software reference monitor is to introduce Mandatory Access Control. Mandatory access control will still prevent malicious actors from accessing unwanted data even if they become the root user. SELinux would be a good example of non-hardware reference monitors. 
 
 \newpage
 
@@ -52,9 +56,11 @@ Question 4 (sharing files on Unix, 20 pts):
 The program does not check that the user is supposed to write the output file in read or read the input file in write, allowing potentially arbitrary read/write privileges. This can be solved by implementing that check.
 The list of users with access would need to be updated frequently to ensure that someone properly loses access. A possible mitigation problem would be automating actively updating the list of users with and without access but that might not be possible.
 The program also implies that the user running the program is actually the real user and not someone impersonating them. The problem with impersonating could be solved with passwords but those can be cracked.
+
 \newpage
 
 Question 5 (Multilevel-secure classification, 20 pts):
 
+\includegraphics{lattice}
 
 \end{document}
