@@ -1,0 +1,49 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\begin{document}
+\section{Elicitation Session}
+    \subsection{What did you learn from the elicitation session? What parts worked well? What parts did not work well?}
+ The main thing to learn from the elicitation session should have been rather obvious: not everyone knows everything. Sometimes if you ask a question the customer simply does not know the answer. The main thing that did not work well was the very large number of groups potentially wasting time by having groups not show up.
+    \subsection{How might you prepare differently for a similar experience in the future, where you may only have one chance to meet and talk with the user(s)?}
+ The easiest way to prepare for the next session is to have even more questions beforehand and set them by priority. Our group had questions, but did not have them sorted by priority. Sorting them by priority would allow important questions to be answered first and less important questions to be answered later if at all.
+    \subsection{When is asking the same question twice bad/unhelpful? When is asking the same question twice good/helpful?}
+The only time asking the same question is helpful is if you ask two completely different people, because then you do not waste time getting the same answer twice. Any other time would only waste valuable time that could better be used for different questions.
+
+\section{Individual Requirements}
+    \subsection{How well did capturing the requirements go?}
+ Capturing requirements was straightforward for the most part. Trying to balance between being too specific and too vague was the most difficult part.
+    \subsection{How did you approach user statements/requirements which were vague or ambiguous?}
+ The way I dealt with it was by attempting to make the requirement surrounding the vagary as general as possible. If the requirement needs to be tweaked to make it more specific, it can be done more easily than making something less specific.
+    \subsection{How did you approach user statements/requirements which were contradictory?}
+ This did not happen when writing my requirements.
+    \subsection{Did you follow a template? Did the template help or hurt your efforts? Why?}
+The IEEE \LaTeX template made everything significantly easier to format, since dealing with Microsoft Word's and other WYSIWYG formatting has been ruled as illegal by the Geneva Conventions. The template also helped by suggesting what should be in each section, reducing time spent looking up something not talked about in class or potentially vague.
+
+\section{Team Requirements}
+    \subsection{Did you encounter any situations where you and your teammates disagreed on the definitions or process? What caused that ambiguity? What could you do next time to avoid it? If your team faced no disagreements, explain how you worked together to build the requirements to avoid them.}
+The main problem with group work is schedules. The more people you have to get together, the less time that works for everyone. The way this was mitigated was either making meetings short or filling the member not present in after the others met.
+
+\section{Final Spec and Testing}
+    \subsection{What kinds of assumptions will be necessary to ensure that meeting the specification (verification) means that you have also met the requirements (validation)?}
+ The main assumption is that the external requirements (databases, etc.) are written in a way that the tests will still work.
+    \subsection{How did you translate the requirements to specification?}
+ The way to turn a requirement into a specification is to take the requirement and make it more technical. Requirements are meant more for the customer, so writing specifications are meant to be more technical.
+    \subsection{What was the most difficult aspect of writing your test cases?}
+ The main thing is knowing how many test cases to write. Writing too many will be time consuming on implementation while too few potentially adds places where bugs can sneak in.
+    \subsection{Did writing your test cases help you find issues in your requirements? If so, what did you find and how did test case writing help you find/fix it? If not, what kinds of work effort (man-hours/financial) is going to be necessary to implement your tests? Explain.}
+ Writing some test cases showed that some of our requirements were redundant. Reducing requirements will be easier to implement, since large and unwieldy requirements documents are more likely to breed failure.
+    \subsection{How brittle are your tests? What kinds of changes could break them (provide concrete examples)?}
+    The main thing that could break the tests would be any potential API changes that would happen to the external back end. The database is assumed to work one way and provide specific items, so if those cannot be obtained anymore some tests would need to be rewritten.
+
+
+\section{Misc.}
+    \subsection{What were the most difficult parts of writing the SRS (including Assignments 1-3 in your thoughts)?}
+ The most difficult part is balancing what to write and what to not write. An excessive document is unwieldy and difficult to read, while a short one is likely missing vital information that could potentially cause the system to fail.
+    \subsection{What additional experience or training would be helpful for next time?}
+ The most likely experience needed would be a better way to write requirements and use cases from vague information. Thinking of requirements that may or may not be needed is a massive time sink.
+    \subsection{How sure are you that the specification you wrote meets the requirements? If you are confident that it does, what specifically gives you that confidence? If you are not confident, what would you do to fix that, and how do you know when to stop?}
+ I am somewhat confident our specifications meet our requirements. We added all of our requirements together and we all checked over our specifications, so multiple eyes saw the document.
+    \subsection{What are the greatest risks in your SRS? What are the likely things that will go wrong? What makes them risky?}
+ The greatest risk to this or any requirement is that the customer's needs change. If the customer's needs change, the requirements will need to be updated. Updated requirements once again eat into valuable time that could be spent implementing and optimizing the system.
+
+\end{document}
