@@ -8,7 +8,7 @@ CSci 5271 Fall 2021 Exercise Set 4 answers template
 \end{center}
 
 Please use this document as a template for submitting your answers to
-exercise Set 4. (This template is available from the course web site
+exercise set 4. (This template is available from the course web site
 in either LaTeX or Google Doc formats). Type your answers on each page
 after the question prompt (you can use additional pages, though that
 we expect that would rarely be required). If you can write all your
@@ -21,23 +21,21 @@ group members are recorded on Gradescope, and also confirm them below:
 \vspace{10pt}
 
 \begin{tabular}{|p{2.6in}|p{2.6in}|}\hline
-Name & UMN email address\\\hline
-\vspace{20pt} & \\\hline
-\vspace{20pt} & \\\hline
-\vspace{20pt} & \\\hline
+    Name & UMN email address\\\hline
+    Matt Strapp & strap012@umn.edu \\\hline
 \end{tabular}
 
 \vspace{10pt}
 
-Random numbers with limited entropy. (36 pts):
+Question 1 (Entropy in blackjack, 36 pts):
 
-Part 1(a), Time Seed
+Part 1(a), seed with time
 
 Having a predictable time seed will help an attacker brute force the seed by reducing the number of possible guesses needed.
 
 \vspace{2in}
 
-Part 1(b), PID Seed
+Part 1(b), seed with PID
 
 Having such a small number of seeds allows a malicious user to brute force guessing the seed.
 
@@ -45,42 +43,46 @@ Related CVE: https://nvd.nist.gov/vuln/detail/CVE-2008-0166
 
 \newpage
 
-Part 1(c), Time XOR PID
+Part 1(c), seed with time XOR PID
 
+This is the same problem as part 1(a), the seed size is too small. This can be brute forced by an attacker.
 
+\vspace{3in}
 
-\vspace{1.5in}
-
-Part 1(d), Consultant
-
-\vspace{1.5in}
+Part 1(d), your approach
 
 One possible implementation of the seed is to start out with concatenating the PID onto the time (time + PID, where the time is the one appended to), XOR the new number with the time, and encoding the result with base64.
-
-Question 2 (Cross-site scripting variations, 18 pts):
-
-Replace text/html with text/plain in the content type. This will cause the browser to display the page as plain text, not as HTML, mitigating the risk of cross-site scripting for this one use case.
+The main point of this approach is to broaden the possible number of seeds, making it significantly longer if not functionally infeasible to brute force.
 
 \newpage
 
-Question 3 (Denial of Service Denial, 22 pts):
+Question 2 (Cross-site scripting, 18 pts):
+
+Replace text/html with text/plain in the content type. This will cause the browser to display the page as plain text, not as HTML, mitigating the risk of cross-site scripting for this one use case.
+
+\vspace{3.5in}
+
+Question 3 (Delaying against DoS, 22 pts):
 
 No, it will not. A simple exploit of this module would be to simply have multiple devices behind different IPs all send singular requests to the server at various times, making sure to slowly delay the rate of requests. This would allow the server to be overwhelmed from a Distributed DoS (DDoS) attack.
 
 \newpage
 
-Question 4 (Virus Virii, 24 pts):
+Question 4 (ViruSniff, 24 pts):
 
-\vspace{1.5in}
+Part 4(a), claim versus the halting problem
 
-Part 4(a), Halting Problem
+(largely taken from https://www.cs.virginia.edu/~evans/pubs/virus.pdf)
 
+The problem does directly conflict with the halting problem. It is an \emph{example} of the halting problem.
+The paper states that the antivirus problem that is perfectly effective will also be able to solve the halting problem, which was proven to be impossible by Turing.
 
+\vspace{3.5in}
 
-\vspace{1.5in}
+Part 4(b), the real ViruSniff algorithm
 
-Part 4(b), Reverse Engineering
-
+What could be done is to insert the malicious code at a place that executes after 10000 instructions. This will never be labelled as a virus since the program does not look at the instructions beyond 10000.
+Sam's claim is impossible. There cannot be a 100\% effective antivirus product.
 
 
 \end{document}
