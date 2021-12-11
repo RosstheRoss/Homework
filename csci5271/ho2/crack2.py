@@ -1,20 +1,23 @@
 # HTTP Digest Authentication cracker
 import hashlib
 
-username = "Mufasa"
-realm = "testrealm@host.com"
-password="Circle Of Life"
-nonce = "dcd98b7102dd2f0e8b11d0f600bfb0c093"
-uri = "/dir/index.html"
+username = "travis14"
+realm = "Cheese"
+nonce = "/DPYEFbSBQA=c06893026441a70acf049b49540e97acd2bdd640"
+uri = "/secret/cheese"
 qop = "auth"
-nc = 1
-cnonce = "0a4f113b"
-response = "6629fae49393a05397450978507c4ef1"
-opaque = "5ccc069c403ebaf9f0171e9517f40e41"
+nc = "00000001"
+cnonce = "ZjdlNTk0ZGZmMDQwZTU3OTM2MTIxOGEyNzljNDJlYzc="
+response = "872aafc461761e417d2df47b85e43d2b"
 
 # Calculate the response
-ha1 = hashlib.md5((username + ":" + realm + ":" + password).encode('utf-8')).hexdigest()
-ha2 = hashlib.md5(("GET" + ":" + uri).encode('utf-8')).hexdigest()
-response = hashlib.md5((ha1 + ":" + nonce + ":" + nc + ":" + cnonce + ":" + qop + ":" + ha2).encode('utf-8')).hexdigest()
-
-print("Response: " + response)
+with open("10k-most-common.txt") as f:
+    for line in f:
+        line = line.strip('\n').strip()
+        ha1 = hashlib.md5((username + ":" + realm + ":" + line).encode('utf-8')).hexdigest()
+        ha2 = hashlib.md5(("HEAD" + ":" + uri).encode('utf-8')).hexdigest()
+        response = hashlib.md5((ha1 + ":" + nonce + ":" + nc + ":" + cnonce + ":" + qop + ":" + ha2).encode('utf-8')).hexdigest()
+        # print(line + ":" + response)
+        if (response == "872aafc461761e417d2df47b85e43d2b"):
+            print("Password: " + line)
+            break
