@@ -10,3 +10,4 @@ node_modules/
 **/public/contacts.html
 .DS_Store
 colab/
+.dccache
