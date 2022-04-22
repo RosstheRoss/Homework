@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+\usepackage{setspace}\doublespacing\usepackage{indentfirst}
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+
+\title{Personal Portfolio Summary}
+\author{Remotely Accessible Inverted Pendulum}
+\date{Spring 2022}
+\begin{document}
+\begin{singlespace}
+    \maketitle{}
+\end{singlespace}
+  This document details me Senior Design project in the Spring of 2022.
+  My group worked with Professor Lamperski to improve the Inverted Pendulum worked on by previous groups in past Senior Design classes.
+
+  An inverted pendulum is a common linear control system where a pendulum is attached to a rolling cart, where the goal is to keep the pendulum upright after swinging it up.
+  The pendulum system was already designed and had a basic API made by a previous group, and our job was to make it accessible to people not physically in the lab.
+  The system had a basic website, but was not easily accessible to people outside the lab and needed some additional work to make it usable in a lab environment.
+  Our goal was to make the site usable in a production environment, and to make it accessible to people physically not in the lab.
+
+  To accomplish this, our project involved extensive work on the website.
+  This was done by looking at the existing website and creating a new one from scratch designed from the ground up to be more usable.
+  The website was written in TypeScript and was designed to interface with the already existing system's features as much as possible.
+  It was also designed to be more secure than the original site, as executing arbitrary Python code can be dangerous if mitigations are not in place.
+  The backend was created to have as few system privileges as possible, and is also only accessible to people signed in with the University's Single-Sign On system, Shibboleth.
+  It also will kill any process that runs longer than an admin-defined time limit.
+  The front-end of the website was designed to be simple and allow for students to easily upload code and see the results.
+  A camera was installed and is displayed so anyone logged in can see a live feed of the system.
+
+  Professor Lamperski also had other external requirements.
+  Documentation was made to make sure the system can be used and maintained by any future groups.
+  The repositories are also made open source so anyone can easily see the code and contribute to it.
+  All of the repositories are scanned by the security service Snyk to check for vulnerabilities, either in the website, the direct interfacing with the pendulum, or any of the respective projects' dependencies.
+
+  The project was largely successful, as many of the requirements were met.
+  The website is fully functional and can be accessed by anyone either in the University's network or the University's VPN.
+  The pendulum will stop if it swings beyond a certain part of the cart's travel range.
+  The webcam is fully functional and with a temporary lamp can be seen even when the lights are off in the controls lab.
+  The website is secure over SSL with an official University certificate.
+  The Single-Sign On works in the University's production Shibboleth servers, allowing anyone to sign in.
+
+  The project having many software components allowed me to learn even more about basic system administration and security.
+  I was able to add to my already existing knowledge of Linux systems administration, and learn more about how to secure processes for production work, especially when arbitrary code is involved.
+  I also learned more about TypeScript from my basic knowledge of JavaScript from CSCI 4131, and its benefits for the use case of making a website and API.
+  I also learned how to run Python directly on Linux servers without the latency introduced by ports and instead passing it to something like UWSGI.
+\end{document}
